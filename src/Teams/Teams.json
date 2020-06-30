@@ -1,0 +1,289 @@
+[
+    {
+        "ARI": {
+            "FullName": "Arizona Cardinals",
+            "NickName": "Cardinals",
+            "Location": "Arizona",
+            "Confrence": "NFC",
+            "Division": "West"
+        }
+    },
+    {
+        "ATL": {
+            "FullName": "Atlanta Falcons",
+            "NickName": "Falcons",
+            "Location": "Atlanta",
+            "Confrence": "NFC",
+            "Division": "South"
+        }
+    },
+    {
+        "BAL": {
+            "FullName": "Baltimore Ravens",
+            "NickName": "Ravens",
+            "Location": "Baltimore",
+            "Confrence": "AFC",
+            "Division": "North"
+        }
+    },
+    {
+        "BUF": {
+            "FullName": "Buffalo Bills",
+            "NickName": "Bills",
+            "Location": "Buffalo",
+            "Confrence": "AFC",
+            "Division": "East"
+        }
+    },
+    {
+        "CAR": {
+            "FullName": "Carolina Panthers",
+            "NickName": "Panthers",
+            "Location": "Carolina",
+            "Confrence": "NFC",
+            "Division": "South"
+        }
+    },
+    {
+        "CHI": {
+            "FullName": "Chicago Bears",
+            "NickName": "Bears",
+            "Location": "Chicago",
+            "Confrence": "NFC",
+            "Division": "North"
+        }
+    },
+    {
+        "CIN": {
+            "FullName": "Cincinnati Bengals",
+            "NickName": "Bengals",
+            "Location": "Cincinnati",
+            "Confrence": "NFC",
+            "Division": "North"
+        }
+    },
+    {
+        "CLE": {
+            "FullName": "Cleveland Browns",
+            "NickName": "Browns",
+            "Location": "Cleveland",
+            "Confrence": "NFC",
+            "Division": "North"
+        }
+    },
+    {
+        "DAL": {
+            "FullName": "Dallas Cowboys",
+            "NickName": "Cowboys",
+            "Location": "Dallas",
+            "Confrence": "NFC",
+            "Division": "East"
+        }
+    },
+    {
+        "DEN": {
+            "FullName": "Denver Broncos",
+            "NickName": "Broncos",
+            "Location": "Denver",
+            "Confrence": "AFC",
+            "Division": "West"
+        }
+    },
+    {
+        "DET": {
+            "FullName": "Detroit Lions",
+            "NickName": "Lions",
+            "Location": "Detroit",
+            "Confrence": "NFC",
+            "Division": "North"
+        }
+    },{
+        "GB": {
+            "FullName": "Green Bay Packers",
+            "NickName": "Packers",
+            "Location": "Green Bay",
+            "Confrence": "NFC",
+            "Division": "North"
+        }
+    },
+    {
+        "HOU": {
+            "FullName": "Houston Texans",
+            "NickName": "Texans",
+            "Location": "Houston",
+            "Confrence": "AFC",
+            "Division": "South"
+        }
+    },
+    {
+        "IND": {
+            "FullName": "Indianapolis Colts",
+            "NickName": "Colts",
+            "Location": "Indianapolis",
+            "Confrence": "AFC",
+            "Division": "South"
+        }
+    },
+    {
+        "JAX": {
+            "FullName": "Jacksonville Jaguars",
+            "NickName": "Jaguars",
+            "Location": "Jacksonville",
+            "Confrence": "AFC",
+            "Division": "South"
+        }
+    },
+    {
+        "KC": {
+            "FullName": "Kansas City Cheifs",
+            "NickName": "Cheifs",
+            "Location": "Kansas City",
+            "Confrence": "AFC",
+            "Division": "West"
+        }
+    },
+    {
+        "LV": {
+            "FullName": "Las Vegas Raiders",
+            "NickName": "Raiders",
+            "Location": "Las Vegas",
+            "Confrence": "AFC",
+            "Division": "West"
+        }
+    },
+    {
+        "LAC": {
+            "FullName": "Los Angeles Chargers",
+            "NickName": "Chargers",
+            "Location": "Los Angeles",
+            "Confrence": "AFC",
+            "Division": "West"
+        }
+    },
+    {
+        "LAR": {
+            "FullName": "Los Angeles Rams",
+            "NickName": "Rams",
+            "Location": "Los Angeles",
+            "Confrence": "NFC",
+            "Division": "West"
+        }
+    },
+    {
+        "MIA": {
+            "FullName": "Miami Dolphins",
+            "NickName": "Dolphins",
+            "Location": "Miami",
+            "Confrence": "AFC",
+            "Division": "East"
+        }
+    },
+    {
+        "MIN": {
+            "FullName": "Minnisota Vikings",
+            "NickName": "Vikings",
+            "Location": "Minnisota",
+            "Confrence": "NFC",
+            "Division": "North"
+        }
+    },
+    {
+        "NE": {
+            "FullName": "New England Patriots",
+            "NickName": "Patriots",
+            "Location": "New England",
+            "Confrence": "AFC",
+            "Division": "East"
+        }
+    },
+    {
+        "NYG": {
+            "FullName": "New York Giants",
+            "NickName": "Giants",
+            "Location": "New York",
+            "Confrence": "NFC",
+            "Division": "East"
+        }
+    },
+    {
+        "NYJ": {
+            "FullName": "New York Jets",
+            "NickName": "Jets",
+            "Location": "New York",
+            "Confrence": "AFC",
+            "Division": "East"
+        }
+    },
+    {
+        "NO": {
+            "FullName": "New Orleans Saints",
+            "NickName": "Saints",
+            "Location": "New Orleans",
+            "Confrence": "NFC",
+            "Division": "South"
+        }
+    },
+    {
+        "PHI": {
+            "FullName": "Philadelphia Eagles",
+            "NickName": "Eagles",
+            "Location": "Philadelphia",
+            "Confrence": "NFC",
+            "Division": "East"
+        }
+    },
+    {
+        "PIT": {
+            "FullName": "Pittsburgh Steelers",
+            "NickName": "Steelers",
+            "Location": "Pittsburgh",
+            "Confrence": "AFC",
+            "Division": "North"
+        }
+    },
+    {
+        "SF": {
+            "FullName": "San Francisco 49ers",
+            "NickName": "49ers",
+            "Location": "San Francisco",
+            "Confrence": "NFC",
+            "Division": "West"
+        }
+    },
+    {
+        "SEA": {
+            "FullName": "Seattle Seahawks",
+            "NickName": "Seahawks",
+            "Location": "Seattle",
+            "Confrence": "NFC",
+            "Division": "West"
+        }
+    },
+    {
+        "TB": {
+            "FullName": "Tampa Bay Buccaneers",
+            "NickName": "Buccaneers",
+            "Location": "Tampa Bay",
+            "Confrence": "NFC",
+            "Division": "South"
+        }
+    },
+    {
+        "TEN": {
+            "FullName": "Tennessee Titans",
+            "NickName": "Titans",
+            "Location": "Tennessee",
+            "Confrence": "AFC",
+            "Division": "South"
+        }
+    },
+    {
+        "WAS": {
+            "FullName": "Washington Redskins",
+            "NickName": "Redskins",
+            "Location": "Washington",
+            "Confrence": "NFC",
+            "Division": "East"
+        }
+    }
+]
