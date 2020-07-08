@@ -1,0 +1,167 @@
+.ARI {
+    background-color: #97233F;
+    border-color: #000000;
+}
+
+.ATL {
+    background-color: #A71930;
+    border-color: #000000;
+}
+.ATL:hover {
+    background-color: #A71930;
+    border-color: #A71930;
+}
+.ATL:active {
+    position: relative;
+    top: 1px;
+}
+
+.BAL {
+    background-color: #241773;
+    border-color: #000000;
+}
+
+.BUF {
+    background-color: #00338D;
+    border-color: #C60C30;
+}
+
+.CAR {
+    background-color: #0085CA;
+    border-color: #101820;
+}
+
+.CHI {
+    background-color: #0B162A;
+    border-color: #C83803;
+}
+
+.CIN {
+    background-color: #FB4F14;
+    border-color: #000000;
+}
+
+.CLE {
+    background-color: #311D00;
+    border-color: #FF3C00;
+}
+
+.DAL {
+    background-color: #041E42;
+    border-color: #003594;
+}
+
+.DEN {
+    background-color: #FB4F14;
+    border-color: #002244;
+}
+
+.DET {
+    background-color: #0076B6;
+    border-color: #B0B7BC;
+}
+
+.GB {
+    background-color: #203731;
+    border-color: #FFB612;
+}
+
+.HOU {
+    background-color: #03202F;
+    border-color: #A71930;
+}
+
+.IND {
+    background-color: #002C5F;
+    border-color: #A2AAAD;
+}
+
+.JAX {
+    background-color: #006778;
+    border-color: #9F792C;
+}
+
+.KC {
+    background-color: #E31837;
+    border-color: #FFB81C;
+}
+
+.LV {
+    background-color: #000000;
+    border-color: #A5ACAF;
+}
+
+.LAC {
+    background-color: #0080C6;
+    border-color: #FFC20E;
+}
+
+.LAR {
+    background-color: #003594;
+    border-color: #FFA300;
+}
+
+.MIA {
+    background-color: #008E97;
+    border-color: #FC4C02;
+}
+
+.MIN {
+    background-color: #4F2683;
+    border-color: #FFC62F;
+}
+
+.NE {
+    background-color: #002244;
+    border-color: #C60C30;
+}
+
+.NYG {
+    background-color: #0B2265;
+    border-color: #A71930;
+}
+
+.NYJ {
+    background-color: #125740;
+    border-color: #000000;
+}
+
+.NO {
+    background-color: #D3BC8D;
+    border-color: #101820;
+}
+
+.PHI {
+    background-color: #004C54;
+    border-color: #ACC0C6;
+}
+
+.PIT {
+    background-color: #FFB612;
+    border-color: #101820;
+}
+
+.SF {
+    background-color: #AA0000;
+    border-color: #B3995D;
+}
+
+.SEA {
+    background-color: #002244;
+    border-color: #69BE28;
+}
+
+.TB {
+    background-color: #D50A0A;
+    border-color: #34302B;
+}
+
+.TEN {
+    background-color: #4B92DB;
+    border-color: #0C2340;
+}
+
+.WAS {
+    background-color: #773141;
+    border-color: #FFB612;
+}

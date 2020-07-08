@@ -7,7 +7,7 @@ import T from '../Teams/Teams.json';
 */
 
 const game = (away, home, d) => {
-    const day = d.toLacaleDateString('en-US', { weekday: 'long' });
+    const day = d.toLocaleDateString('en-US', { weekday: 'long' });
     const date = d.toLocaleDateString('en-US');
 
     const timeOptions = {
@@ -270,7 +270,7 @@ const schedule = {
     },
     week13: {
         games: [
-          game(T[8, T[2], new Date(2020, 11, 3, 20, 20)),
+          game(T[8], T[2], new Date(2020, 11, 3, 20, 20)),
           game(T[24], T[1], new Date(2020, 11, 6, 13, 0)),
           game(T[10], T[5], new Date(2020, 11, 6, 13, 0)),
           game(T[7], T[30], new Date(2020, 11, 6, 13, 0)),
