@@ -9,15 +9,15 @@ const GameButton = ({ game }) => {
     return (
         <div className="Group">
             <ButtonGroup>
-                <Button className={`HomeTeam-Button ${hometeam}`} value="Home">
+                <button className={`HomeTeam-Button ${hometeam}`}>
                     {hometeam}
-                </Button>
-                <Button className="Tie-Button" value="Tie">
+                </button>
+                <button className="Tie-Button">
                     Tie
-                </Button>
-                <Button className={`AwayTeam-Button ${awayteam}`} value="Away">
+                </button>
+                <button className={`AwayTeam-Button ${awayteam}`}>
                     {awayteam}
-                </Button>
+                </button>
             </ButtonGroup>
         </div>
     );

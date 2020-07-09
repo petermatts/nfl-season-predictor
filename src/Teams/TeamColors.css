@@ -7,14 +7,6 @@
     background-color: #A71930;
     border-color: #000000;
 }
-.ATL:hover {
-    background-color: #A71930;
-    border-color: #A71930;
-}
-.ATL:active {
-    position: relative;
-    top: 1px;
-}
 
 .BAL {
     background-color: #241773;
