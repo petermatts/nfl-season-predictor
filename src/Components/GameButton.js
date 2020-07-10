@@ -1,5 +1,5 @@
 import React from 'react';
-import { ButtonGroup, Button } from 'reactstrap';
+import { ButtonGroup } from 'reactstrap';
 import './GameButton.css';
 import '../Teams/TeamColors.css';
 

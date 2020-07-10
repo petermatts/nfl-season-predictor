@@ -8,6 +8,11 @@ export default class Team {
         this.Location = team[1].Location
         this.Confrence = team[1].Confrence;
         this.Division = team[1].Division;
+        this.wins = team[1].wins;
+        this.loses = team[1].loses;
+        this.ties = team[1].ties;
+        this.streak = team[1].streak;
+        
         //this.makeTeamSchedule();
     }
 

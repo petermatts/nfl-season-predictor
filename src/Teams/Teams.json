@@ -5,7 +5,11 @@
             "NickName": "Cardinals",
             "Location": "Arizona",
             "Confrence": "NFC",
-            "Division": "West"
+            "Division": "West",
+            "wins": [],
+            "loses": [],
+            "ties": [],
+            "streak": 0
         }
     },
     {
@@ -14,7 +18,11 @@
             "NickName": "Falcons",
             "Location": "Atlanta",
             "Confrence": "NFC",
-            "Division": "South"
+            "Division": "South",
+            "wins": [],
+            "loses": [],
+            "ties": [],
+            "streak": 0
         }
     },
     {
@@ -23,7 +31,11 @@
             "NickName": "Ravens",
             "Location": "Baltimore",
             "Confrence": "AFC",
-            "Division": "North"
+            "Division": "North",
+            "wins": [],
+            "loses": [],
+            "ties": [],
+            "streak": 0
         }
     },
     {
@@ -32,7 +44,11 @@
             "NickName": "Bills",
             "Location": "Buffalo",
             "Confrence": "AFC",
-            "Division": "East"
+            "Division": "East",
+            "wins": [],
+            "loses": [],
+            "ties": [],
+            "streak": 0
         }
     },
     {
@@ -41,7 +57,11 @@
             "NickName": "Panthers",
             "Location": "Carolina",
             "Confrence": "NFC",
-            "Division": "South"
+            "Division": "South",
+            "wins": [],
+            "loses": [],
+            "ties": [],
+            "streak": 0
         }
     },
     {
@@ -50,7 +70,11 @@
             "NickName": "Bears",
             "Location": "Chicago",
             "Confrence": "NFC",
-            "Division": "North"
+            "Division": "North",
+            "wins": [],
+            "loses": [],
+            "ties": [],
+            "streak": 0
         }
     },
     {
@@ -59,7 +83,11 @@
             "NickName": "Bengals",
             "Location": "Cincinnati",
             "Confrence": "NFC",
-            "Division": "North"
+            "Division": "North",
+            "wins": [],
+            "loses": [],
+            "ties": [],
+            "streak": 0
         }
     },
     {
@@ -68,7 +96,11 @@
             "NickName": "Browns",
             "Location": "Cleveland",
             "Confrence": "NFC",
-            "Division": "North"
+            "Division": "North",
+            "wins": [],
+            "loses": [],
+            "ties": [],
+            "streak": 0
         }
     },
     {
@@ -77,7 +109,11 @@
             "NickName": "Cowboys",
             "Location": "Dallas",
             "Confrence": "NFC",
-            "Division": "East"
+            "Division": "East",
+            "wins": [],
+            "loses": [],
+            "ties": [],
+            "streak": 0
         }
     },
     {
@@ -86,7 +122,11 @@
             "NickName": "Broncos",
             "Location": "Denver",
             "Confrence": "AFC",
-            "Division": "West"
+            "Division": "West",
+            "wins": [],
+            "loses": [],
+            "ties": [],
+            "streak": 0
         }
     },
     {
@@ -95,7 +135,11 @@
             "NickName": "Lions",
             "Location": "Detroit",
             "Confrence": "NFC",
-            "Division": "North"
+            "Division": "North",
+            "wins": [],
+            "loses": [],
+            "ties": [],
+            "streak": 0
         }
     },{
         "GB": {
@@ -103,7 +147,11 @@
             "NickName": "Packers",
             "Location": "Green Bay",
             "Confrence": "NFC",
-            "Division": "North"
+            "Division": "North",
+            "wins": [],
+            "loses": [],
+            "ties": [],
+            "streak": 0
         }
     },
     {
@@ -112,7 +160,11 @@
             "NickName": "Texans",
             "Location": "Houston",
             "Confrence": "AFC",
-            "Division": "South"
+            "Division": "South",
+            "wins": [],
+            "loses": [],
+            "ties": [],
+            "streak": 0
         }
     },
     {
@@ -121,7 +173,11 @@
             "NickName": "Colts",
             "Location": "Indianapolis",
             "Confrence": "AFC",
-            "Division": "South"
+            "Division": "South",
+            "wins": [],
+            "loses": [],
+            "ties": [],
+            "streak": 0
         }
     },
     {
@@ -130,7 +186,11 @@
             "NickName": "Jaguars",
             "Location": "Jacksonville",
             "Confrence": "AFC",
-            "Division": "South"
+            "Division": "South",
+            "wins": [],
+            "loses": [],
+            "ties": [],
+            "streak": 0
         }
     },
     {
@@ -139,7 +199,11 @@
             "NickName": "Cheifs",
             "Location": "Kansas City",
             "Confrence": "AFC",
-            "Division": "West"
+            "Division": "West",
+            "wins": [],
+            "loses": [],
+            "ties": [],
+            "streak": 0
         }
     },
     {
@@ -148,7 +212,11 @@
             "NickName": "Raiders",
             "Location": "Las Vegas",
             "Confrence": "AFC",
-            "Division": "West"
+            "Division": "West",
+            "wins": [],
+            "loses": [],
+            "ties": [],
+            "streak": 0
         }
     },
     {
@@ -157,7 +225,11 @@
             "NickName": "Chargers",
             "Location": "Los Angeles",
             "Confrence": "AFC",
-            "Division": "West"
+            "Division": "West",
+            "wins": [],
+            "loses": [],
+            "ties": [],
+            "streak": 0
         }
     },
     {
@@ -166,7 +238,11 @@
             "NickName": "Rams",
             "Location": "Los Angeles",
             "Confrence": "NFC",
-            "Division": "West"
+            "Division": "West",
+            "wins": [],
+            "loses": [],
+            "ties": [],
+            "streak": 0
         }
     },
     {
@@ -175,7 +251,11 @@
             "NickName": "Dolphins",
             "Location": "Miami",
             "Confrence": "AFC",
-            "Division": "East"
+            "Division": "East",
+            "wins": [],
+            "loses": [],
+            "ties": [],
+            "streak": 0
         }
     },
     {
@@ -184,7 +264,11 @@
             "NickName": "Vikings",
             "Location": "Minnisota",
             "Confrence": "NFC",
-            "Division": "North"
+            "Division": "North",
+            "wins": [],
+            "loses": [],
+            "ties": [],
+            "streak": 0
         }
     },
     {
@@ -193,7 +277,11 @@
             "NickName": "Patriots",
             "Location": "New England",
             "Confrence": "AFC",
-            "Division": "East"
+            "Division": "East",
+            "wins": [],
+            "loses": [],
+            "ties": [],
+            "streak": 0
         }
     },
     {
@@ -202,7 +290,11 @@
             "NickName": "Giants",
             "Location": "New York",
             "Confrence": "NFC",
-            "Division": "East"
+            "Division": "East",
+            "wins": [],
+            "loses": [],
+            "ties": [],
+            "streak": 0
         }
     },
     {
@@ -211,7 +303,11 @@
             "NickName": "Jets",
             "Location": "New York",
             "Confrence": "AFC",
-            "Division": "East"
+            "Division": "East",
+            "wins": [],
+            "loses": [],
+            "ties": [],
+            "streak": 0
         }
     },
     {
@@ -220,7 +316,11 @@
             "NickName": "Saints",
             "Location": "New Orleans",
             "Confrence": "NFC",
-            "Division": "South"
+            "Division": "South",
+            "wins": [],
+            "loses": [],
+            "ties": [],
+            "streak": 0
         }
     },
     {
@@ -229,7 +329,11 @@
             "NickName": "Eagles",
             "Location": "Philadelphia",
             "Confrence": "NFC",
-            "Division": "East"
+            "Division": "East",
+            "wins": [],
+            "loses": [],
+            "ties": [],
+            "streak": 0
         }
     },
     {
@@ -238,7 +342,11 @@
             "NickName": "Steelers",
             "Location": "Pittsburgh",
             "Confrence": "AFC",
-            "Division": "North"
+            "Division": "North",
+            "wins": [],
+            "loses": [],
+            "ties": [],
+            "streak": 0
         }
     },
     {
@@ -247,7 +355,11 @@
             "NickName": "49ers",
             "Location": "San Francisco",
             "Confrence": "NFC",
-            "Division": "West"
+            "Division": "West",
+            "wins": [],
+            "loses": [],
+            "ties": [],
+            "streak": 0
         }
     },
     {
@@ -256,7 +368,11 @@
             "NickName": "Seahawks",
             "Location": "Seattle",
             "Confrence": "NFC",
-            "Division": "West"
+            "Division": "West",
+            "wins": [],
+            "loses": [],
+            "ties": [],
+            "streak": 0
         }
     },
     {
@@ -265,7 +381,11 @@
             "NickName": "Buccaneers",
             "Location": "Tampa Bay",
             "Confrence": "NFC",
-            "Division": "South"
+            "Division": "South",
+            "wins": [],
+            "loses": [],
+            "ties": [],
+            "streak": 0
         }
     },
     {
@@ -274,7 +394,11 @@
             "NickName": "Titans",
             "Location": "Tennessee",
             "Confrence": "AFC",
-            "Division": "South"
+            "Division": "South",
+            "wins": [],
+            "loses": [],
+            "ties": [],
+            "streak": 0
         }
     },
     {
@@ -283,7 +407,11 @@
             "NickName": "Redskins",
             "Location": "Washington",
             "Confrence": "NFC",
-            "Division": "East"
+            "Division": "East",
+            "wins": [],
+            "loses": [],
+            "ties": [],
+            "streak": 0
         }
     }
 ]
