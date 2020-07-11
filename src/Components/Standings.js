@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Table } from 'reactstrap';
+import { Jumbotron, Table } from 'reactstrap';
 import { NFL } from '../Teams/NFL_Teams';
+import './Standings.css';
 
 class Standings extends Component {
     constructor(props) {
@@ -88,22 +89,32 @@ class Standings extends Component {
 
     render() {
         console.log(this.state.teamList);
+        let header = '';
+        if(this.props.confrence && this.props.division)
+            header = `${this.props.confrence} ${this.props.division}`;
+        else if (this.props.confrence)
+            header = this.props.confrence;  
+
+
         return(
-            <Table size="sm" striped responsive hover>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>Team</th>
-                        <th>Record</th>
-                        <th>Pct</th>
-                        {/* <th>Strk</th> */}
-                        {/* <th>SOS</th> */}
-                    </tr>
-                </thead>
-                <tbody>
-                    {this.renderRows()}
-                </tbody>
-            </Table>
+            <div className="Standing">
+                <h3>{header}</h3>    
+                <Table size="sm" borderless striped responsive hover>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Team</th>
+                            <th>Record</th>
+                            <th>Pct</th>
+                            {/* <th>Strk</th> */}
+                            {/* <th>SOS</th> */}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {this.renderRows()}
+                    </tbody>
+                </Table>
+            </div>
         );
     }
 }

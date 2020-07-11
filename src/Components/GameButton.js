@@ -8,6 +8,9 @@ const GameButton = ({ game }) => {
     const awayteam = Object.keys(game.away)[0];
     return (
         <div className="Group">
+            <div>
+                <small>{game.time}</small>
+            </div>
             <ButtonGroup>
                 <button className={`HomeTeam-Button ${hometeam}`}>
                     {hometeam}

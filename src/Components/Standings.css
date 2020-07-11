@@ -1,0 +1,10 @@
+.Standing {
+    width: 50%;
+    border: 1px solid;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+.noTopBorder {
+    border-top-width: 0px;
+}
