@@ -17,4 +17,4 @@ const NFL = {
     NFC_West: [Teams[0], Teams[18], Teams[27], Teams[28]]
 };
 
-export { NFL };
+export { NFL, Teams };

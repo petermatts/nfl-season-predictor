@@ -1,14 +1,10 @@
 import React from 'react';
 import './App.css';
-//import { NFL } from './Teams/NFL_Teams';
+import { NFL } from './Teams/NFL_Teams';
 import { schedule as Schedule2020 } from './Schedule/2020';
-import { GameButton } from './Components/GameButton';
 import { WeekPicker } from './Components/WeekPicker';
 
-// const logNFL = () => {
-//   console.log(NFL);
-//   console.log(Schedule2020);
-// };
+
 
 // function App() {
 //   return (
@@ -28,8 +24,8 @@ import { WeekPicker } from './Components/WeekPicker';
 // }
 
 function App() {
-  //console.log(NFL);
-  //console.log(Schedule2020.week1.games[0].away.HOU);
+  console.log(NFL);
+  console.log(Schedule2020);
   return (
     <div className="App">
       <header className="App-header">

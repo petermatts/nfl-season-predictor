@@ -33,7 +33,6 @@ class WeekPicker extends Component {
     }
 
     renderGameButtons(date) {
-        console.log(date);
         const buttons = this.state.games.map(game => {
             if(game.day === date.day && game.date === date.date)
                 return <GameButton game={game} />;
@@ -56,6 +55,7 @@ class WeekPicker extends Component {
     }
 
     render() {
+        // ! Render Byes if applicable?
         return (
             <ListGroup className="Component" horizontal>
                 {this.renderColumnsHeads()}

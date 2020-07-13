@@ -4,8 +4,8 @@ import './GameButton.css';
 import '../Teams/TeamColors.css';
 
 const GameButton = ({ game }) => {
-    const hometeam = Object.keys(game.home)[0];
-    const awayteam = Object.keys(game.away)[0];
+    const hometeam = Object.values(game.home)[0];
+    const awayteam = Object.values(game.away)[0];
     return (
         <div className="Group">
             <div>

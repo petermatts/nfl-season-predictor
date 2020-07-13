@@ -1,4 +1,4 @@
-import T from '../Teams/Teams.json';
+import {Teams as T} from '../Teams/NFL_Teams.js';
 /*
 0: ARI  1: ATL  2: BAL  3: BUF  4: CAR  5: CHI  6: CIN  7: CLE
 8: DAL  9: DEN  10: DET  11: GB  12: HOU  13: IND  14: JAX  15: KC
