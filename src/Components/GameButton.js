@@ -1,20 +1,50 @@
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import { connect, dispatch } from 'react-redux';
 import { ButtonGroup } from 'reactstrap';
 import './GameButton.css';
 import '../Teams/TeamColors.css';
-import { gameResult } from './../Actions/TeamActions';
+import { gameResult } from './../Actions';
+import { bindActionCreators } from 'redux';
+
+// const GameSelector = ({ game }) => {
+//     const hometeam = Object.values(game.home)[0];
+//     const awayteam = Object.values(game.away)[0];
+
+//     return (
+//         <div className="Group">
+//             <div>
+//                 <small>{game.time}</small>
+//             </div>
+//             <ButtonGroup>
+//                 <button 
+//                     className={`HomeTeam-Button ${hometeam}`}
+//                     onClick={this.props.gameResult('hey there')}
+//                 >
+//                     {hometeam}
+//                 </button>
+//                 <button 
+//                     className="Tie-Button"
+//                     onClick={gameResult('Tie')}
+//                 >
+//                     Tie
+//                 </button>
+//                 <button
+//                     className={`AwayTeam-Button ${awayteam}`}
+//                     onClick={gameResult()}
+//                 >
+//                     {awayteam}
+//                 </button>
+//             </ButtonGroup>
+//         </div>
+//     );
+// };
 
 class GameSelector extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {};
-    }
-
     render() {
-        const { game } = this.props;
+        const { game } = this.props; 
         const hometeam = Object.values(game.home)[0];
         const awayteam = Object.values(game.away)[0];
+    
         return (
             <div className="Group">
                 <div>
@@ -23,22 +53,19 @@ class GameSelector extends Component {
                 <ButtonGroup>
                     <button 
                         className={`HomeTeam-Button ${hometeam}`}
-                        type="button"
-                        onClick={gameResult({ winner: hometeam, loser: awayteam })}
+                        onClick={() => this.props.gameResult('hey there')}
                     >
                         {hometeam}
                     </button>
                     <button 
                         className="Tie-Button"
-                        type="button"
-                        onClick={gameResult("Tie")}
+                        onClick={() => this.props.gameResult('Tie')}
                     >
                         Tie
                     </button>
                     <button
                         className={`AwayTeam-Button ${awayteam}`}
-                        type="button"
-                        onClick={gameResult({ winner: awayteam, loser: hometeam })}
+                        onClick={() => this.props.gameResult()}
                     >
                         {awayteam}
                     </button>
@@ -46,11 +73,21 @@ class GameSelector extends Component {
             </div>
         );
     }
-};
+}
 
 const mapStateToProps = (state) => {
-    return {};
+    const { NFL } = state;
+    return { NFL }; 
 };
 
-const GameButton = connect(mapStateToProps, {})(GameSelector);
+const mapDispatchToProps = (dispatch, ownProps) => {
+    const boundActions = bindActionCreators({ gameResult }, dispatch);
+    return {
+        gameResult: () => dispatch(gameResult()),
+        ...boundActions,
+        dispatch
+    }
+};
+
+const GameButton = connect(mapStateToProps, mapDispatchToProps)(GameSelector);
 export { GameButton };
