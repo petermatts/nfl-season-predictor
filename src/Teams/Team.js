@@ -12,10 +12,24 @@ export default class Team {
         this.loses = team[1].loses;
         this.ties = team[1].ties;
         this.streak = team[1].streak;
+        this.SOS = team[1].SOS;
         this.pct = this.calcPCT();
+        this.record = this.record();
+        // Confrence pct
+        // SOV
+
+        // ? home record
+        // ? away record
         
         // ! this is for if individual team selection pages are made 
         //this.makeTeamSchedule();
+    }
+
+    record() {
+        const wins = this.wins.length;
+        const loses = this.loses.length;
+        const ties = this.ties.length;
+        return ties === 0 ? `${wins}-${loses}`:`${wins}-${loses}-${ties}`;
     }
 
     calcPCT() {

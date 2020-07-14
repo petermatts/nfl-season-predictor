@@ -9,7 +9,8 @@
             "wins": [],
             "loses": [],
             "ties": [],
-            "streak": 0
+            "streak": 0,
+            "SOS": 0.518
         }
     },
     {
@@ -22,7 +23,8 @@
             "wins": [],
             "loses": [],
             "ties": [],
-            "streak": 0
+            "streak": 0,
+            "SOS": 0.525
         }
     },
     {
@@ -35,7 +37,8 @@
             "wins": [],
             "loses": [],
             "ties": [],
-            "streak": 0
+            "streak": 0,
+            "SOS": 0.438
         }
     },
     {
@@ -48,7 +51,8 @@
             "wins": [],
             "loses": [],
             "ties": [],
-            "streak": 0
+            "streak": 0,
+            "SOS": 0.525
         }
     },
     {
@@ -61,7 +65,8 @@
             "wins": [],
             "loses": [],
             "ties": [],
-            "streak": 0
+            "streak": 0,
+            "SOS": 0.500
         }
     },
     {
@@ -74,7 +79,8 @@
             "wins": [],
             "loses": [],
             "ties": [],
-            "streak": 0
+            "streak": 0,
+            "SOS": 0.509
         }
     },
     {
@@ -87,7 +93,8 @@
             "wins": [],
             "loses": [],
             "ties": [],
-            "streak": 0
+            "streak": 0,
+            "SOS": 0.477
         }
     },
     {
@@ -100,7 +107,8 @@
             "wins": [],
             "loses": [],
             "ties": [],
-            "streak": 0
+            "streak": 0,
+            "SOS": 0.461
         }
     },
     {
@@ -113,7 +121,8 @@
             "wins": [],
             "loses": [],
             "ties": [],
-            "streak": 0
+            "streak": 0,
+            "SOS": 0.459
         }
     },
     {
@@ -126,7 +135,8 @@
             "wins": [],
             "loses": [],
             "ties": [],
-            "streak": 0
+            "streak": 0,
+            "SOS": 0.512
         }
     },
     {
@@ -139,7 +149,8 @@
             "wins": [],
             "loses": [],
             "ties": [],
-            "streak": 0
+            "streak": 0,
+            "SOS": 0.525
         }
     },{
         "GB": {
@@ -151,7 +162,8 @@
             "wins": [],
             "loses": [],
             "ties": [],
-            "streak": 0
+            "streak": 0,
+            "SOS": 0.504
         }
     },
     {
@@ -164,7 +176,8 @@
             "wins": [],
             "loses": [],
             "ties": [],
-            "streak": 0
+            "streak": 0,
+            "SOS": 0.518
         }
     },
     {
@@ -177,7 +190,8 @@
             "wins": [],
             "loses": [],
             "ties": [],
-            "streak": 0
+            "streak": 0,
+            "SOS": 0.502
         }
     },
     {
@@ -190,7 +204,8 @@
             "wins": [],
             "loses": [],
             "ties": [],
-            "streak": 0
+            "streak": 0,
+            "SOS": 0.494
         }
     },
     {
@@ -203,7 +218,8 @@
             "wins": [],
             "loses": [],
             "ties": [],
-            "streak": 0
+            "streak": 0,
+            "SOS": 0.500
         }
     },
     {
@@ -216,7 +232,8 @@
             "wins": [],
             "loses": [],
             "ties": [],
-            "streak": 0
+            "streak": 0,
+            "SOS": 0.496
         }
     },
     {
@@ -229,7 +246,8 @@
             "wins": [],
             "loses": [],
             "ties": [],
-            "streak": 0
+            "streak": 0,
+            "SOS": 0.492
         }
     },
     {
@@ -242,7 +260,8 @@
             "wins": [],
             "loses": [],
             "ties": [],
-            "streak": 0
+            "streak": 0,
+            "SOS": 0.516
         }
     },
     {
@@ -255,7 +274,8 @@
             "wins": [],
             "loses": [],
             "ties": [],
-            "streak": 0
+            "streak": 0,
+            "SOS": 0.529
         }
     },
     {
@@ -268,7 +288,8 @@
             "wins": [],
             "loses": [],
             "ties": [],
-            "streak": 0
+            "streak": 0,
+            "SOS": 0.516
         }
     },
     {
@@ -281,7 +302,8 @@
             "wins": [],
             "loses": [],
             "ties": [],
-            "streak": 0
+            "streak": 0,
+            "SOS": 0.537
         }
     },
     {
@@ -294,7 +316,8 @@
             "wins": [],
             "loses": [],
             "ties": [],
-            "streak": 0
+            "streak": 0,
+            "SOS": 0.482
         }
     },
     {
@@ -307,7 +330,8 @@
             "wins": [],
             "loses": [],
             "ties": [],
-            "streak": 0
+            "streak": 0,
+            "SOS": 0.533
         }
     },
     {
@@ -320,7 +344,8 @@
             "wins": [],
             "loses": [],
             "ties": [],
-            "streak": 0
+            "streak": 0,
+            "SOS": 0.490
         }
     },
     {
@@ -333,7 +358,8 @@
             "wins": [],
             "loses": [],
             "ties": [],
-            "streak": 0
+            "streak": 0,
+            "SOS": 0.486
         }
     },
     {
@@ -346,7 +372,8 @@
             "wins": [],
             "loses": [],
             "ties": [],
-            "streak": 0
+            "streak": 0,
+            "SOS": 0.457
         }
     },
     {
@@ -359,7 +386,8 @@
             "wins": [],
             "loses": [],
             "ties": [],
-            "streak": 0
+            "streak": 0,
+            "SOS": 0.527
         }
     },
     {
@@ -372,7 +400,8 @@
             "wins": [],
             "loses": [],
             "ties": [],
-            "streak": 0
+            "streak": 0,
+            "SOS": 0.509
         }
     },
     {
@@ -385,7 +414,8 @@
             "wins": [],
             "loses": [],
             "ties": [],
-            "streak": 0
+            "streak": 0,
+            "SOS": 0.502
         }
     },
     {
@@ -398,7 +428,8 @@
             "wins": [],
             "loses": [],
             "ties": [],
-            "streak": 0
+            "streak": 0,
+            "SOS": 0.498
         }
     },
     {
@@ -411,7 +442,8 @@
             "wins": [],
             "loses": [],
             "ties": [],
-            "streak": 0
+            "streak": 0,
+            "SOS": 0.465
         }
     }
 ]
