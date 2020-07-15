@@ -13,8 +13,8 @@ export default class Team {
         this.ties = team[1].ties;
         this.streak = team[1].streak;
         this.SOS = team[1].SOS;
-        this.pct = this.calcPCT();
-        this.record = this.record();
+        this.record = '0-0';
+        this.pct = '0.0000';
         // Confrence pct
         // SOV
 
@@ -25,6 +25,7 @@ export default class Team {
         //this.makeTeamSchedule();
     }
 
+    //move to actions?
     record() {
         const wins = this.wins.length;
         const loses = this.loses.length;
@@ -32,6 +33,7 @@ export default class Team {
         return ties === 0 ? `${wins}-${loses}`:`${wins}-${loses}-${ties}`;
     }
 
+    //move to actions?
     calcPCT() {
         const wins = this.wins.length;
         const loses = this.loses.length;

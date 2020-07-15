@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-import { Jumbotron, Table } from 'reactstrap';
-import { NFL } from '../Teams/NFL_Teams';
+import { Table } from 'reactstrap';
+import { connect } from 'react-redux';
+import { CreateNFL } from '../Teams/NFL_Teams';
 import './Standings.css';
 
-class Standings extends Component {
+class Standing extends Component {
     constructor(props) {
         super(props);
         this.state = { teamList: [] };
     }
 
     componentDidMount() {
+        const NFL = CreateNFL(this.props.NFL);
         if(this.props.division && this.props.confrence) {
             if(this.props.confrence === 'AFC') {
                 switch(this.props.division) {
@@ -66,29 +68,30 @@ class Standings extends Component {
 
     renderRows() {
         // ! sort teamList//
-        let rank = 0;
-        const stand = this.state.teamList.map((team) => {
-            const wins = team.wins.length;
-            const loses = team.loses.length;
-            const ties = team.ties.length;
-            const record = ties === 0 ? `${wins}-${loses}`:`${wins}-${loses}-${ties}`;
+        if(this.state.teamList !== undefined) {
+            let rank = 0;
+            const stand = this.state.teamList.map((team) => {
+                const wins = team.wins.length;
+                const loses = team.loses.length;
+                const ties = team.ties.length;
+                const record = ties === 0 ? `${wins}-${loses}`:`${wins}-${loses}-${ties}`;
 
-            const pct = this.calcPCT(wins, loses, ties);
-            return (
-                <tr key={rank}>
-                    <th scope="row">{++rank}</th>
-                    <td>{team.abrv}</td>
-                    <td>{record}</td>
-                    <td>{pct}</td>
-                </tr>
-            )
-        });
+                const pct = this.calcPCT(wins, loses, ties);
+                return (
+                    <tr key={rank}>
+                        <th scope="row">{++rank}</th>
+                        <td>{team.abrv}</td>
+                        <td>{record}</td>
+                        <td>{pct}</td>
+                    </tr>
+                )
+            });
 
-        return stand;
+            return stand;
+        }
     }
 
     render() {
-        console.log(this.state.teamList);
         let header = '';
         if(this.props.confrence && this.props.division)
             header = `${this.props.confrence} ${this.props.division}`;
@@ -118,6 +121,13 @@ class Standings extends Component {
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    const { NFL } = state;
+    return { NFL };
+};
+
+const Standings = connect(mapStateToProps)(Standing);
 
 export { Standings };
 
