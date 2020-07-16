@@ -62,7 +62,7 @@ class App extends Component {
             NFL Season Predictor
           </header>
           <div className="App-Body">
-            <WeekPicker games={Schedule2020.week1.games} byes={Schedule2020.week1.byes}/>
+            <WeekPicker games={Schedule2020.week13.games} byes={Schedule2020.week13.byes}/>
           </div>
           <Standings confrence="AFC" />
           <footer className="App-Footer"/>

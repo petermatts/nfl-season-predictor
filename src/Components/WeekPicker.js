@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { ListGroup, ListGroupItem } from 'reactstrap';
 import { GameButton } from './GameButton';
+import '../Teams/TeamColors.css';
 import './WeekPicker.css';
+
 
 class WeekPicker extends Component {
     constructor(props) {
@@ -32,13 +34,25 @@ class WeekPicker extends Component {
         this.setState({ dates: array });
     }
 
+    timeString(time) {
+        return <small>{time}</small>
+    }
+
     renderGameButtons(date) {
+        const timesTaken = [];
         const buttons = this.state.games.map(game => {
-            if(game.day === date.day && game.date === date.date)
-                return <GameButton game={game} />;
-            else
+            if(game.day === date.day && game.date === date.date) {
+                const time = timesTaken.includes(game.time) ? null : this.timeString(game.time);
+                timesTaken.push(game.time);
+                return (
+                    <div className="select">
+                        {time}
+                        <GameButton game={game} />
+                    </div>
+                );
+            } else
                 return null;
-        })
+        });
         return buttons;
     }
 
@@ -54,12 +68,30 @@ class WeekPicker extends Component {
         return cols;
     }
 
+    byeDisplay() {
+        const byes = this.state.byes.map((team) => {
+            const cn = `Bye ${team.abrv}`;
+            return (
+                <button className={cn} disabled>
+                    {team.abrv}
+                </button>
+            );
+        });
+
+        return byes;
+    }
+
     render() {
         // ! Render Byes if applicable?
         return (
-            <ListGroup className="Component" horizontal>
-                {this.renderColumnsHeads()}
-            </ListGroup>
+            <div className="Component">
+                <ListGroup horizontal>
+                    {this.renderColumnsHeads()}
+                </ListGroup>
+                <div className="ByeHolder">
+                    {this.byeDisplay()}
+                </div>
+            </div>
         );
     }
 }
