@@ -6,20 +6,20 @@ export function gameResult(result, pressed, tie) {
         const { winner, loser } = result;
 
         if(pressed) {
-            if(winner.wins.indexOf(loser.abrv) >= 0) {
-                winner.wins.splice(winner.wins.indexOf(loser.abrv), 1);
-            } else if(winner.loses.indexOf(loser.abrv) >= 0) {
-                winner.loses.splice(winner.loses.indexOf(loser.abrv), 1);
-            } else if (winner.ties.indexOf(loser.abrv) >= 0) {
-                winner.ties.splice(winner.ties.indexOf(loser.abrv), 1);
+            if(winner.wins.lastIndexOf(loser.abrv) >= 0) {
+                winner.wins.splice(winner.wins.lastIndexOf(loser.abrv), 1);
+            } else if(winner.loses.lastIndexOf(loser.abrv) >= 0) {
+                winner.loses.splice(winner.loses.lastIndexOf(loser.abrv), 1);
+            } else if (winner.ties.lastIndexOf(loser.abrv) >= 0) {
+                winner.ties.splice(winner.ties.lastIndexOf(loser.abrv), 1);
             }
 
-            if(loser.wins.indexOf(winner.abrv) >= 0) {
-                loser.wins.splice(loser.wins.indexOf(winner.abrv), 1);
-            } else if(loser.loses.indexOf(winner.abrv) >= 0) {
-                loser.loses.splice(loser.loses.indexOf(winner.abrv), 1);
-            } else if (loser.ties.indexOf(winner.abrv) >= 0) {
-                loser.ties.splice(loser.ties.indexOf(winner.abrv), 1);
+            if(loser.wins.lastIndexOf(winner.abrv) >= 0) {
+                loser.wins.splice(loser.wins.lastIndexOf(winner.abrv), 1);
+            } else if(loser.loses.lastIndexOf(winner.abrv) >= 0) {
+                loser.loses.splice(loser.loses.lastIndexOf(winner.abrv), 1);
+            } else if (loser.ties.lastIndexOf(winner.abrv) >= 0) {
+                loser.ties.splice(loser.ties.lastIndexOf(winner.abrv), 1);
             }
         }
 
@@ -37,20 +37,20 @@ export function gameResult(result, pressed, tie) {
         const { home, away } = result;
 
         if(pressed) {
-            if(home.wins.indexOf(away.abrv) >= 0) {
-                home.wins.splice(home.wins.indexOf(away.abrv), 1);
-            } else if(home.loses.indexOf(away.abrv) >= 0) {
-                home.loses.splice(home.loses.indexOf(away.abrv), 1);
-            } else if (home.ties.indexOf(away.abrv) >= 0) {
-                home.ties.splice(home.ties.indexOf(away.abrv), 1);
+            if(home.wins.lastIndexOf(away.abrv) >= 0) {
+                home.wins.splice(home.wins.lastIndexOf(away.abrv), 1);
+            } else if(home.loses.lastIndexOf(away.abrv) >= 0) {
+                home.loses.splice(home.loses.lastIndexOf(away.abrv), 1);
+            } else if (home.ties.lastIndexOf(away.abrv) >= 0) {
+                home.ties.splice(home.ties.lastIndexOf(away.abrv), 1);
             }
 
-            if(away.wins.indexOf(home.abrv) >= 0) {
-                away.wins.splice(away.wins.indexOf(home.abrv), 1);
-            } else if(away.loses.indexOf(home.abrv) >= 0) {
-                away.loses.splice(away.loses.indexOf(home.abrv), 1);
-            } else if (away.ties.indexOf(home.abrv) >= 0) {
-                away.ties.splice(away.ties.indexOf(home.abrv), 1);
+            if(away.wins.lastIndexOf(home.abrv) >= 0) {
+                away.wins.splice(away.wins.lastIndexOf(home.abrv), 1);
+            } else if(away.loses.lastIndexOf(home.abrv) >= 0) {
+                away.loses.splice(away.loses.lastIndexOf(home.abrv), 1);
+            } else if (away.ties.lastIndexOf(home.abrv) >= 0) {
+                away.ties.splice(away.ties.lastIndexOf(home.abrv), 1);
             }
         }
 

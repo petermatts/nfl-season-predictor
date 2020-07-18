@@ -4,11 +4,10 @@ import { Provider } from 'react-redux';
 import ReduxThunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import './App.css';
-import { NFL } from './Teams/NFL_Teams';
-import { schedule as Schedule2020 } from './Schedule/2020';
 import { WeekPicker } from './Components/WeekPicker';
 import reducers from './Reducers';
 import { Standings } from './Components/Standings';
+import { WeekHolder } from './Components/WeekHolder';
 
 import { sortDivision } from './Actions/SortStandings';
 
@@ -48,11 +47,6 @@ import { sortDivision } from './Actions/SortStandings';
 
 class App extends Component {
   render() {
-    // console.log(NFL);
-    // console.log(Schedule2020);
-
-    //sortDivision(NFL.AFC_East);
-
     const store = createStore(reducers, {}, composeWithDevTools(applyMiddleware(ReduxThunk)));
 
     return (
@@ -62,9 +56,10 @@ class App extends Component {
             NFL Season Predictor
           </header>
           <div className="App-Body">
-            <WeekPicker games={Schedule2020.week13.games} byes={Schedule2020.week13.byes}/>
+            {/* <WeekPicker games={Schedule2020.week1.games} byes={Schedule2020.week1.byes}/> */}
+            <WeekHolder />
           </div>
-          <Standings confrence="AFC" />
+          {/* <Standings confrence="AFC" /> */}
           <footer className="App-Footer"/>
         </div>
       </Provider>

@@ -78,7 +78,17 @@ class WeekPicker extends Component {
             );
         });
 
-        return byes;
+        if(this.state.byes.length !== 0) {
+            return (
+                <ListGroupItem color="secondary">
+                    <div className="ByeHolder">
+                        <h5 className="Day">Byes</h5>
+                        {byes}
+                    </div>
+                </ListGroupItem>
+            );
+        } else
+            return null;
     }
 
     render() {
@@ -87,10 +97,8 @@ class WeekPicker extends Component {
             <div className="Component">
                 <ListGroup horizontal>
                     {this.renderColumnsHeads()}
-                </ListGroup>
-                <div className="ByeHolder">
                     {this.byeDisplay()}
-                </div>
+                </ListGroup>
             </div>
         );
     }
