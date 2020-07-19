@@ -27,7 +27,7 @@ const game = (away, home, d) => {
         primetime = true;
     }
 
-    return { home, away, day, date, time, primetime };
+    return { home, away, day, date, time, primetime, picked: false, winner: null };
 };
 
 const schedule = {
