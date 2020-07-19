@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { ButtonGroup } from 'reactstrap';
 import './GameButton.css';
@@ -6,7 +6,7 @@ import '../Teams/TeamColors.css';
 import { gameResult } from './../Actions';
 import { bindActionCreators } from 'redux';
 
-class GameSelector extends Component {
+class GameSelector extends PureComponent {
     constructor(props) {
         super(props);
         this.state = { pressed: false, home: false, tie: false, away: false };
@@ -31,8 +31,6 @@ class GameSelector extends Component {
             glowTie ='';
             glowAway ='glow';
         }
-
-        console.log(hometeam);
 
         return (
             <ButtonGroup>

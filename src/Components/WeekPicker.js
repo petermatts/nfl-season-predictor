@@ -92,7 +92,6 @@ class WeekPicker extends Component {
     }
 
     render() {
-        // ! Render Byes if applicable?
         return (
             <div className="Component">
                 <ListGroup horizontal>
