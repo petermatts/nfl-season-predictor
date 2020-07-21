@@ -1,0 +1,22 @@
+.holder {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+}
+
+.confrenceDisplay {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.divisionDisplay {
+    display: flex;
+    flex-direction: row;
+}
+
+.thing {
+    display: flex;
+    flex-direction: column;
+}

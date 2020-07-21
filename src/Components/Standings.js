@@ -68,7 +68,8 @@ class Standing extends Component {
 
     renderRows() {
         // ! sort teamList//
-        if(this.state.teamList !== undefined) {
+        console.log(this.state);
+        if(this.state.teamList !== undefined && !this.state.teamList.includes(undefined)) {
             let rank = 0;
             const stand = this.state.teamList.map((team) => {
                 const wins = team.wins.length;

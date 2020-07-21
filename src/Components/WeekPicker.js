@@ -35,7 +35,13 @@ class WeekPicker extends Component {
     }
 
     timeString(time) {
-        return <small>{time}</small>
+        return (
+            <div>
+                <small className="homeLabel">Home</small>
+                <small>{time}</small>
+                <small className="awayLabel">Away</small>
+            </div>
+        );
     }
 
     renderGameButtons(date) {

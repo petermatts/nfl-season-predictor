@@ -5,11 +5,8 @@ import ReduxThunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import './App.css';
 import reducers from './Reducers';
-import { Standings } from './Components/Standings';
 import { StandingsHolder } from './Components/StandingsHolder';
 import { WeekHolder } from './Components/WeekHolder';
-
-import { sortDivision } from './Actions/SortStandings';
 
 class App extends Component {
   render() {
@@ -25,7 +22,6 @@ class App extends Component {
             <WeekHolder />
             <StandingsHolder />
           </div>
-          {/* <Standings confrence="AFC" /> */}
           <footer className="App-Footer"/>
         </div>
       </Provider>
