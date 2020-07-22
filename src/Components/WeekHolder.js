@@ -3,6 +3,7 @@ import { ButtonGroup, Button } from 'reactstrap';
 //import { connect } from 'react-redux';
 import { schedule as Schedule2020 } from '../Schedule/2020';
 import { WeekPicker } from  './WeekPicker';
+import './WeekHolder.css';
 
 class WeekHolder extends PureComponent {
     constructor(props) {
@@ -61,8 +62,8 @@ class WeekHolder extends PureComponent {
 
     render() {
         return (
-            <div>
-                <ButtonGroup>
+            <div className="week">
+                <ButtonGroup className="weekHolder">
                     <Button 
                         color={this.highlightButton(1)}
                         onClick={() => { this.setState({ selected: 1 })}}

@@ -20,3 +20,11 @@
     display: flex;
     flex-direction: column;
 }
+
+.options {
+    padding: 10px;
+}
+
+.button {
+    width: 100%;
+}

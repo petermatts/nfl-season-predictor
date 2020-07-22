@@ -45,14 +45,16 @@ class StandingsHolder extends Component {
     render() {
         return (
             <div className="holder">
-                <ButtonGroup>
+                <ButtonGroup className="options">
                     <Button
+                        className="button"
                         color={this.state.conf ? "primary" : "secondary" }
                         onClick={() => {this.setState({ conf: true, div: false })}}
                     >
                         Confrence
                     </Button>
                     <Button
+                        className="button"
                         color={this.state.div ? "primary" : "secondary" }
                         onClick={() => {this.setState({ conf: false, div: true })}}
                     >
