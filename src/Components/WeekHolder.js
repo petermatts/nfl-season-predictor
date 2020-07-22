@@ -38,7 +38,7 @@ class WeekHolder extends PureComponent {
         const week17 = <WeekPicker games={Schedule2020.week17.games} byes={Schedule2020.week17.byes} />
      
         return(
-            <div>
+            <div className="week">
                 {this.state.selected===1 && week1}
                 {this.state.selected===2 && week2}
                 {this.state.selected===3 && week3}
@@ -62,8 +62,8 @@ class WeekHolder extends PureComponent {
 
     render() {
         return (
-            <div className="week">
-                <ButtonGroup className="weekHolder">
+            <div className="weekHolder">
+                <ButtonGroup className="buttonHolder">
                     <Button 
                         color={this.highlightButton(1)}
                         onClick={() => { this.setState({ selected: 1 })}}

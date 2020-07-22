@@ -19,8 +19,12 @@ class App extends Component {
             NFL Season Predictor
           </header>
           <div className="App-Body">
-            <WeekHolder />
-            <StandingsHolder />
+            <div className="main-section">
+              <WeekHolder />
+            </div>
+            <div className="main-section">
+              <StandingsHolder />
+            </div>
           </div>
           <footer className="App-Footer"/>
         </div>

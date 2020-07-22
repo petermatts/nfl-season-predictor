@@ -1,8 +1,13 @@
 .weekHolder {
-    padding-top: 10px;
-    padding-bottom: 5px;
+    padding: 10px;
+}
+
+.buttonHolder {
+    padding-bottom: 10px;
 }
 
 .week {
+    display: flex;
+    flex-direction: row;
     justify-content: center;
 }
