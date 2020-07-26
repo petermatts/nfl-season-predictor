@@ -1,7 +1,7 @@
 import { GAME_RESULT, GAME_RESULT_TIE } from './types';
 
 export function gameResult(result, pressed, tie) {
-    console.log(result, pressed, tie);
+    // console.log(result, pressed, tie);
     if(!tie) {
         const { winner, loser } = result;
 

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Table } from 'reactstrap';
 import { connect } from 'react-redux';
 import { CreateNFL } from '../Teams/NFL_Teams';
+import { sortDivision, sortConfrence } from '../Actions/SortStandings';
 import './Standings.css';
 
 class Standing extends Component {
@@ -33,16 +34,16 @@ class Standing extends Component {
             } else if (this.props.confrence === 'NFC') {
                 switch(this.props.division) {
                     case "North":
-                        this.setState({ teamList: NFL.AFC_North});
+                        this.setState({ teamList: NFL.NFC_North});
                         break;
                     case "South":
-                        this.setState({ teamList: NFL.AFC_South});
+                        this.setState({ teamList: NFL.NFC_South});
                         break;
                     case "East":
-                        this.setState({ teamList: NFL.AFC_East});
+                        this.setState({ teamList: NFL.NFC_East});
                         break;
                     case "West":
-                        this.setState({ teamList: NFL.AFC_West});
+                        this.setState({ teamList: NFL.NFC_West});
                         break;
                     default: 
                         console.log('Something is probably wrong if this gets logged');
@@ -68,10 +69,10 @@ class Standing extends Component {
 
     renderRows() {
         // ! sort teamList//
-        console.log(this.state);
         if(this.state.teamList !== undefined && !this.state.teamList.includes(undefined)) {
             let rank = 0;
-            const stand = this.state.teamList.map((team) => {
+            const list = sortDivision(this.state.teamList);
+            const stand = list.map((team) => {
                 const wins = team.wins.length;
                 const loses = team.loses.length;
                 const ties = team.ties.length;
@@ -80,10 +81,10 @@ class Standing extends Component {
                 const pct = this.calcPCT(wins, loses, ties);
                 return (
                     <tr key={rank}>
-                        <th scope="row">{++rank}</th>
-                        <td>{team.abrv}</td>
-                        <td>{record}</td>
-                        <td>{pct}</td>
+                        <th scope="row"><small>{++rank}</small></th>
+                        <td><small>{team.abrv}</small></td>
+                        <td><small>{record}</small></td>
+                        <td><small>{pct}</small></td>
                     </tr>
                 )
             });
@@ -102,8 +103,8 @@ class Standing extends Component {
 
         return(
             <div className="Standing">
-                <h3>{header}</h3>    
-                <Table size="sm" borderless striped responsive hover>
+                <h4 className="label">{header}</h4>    
+                <Table size="sm" borderless striped responsive hover className="list">
                     <thead>
                         <tr>
                             <th>#</th>

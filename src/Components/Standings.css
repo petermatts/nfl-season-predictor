@@ -5,6 +5,14 @@
     margin: 5px;
 }
 
+.list {
+    margin-bottom: 4px;
+}
+
+.label {
+    margin-bottom: -10px;
+}
+
 .noTopBorder {
     border-top-width: 0px;
 }

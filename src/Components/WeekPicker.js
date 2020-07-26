@@ -53,7 +53,7 @@ class WeekPicker extends Component {
                 return (
                     <div className="select">
                         {time}
-                        <GameButton game={game} />
+                        <GameButton game={game} week={this.props.week}/>
                     </div>
                 );
             } else

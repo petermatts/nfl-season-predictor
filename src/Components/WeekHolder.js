@@ -19,23 +19,23 @@ class WeekHolder extends PureComponent {
     }
 
     showWeek() {
-        const week1 = <WeekPicker games={Schedule2020.week1.games} byes={Schedule2020.week1.byes} />
-        const week2 = <WeekPicker games={Schedule2020.week2.games} byes={Schedule2020.week2.byes} />
-        const week3 = <WeekPicker games={Schedule2020.week3.games} byes={Schedule2020.week3.byes} />
-        const week4 = <WeekPicker games={Schedule2020.week4.games} byes={Schedule2020.week4.byes} />
-        const week5 = <WeekPicker games={Schedule2020.week5.games} byes={Schedule2020.week5.byes} />
-        const week6 = <WeekPicker games={Schedule2020.week6.games} byes={Schedule2020.week6.byes} />
-        const week7 = <WeekPicker games={Schedule2020.week7.games} byes={Schedule2020.week7.byes} />
-        const week8 = <WeekPicker games={Schedule2020.week8.games} byes={Schedule2020.week8.byes} />
-        const week9 = <WeekPicker games={Schedule2020.week9.games} byes={Schedule2020.week9.byes} />
-        const week10 = <WeekPicker games={Schedule2020.week10.games} byes={Schedule2020.week10.byes} />
-        const week11 = <WeekPicker games={Schedule2020.week11.games} byes={Schedule2020.week11.byes} />
-        const week12 = <WeekPicker games={Schedule2020.week12.games} byes={Schedule2020.week12.byes} />
-        const week13 = <WeekPicker games={Schedule2020.week13.games} byes={Schedule2020.week13.byes} />
-        const week14 = <WeekPicker games={Schedule2020.week14.games} byes={Schedule2020.week14.byes} />
-        const week15 = <WeekPicker games={Schedule2020.week15.games} byes={Schedule2020.week15.byes} />
-        const week16 = <WeekPicker games={Schedule2020.week16.games} byes={Schedule2020.week16.byes} />
-        const week17 = <WeekPicker games={Schedule2020.week17.games} byes={Schedule2020.week17.byes} />
+        const week1 = <WeekPicker games={Schedule2020.week1.games} byes={Schedule2020.week1.byes} week={1} />
+        const week2 = <WeekPicker games={Schedule2020.week2.games} byes={Schedule2020.week2.byes} week={2} />
+        const week3 = <WeekPicker games={Schedule2020.week3.games} byes={Schedule2020.week3.byes} week={3} />
+        const week4 = <WeekPicker games={Schedule2020.week4.games} byes={Schedule2020.week4.byes} week={4} />
+        const week5 = <WeekPicker games={Schedule2020.week5.games} byes={Schedule2020.week5.byes} week={5} />
+        const week6 = <WeekPicker games={Schedule2020.week6.games} byes={Schedule2020.week6.byes} week={6} />
+        const week7 = <WeekPicker games={Schedule2020.week7.games} byes={Schedule2020.week7.byes} week={7} />
+        const week8 = <WeekPicker games={Schedule2020.week8.games} byes={Schedule2020.week8.byes} week={8} />
+        const week9 = <WeekPicker games={Schedule2020.week9.games} byes={Schedule2020.week9.byes} week={9} />
+        const week10 = <WeekPicker games={Schedule2020.week10.games} byes={Schedule2020.week10.byes} week={10} />
+        const week11 = <WeekPicker games={Schedule2020.week11.games} byes={Schedule2020.week11.byes} week={11} />
+        const week12 = <WeekPicker games={Schedule2020.week12.games} byes={Schedule2020.week12.byes} week={12} />
+        const week13 = <WeekPicker games={Schedule2020.week13.games} byes={Schedule2020.week13.byes} week={13} />
+        const week14 = <WeekPicker games={Schedule2020.week14.games} byes={Schedule2020.week14.byes} week={14} />
+        const week15 = <WeekPicker games={Schedule2020.week15.games} byes={Schedule2020.week15.byes} week={15} />
+        const week16 = <WeekPicker games={Schedule2020.week16.games} byes={Schedule2020.week16.byes} week={16} />
+        const week17 = <WeekPicker games={Schedule2020.week17.games} byes={Schedule2020.week17.byes} week={17} />
      
         return(
             <div className="week">
