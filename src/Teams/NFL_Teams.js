@@ -16,7 +16,6 @@ const CreateNFL = (Teams) => ({
     NFC_South: [Teams.ATL, Teams.CAR, Teams.NO, Teams.TB],
     NFC_East: [Teams.DAL, Teams.NYG, Teams.PHI, Teams.WAS],
     NFC_West: [Teams.ARI, Teams.LAR, Teams.SEA, Teams.SF]
-
 });
 
 // const NFL = {

@@ -9,18 +9,25 @@ import { bindActionCreators } from 'redux';
 class GameSelector extends PureComponent {
     constructor(props) {
         super(props);
-        this.state = { pressed: false, home: false, tie: false, away: false };
+        this.state = { home: false, tie: false, away: false };
     }
-
-    // componentDidMount () {
-    //     console.log(this.props);
-    // } 
 
     render() {
         const { game } = this.props;
         const hometeam = Object.values(game.home)[0];
         const awayteam = Object.values(game.away)[0];
         const gameWeek = `week${this.props.week}`;
+        const pressed = this.props.game.picked;
+
+        if(pressed) {
+            const { winner } = this.props.game;
+            if(winner === hometeam)
+                this.setState({ home: true, away: false, tie: false });
+            else if(winner === awayteam)
+                this.setState({ home: false, away: true, tie: false });
+            else if(winner === null)
+                this.setState({ home: false, away: false, tie: true });
+        }
 
         let glowHome, glowAway, glowTie;
         if(this.state.home) {
@@ -42,7 +49,7 @@ class GameSelector extends PureComponent {
                 <button 
                     className={`HomeTeam-Button ${hometeam} ${glowHome}`}
                     onClick={() => {
-                        this.props.gameResult({ winner: game.home, loser: game.away }, this.state.pressed);
+                        this.props.gameResult({ winner: game.home, loser: game.away }, pressed);
                         this.props.updateSchedule(gameWeek, false, hometeam);
                         this.setState({ pressed: true, home: true, tie: false, away: false });
                     }}
@@ -52,7 +59,7 @@ class GameSelector extends PureComponent {
                 <button 
                     className={`Tie-Button ${glowTie}`}
                     onClick={() => {
-                        this.props.gameResult({ home: game.home, away: game.away }, this.state.pressed, true);
+                        this.props.gameResult({ home: game.home, away: game.away }, pressed, true);
                         this.props.updateSchedule(gameWeek, true, hometeam, awayteam);
                         this.setState({ pressed: true, home: false, tie: true, away: false });
                     }}
@@ -62,7 +69,7 @@ class GameSelector extends PureComponent {
                 <button
                     className={`AwayTeam-Button ${awayteam} ${glowAway}`}
                     onClick={() => {
-                        this.props.gameResult({winner: game.away, loser: game.home }, this.state.pressed);
+                        this.props.gameResult({winner: game.away, loser: game.home }, pressed);
                         this.props.updateSchedule(gameWeek, false, awayteam);
                         this.setState({ pressed: true, home: false, tie: false, away: true });    
                     }}
@@ -73,11 +80,6 @@ class GameSelector extends PureComponent {
         );
     }
 }
-
-// const mapStateToProps = (state) => {
-//     const { NFL } = state;
-//     return { NFL }; 
-// };
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     const boundActions = bindActionCreators({ gameResult, updateSchedule }, dispatch);
