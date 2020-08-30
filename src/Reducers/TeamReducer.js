@@ -6,8 +6,10 @@ const INITIAL_STATE = Teams;
 export default (state = INITIAL_STATE, action) => {
     switch(action.type) {
         case GAME_RESULT:
+            console.log('team reducer');
             return { ...state, [action.payload.winner.abrv]: action.payload.winner, [action.payload.loser.abrv]: action.payload.loser };
         case GAME_RESULT_TIE:
+            console.log('team reducer');
             return { ...state, [action.payload.home.abrv]: action.payload.home, [action.payload.away.abrv]: action.payload.away };
         default:
             const init = {};
@@ -16,4 +18,4 @@ export default (state = INITIAL_STATE, action) => {
             }
             return init;
     }
-};
+}

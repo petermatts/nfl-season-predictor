@@ -23,7 +23,6 @@ class StandingsHolder extends Component {
                     <div className="divisionDisplay">
                         <Standings confrence="AFC" division="East" />
                         <Standings confrence="NFC" division="East" />
- 
                     </div>
                     <div className="divisionDisplay">
                         <Standings confrence="AFC" division="North" />

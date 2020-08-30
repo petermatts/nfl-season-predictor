@@ -1,24 +1,21 @@
-import { UPDATE_SCHEDULE } from './types'; 
+import { UPDATE_SCHEDULE } from './types';
+import schedule from '../Schedule/2020';
 
-export const updateSchedule = (gameWeek, tie, team1, team2) => {
+export function updateSchedule (gameWeek, tie, result, gameCode) {
     const game = {};
     // console.log(gameWeek);
-    // console.log(tie);
-    // console.log(team1);
-    // console.log(team2);
 
     if(tie) {
         Object.assign(game, { winner: false, picked: true });
     } else {
-        Object.assign(game, { winner: team1, picked: true });
+        Object.assign(game, { winner: result.winner.abrv, picked: true });
+        // console.log(game);
     }
 
     return {
         type: UPDATE_SCHEDULE,
-        team1,
-        team2,
+        // type: 'a',
         week: gameWeek,
-        payload: game
+        code: gameCode
     };
-
 };

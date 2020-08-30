@@ -13,7 +13,7 @@ class Standing extends Component {
 
     componentDidMount() {
         const NFL = CreateNFL(this.props.NFL);
-        console.log(NFL);
+        console.log(this.props.NFL);
         if(this.props.division && this.props.confrence) {
             if(this.props.confrence === 'AFC') {
                 switch(this.props.division) {
@@ -70,7 +70,7 @@ class Standing extends Component {
 
     renderRows() {
         // ! sort teamList//
-        console.log(this.state.teamList);
+        //console.log(this.state.teamList);
         if(this.state.teamList !== undefined && !this.state.teamList.includes(undefined)) {
             let rank = 0;
             const list = sortDivision(this.state.teamList);

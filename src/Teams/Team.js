@@ -15,7 +15,10 @@ export default class Team {
         this.SOS = team[1].SOS;
         this.record = '0-0';
         this.pct = '0.0000';
-        // Confrence pct
+        this.confRecord = '0-0'; // !
+        this.confPct = '0.0000'; // !
+        this.divRecord = '0-0'; // !
+        this.divPct = '0.0000'; // !
         // SOV
 
         // ? home record

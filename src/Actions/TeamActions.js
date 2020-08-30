@@ -1,7 +1,8 @@
 import { GAME_RESULT, GAME_RESULT_TIE } from './types';
 
-export function gameResult(result, pressed, tie) {
-    // console.log(result, pressed, tie);
+export function gameResult(result, pressed, gameWeek, gameCode, tie) {
+    console.log(result, pressed, tie);
+
     if(!tie) {
         const { winner, loser } = result;
 
@@ -59,7 +60,7 @@ export function gameResult(result, pressed, tie) {
         adjust(home);
         adjust(away);
 
-        return {
+        return{
             type: GAME_RESULT_TIE,
             payload: { home, away }
         };
