@@ -11,41 +11,41 @@ export default class Team {
         this.wins = team[1].wins;
         this.loses = team[1].loses;
         this.ties = team[1].ties;
-        this.streak = team[1].streak;
+        this.streak = '-';
         this.SOS = team[1].SOS;
         this.record = '0-0';
         this.pct = '0.0000';
-        this.confRecord = '0-0'; // !
-        this.confPct = '0.0000'; // !
-        this.divRecord = '0-0'; // !
-        this.divPct = '0.0000'; // !
+        this.confRecord = '0-0';
+        this.confPct = '0.0000';
+        this.divRecord = '0-0';
+        this.divPct = '0.0000';
         // SOV
 
-        // ? home record
-        // ? away record
+        //? this.homeRecord = '0-0';
+        //? this.awayRecord = '0-0';
         
         // ! this is for if individual team selection pages are made 
         //this.makeTeamSchedule();
     }
 
     //move to actions?
-    record() {
-        const wins = this.wins.length;
-        const loses = this.loses.length;
-        const ties = this.ties.length;
-        return ties === 0 ? `${wins}-${loses}`:`${wins}-${loses}-${ties}`;
-    }
+    // record() {
+    //     const wins = this.wins.length;
+    //     const loses = this.loses.length;
+    //     const ties = this.ties.length;
+    //     return ties === 0 ? `${wins}-${loses}`:`${wins}-${loses}-${ties}`;
+    // }
 
     //move to actions?
-    calcPCT() {
-        const wins = this.wins.length;
-        const loses = this.loses.length;
-        const ties = this.ties.length;
-        if(wins+loses+ties === 0)
-            return '0.0000';
-        else
-            return ((wins+(ties/2))/(wins+loses+ties)).toFixed(4);
-    }
+    // calcPCT() {
+    //     const wins = this.wins.length;
+    //     const loses = this.loses.length;
+    //     const ties = this.ties.length;
+    //     if(wins+loses+ties === 0)
+    //         return '0.0000';
+    //     else
+    //         return ((wins+(ties/2))/(wins+loses+ties)).toFixed(4);
+    // }
 
     // ! this is for if individual team selection pages are made 
     // makeTeamSchedule() {

@@ -1,5 +1,5 @@
 import { UPDATE_SCHEDULE } from './types';
-import schedule from '../Schedule/2020';
+// import schedule from '../Schedule/2020';
 
 export function updateSchedule (gameWeek, tie, result, gameCode) {
     const game = {};

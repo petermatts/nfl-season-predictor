@@ -75,18 +75,16 @@ class Standing extends Component {
             let rank = 0;
             const list = sortDivision(this.state.teamList);
             const stand = list.map((team) => {
-                const wins = team.wins.length;
-                const loses = team.loses.length;
-                const ties = team.ties.length;
-                const record = ties === 0 ? `${wins}-${loses}`:`${wins}-${loses}-${ties}`;
-
-                const pct = this.calcPCT(wins, loses, ties);
                 return (
                     <tr key={rank}>
                         <th scope="row"><small>{++rank}</small></th>
                         <td><small>{team.abrv}</small></td>
-                        <td><small>{record}</small></td>
-                        <td><small>{pct}</small></td>
+                        <td><small>{team.record}</small></td>
+                        <td><small>{team.pct}</small></td>
+                        <td><small>{team.streak}</small></td>
+                        <td><small>{team.confRecord}</small></td>
+                        <td><small>{team.divRecord}</small></td>
+                        <td><small>{team.SOS.toFixed(3)}</small></td>
                     </tr>
                 )
             });
@@ -112,8 +110,10 @@ class Standing extends Component {
                             <th>Team</th>
                             <th>Record</th>
                             <th>Pct</th>
-                            {/* <th>Strk</th> */}
-                            {/* <th>SOS</th> */}
+                            <th>Strk</th>
+                            <th>Conf</th>
+                            <th>Div</th>
+                            <th>SOS</th>
                         </tr>
                     </thead>
                     <tbody>

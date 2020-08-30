@@ -9,7 +9,17 @@ import { gameResult, updateSchedule } from '../Actions';
 class GameSelector extends PureComponent {
     constructor(props) {
         super(props);
-        this.state = { home: false, tie: false, away: false, hometeam: null, awayteam: null };
+        this.state = {
+            home: false,
+            tie: false,
+            away: false,
+            hometeam: null,
+            awayteam: null,
+            pressed: false,
+            homepress: false,
+            awaypress: false, 
+            tiepress: false
+        };
     }
 
     componentDidMount() {
@@ -27,19 +37,20 @@ class GameSelector extends PureComponent {
             const { game } = this.props;
             const home = this.state.hometeam;
             const away = this.state.awayteam;
-            const gameWeek = `week${this.props.week}`; // ?
-            const pressed = this.props.game.picked;
+            const gameWeek = `week${this.props.week}`;
+            //!const pressed = this.props.game.picked;
+            const pressed = this.state.pressed; //temporary until schedule redux state feature is functional
             const { code } = game; // ?
     
-            if(pressed) {
-                const { winner } = this.props.game;
-                if(winner === home.abrv)
-                    this.setState({ home: true, away: false, tie: false });
-                else if(winner === away.abrv)
-                    this.setState({ home: false, away: true, tie: false });
-                else if(winner === null)
-                    this.setState({ home: false, away: false, tie: true });
-            }
+            // if(pressed) {
+            //     const { winner } = this.props.game;
+            //     if(winner === home.abrv)
+            //         this.setState({ home: true, away: false, tie: false });
+            //     else if(winner === away.abrv)
+            //         this.setState({ home: false, away: true, tie: false });
+            //     else if(winner === null)
+            //         this.setState({ home: false, away: false, tie: true });
+            // }
     
             let glowHome, glowAway, glowTie;
             if(this.state.home) {
@@ -60,28 +71,31 @@ class GameSelector extends PureComponent {
                 <ButtonGroup>
                     <button 
                         className={`HomeTeam-Button ${home.abrv} ${glowHome}`}
+                        disabled={this.state.homepress}
                         onClick={() => {
                             this.props.gameResult({ winner: home, loser: away }, pressed, gameWeek, code, false );     
-                            this.setState({ pressed: true, home: true, tie: false, away: false });
-                            this.props.updateSchedule(gameWeek, false, { winner: game.home, loser: game.away }, code);
+                            this.setState({ pressed: true, home: true, tie: false, away: false, homepress: true, awaypress: false, tiepress: false });
+                            // this.props.updateSchedule(gameWeek, false, { winner: home, loser: away }, code);
                         }}
                     >
                         {home.abrv}
                     </button>
                     <button 
                         className={`Tie-Button ${glowTie}`}
+                        disabled={this.state.tiepress}
                         onClick={() => {
                             this.props.gameResult({ home, away }, pressed, gameWeek, code , true);
-                            this.setState({ pressed: true, home: false, tie: true, away: false });
+                            this.setState({ pressed: true, home: false, tie: true, away: false, tiepress: true, awaypress: false, homepress: false });
                         }}
                     >
                         Tie
                     </button>
                     <button
                         className={`AwayTeam-Button ${away.abrv} ${glowAway}`}
+                        disabled={this.state.awaypress}
                         onClick={() => {
                             this.props.gameResult({winner: away, loser: home }, pressed, gameWeek, code, false );
-                            this.setState({ pressed: true, home: false, tie: false, away: true });    
+                            this.setState({ pressed: true, home: false, tie: false, away: true, awaypress: true, tiepress: false, homepress: false });    
                         }}
                     >
                         {away.abrv}
