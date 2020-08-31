@@ -100,8 +100,8 @@ class Standing extends Component {
 
             const stand = list.map((team) => {
                 return (
-                    <tr key={rank}>
-                        <th scope="row"><small>{++rank}</small></th>
+                    <tr key={++rank}>
+                        <th scope="row" className={this.playColor(rank)}><small>{rank === 1 ? '1*':rank}</small></th>
                         <td><small>{team.abrv}</small></td>
                         <td><small>{team.record}</small></td>
                         <td><small>{team.pct}</small></td>
@@ -117,6 +117,25 @@ class Standing extends Component {
         }
     }
 
+    playColor(rank) {
+        if(!this.props.division) {
+            switch (rank) {
+                case 1:
+                    return 'seed1';
+                case 2:
+                case 3:
+                case 4:
+                    return 'seed2-4';
+                case 5:
+                case 6:
+                case 7:
+                    return 'seed5-7';
+                default:
+                    return '';
+            }
+        } 
+    }
+
     render() {
         let header = '';
         if(this.props.confrence && this.props.division)
@@ -126,10 +145,10 @@ class Standing extends Component {
 
         return(
             <div className="Standing">
-                <h4 className="label">{header}</h4>    
-                <Table size="sm" borderless striped responsive hover className="list">
+                <h4 className="">{header}</h4>    
+                <Table size="sm" borderless responsive hover className="list">
                     <thead>
-                        <tr>
+                        <tr className="standHead">
                             <th>#</th>
                             <th>Team</th>
                             <th>Record</th>

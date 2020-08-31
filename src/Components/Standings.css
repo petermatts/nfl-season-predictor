@@ -9,10 +9,22 @@
     margin-bottom: 4px;
 }
 
-.label {
-    margin-bottom: -10px;
-}
-
 .noTopBorder {
     border-top-width: 0px;
+}
+
+.seed1 {
+    background-color: lightblue;
+}
+
+.seed2-4{
+    background-color: #FFCCCB;
+}
+
+.seed5-7{
+    background-color: lightgreen;
+}
+
+.standHead {
+    background-color: #d3d3d3;
 }
