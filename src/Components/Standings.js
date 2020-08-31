@@ -13,7 +13,6 @@ class Standing extends Component {
 
     componentDidMount() {
         const NFL = CreateNFL(this.props.NFL);
-        console.log(this.props.NFL);
         if(this.props.division && this.props.confrence) {
             if(this.props.confrence === 'AFC') {
                 switch(this.props.division) {
@@ -81,7 +80,7 @@ class Standing extends Component {
                         <td><small>{team.abrv}</small></td>
                         <td><small>{team.record}</small></td>
                         <td><small>{team.pct}</small></td>
-                        <td><small>{team.streak}</small></td>
+                        {/* <td><small>{team.streak}</small></td> */}
                         <td><small>{team.confRecord}</small></td>
                         <td><small>{team.divRecord}</small></td>
                         <td><small>{team.SOS.toFixed(3)}</small></td>
@@ -110,7 +109,7 @@ class Standing extends Component {
                             <th>Team</th>
                             <th>Record</th>
                             <th>Pct</th>
-                            <th>Strk</th>
+                            {/* <th>Strk</th> */}
                             <th>Conf</th>
                             <th>Div</th>
                             <th>SOS</th>

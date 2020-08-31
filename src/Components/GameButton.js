@@ -13,7 +13,6 @@ class GameSelector extends PureComponent {
         this.state = {
             hometeam: null,
             awayteam: null,
-            pressed: false,
             homepress: false,
             awaypress: false, 
             tiepress: false
@@ -23,20 +22,13 @@ class GameSelector extends PureComponent {
     checkPressed() {
         const { NFL, game, week } = this.props;
 
-        let t1 = false;
-        let t2 = false;
-
         if(NFL[game.home].wins[week-1] !== null) {
-            t1 = true;
             this.setState({ homepress: true });
         } else if(NFL[game.away].wins[week-1] !== null) {
-            t2 = true;
             this.setState({ awaypress: true });
         } else if(NFL[game.home].ties[week-1] !== null && NFL[game.away].ties[week-1] !== null) {
             this.setState({ tiepress: true });
         }
-
-        this.setState({ pressed: t1 && t2 });
     }
 
     componentDidMount() {
@@ -52,17 +44,12 @@ class GameSelector extends PureComponent {
     }
 
     render() {
-        //console.log(this.state.pressed)
         if(this.state.hometeam !== null) {
-            const { game } = this.props;
+            //const { game } = this.props;
             const home = this.state.hometeam;
             const away = this.state.awayteam;
             const gameWeek = this.props.week;
-            const pressed = this.state.pressed;
-            const { code } = game; // ? get rid of this in 2020.js first
-
-            if(code == 1)
-                console.log(this.state);
+            //const { code } = game; // ? get rid of this in 2020.js first
     
             let glowHome, glowAway, glowTie;
             if(this.state.homepress) {
@@ -85,8 +72,8 @@ class GameSelector extends PureComponent {
                         className={`HomeTeam-Button ${home.abrv} ${glowHome}`}
                         disabled={this.state.homepress}
                         onClick={() => {
-                            this.props.gameResult({ winner: home, loser: away }, pressed, gameWeek, code, false );     
-                            this.setState({ pressed: true, homepress: true, awaypress: false, tiepress: false });
+                            this.props.gameResult({ winner: home, loser: away }, gameWeek, false);     
+                            this.setState({ homepress: true, awaypress: false, tiepress: false });
                         }}
                     >
                         {home.abrv}
@@ -95,8 +82,8 @@ class GameSelector extends PureComponent {
                         className={`Tie-Button ${glowTie}`}
                         disabled={this.state.tiepress}
                         onClick={() => {
-                            this.props.gameResult({ home, away }, pressed, gameWeek, code , true);
-                            this.setState({ pressed: true, tiepress: true, awaypress: false, homepress: false });
+                            this.props.gameResult({ home, away }, gameWeek, true);
+                            this.setState({ tiepress: true, awaypress: false, homepress: false });
                         }}
                     >
                         Tie
@@ -105,8 +92,8 @@ class GameSelector extends PureComponent {
                         className={`AwayTeam-Button ${away.abrv} ${glowAway}`}
                         disabled={this.state.awaypress}
                         onClick={() => {
-                            this.props.gameResult({winner: away, loser: home }, pressed, gameWeek, code, false );
-                            this.setState({ pressed: true, awaypress: true, tiepress: false, homepress: false });    
+                            this.props.gameResult({winner: away, loser: home }, gameWeek, false);
+                            this.setState({ awaypress: true, tiepress: false, homepress: false });    
                         }}
                     >
                         {away.abrv}

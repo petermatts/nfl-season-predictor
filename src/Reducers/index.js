@@ -1,10 +1,8 @@
 import { combineReducers } from 'redux';
 import TeamReducer from './TeamReducer';
-import ScheduleReducer from './ScheduleReducer';
 
 const reducers = combineReducers({
-    NFL: TeamReducer,
-    //Schedule: ScheduleReducer
+    NFL: TeamReducer
 });
 
 export default reducers;
