@@ -63,6 +63,9 @@ class WeekHolder extends PureComponent {
         return (
             <div className="weekHolder">
                 <ButtonGroup className="buttonHolder">
+                    <Button outline color="primary">
+                        <b>Week:</b>
+                    </Button>
                     <Button 
                         color={this.highlightButton(1)}
                         onClick={() => { this.setState({ selected: 1 })}}

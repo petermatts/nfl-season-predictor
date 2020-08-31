@@ -26,10 +26,12 @@
   display: flex;
   flex: 1;
   width: 100%;
+  /* align-content: center; */
+  justify-content: center;
 }
 
 .App-Footer {
-  background-color: black;
+  background-color: gray;
 }
 
 .App-logo {

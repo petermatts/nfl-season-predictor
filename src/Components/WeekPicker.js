@@ -38,7 +38,7 @@ class WeekPicker extends Component {
         return (
             <div>
                 <small className="homeLabel">Home</small>
-                <small>{time}</small>
+                {time}
                 <small className="awayLabel">Away</small>
             </div>
         );
@@ -66,8 +66,10 @@ class WeekPicker extends Component {
         let key = 0;
         const cols = this.state.dates.map(dates => (
             <ListGroupItem color="secondary" key={++key}>
-                <h5 className="Day">{dates.day}</h5>
-                <h6>{dates.date}</h6>
+                <h5>
+                    <b>{`${dates.day}   `}</b>
+                    <small>{dates.date}</small>
+                </h5>
                 {this.renderGameButtons(dates)}
             </ListGroupItem>
         ));

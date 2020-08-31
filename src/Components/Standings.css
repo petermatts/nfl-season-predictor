@@ -6,7 +6,7 @@
 }
 
 .list {
-    margin-bottom: 4px;
+    margin-bottom: 0px;
 }
 
 .noTopBorder {
@@ -18,7 +18,7 @@
 }
 
 .seed2-4{
-    background-color: #FFCCCB;
+    background-color: orange;
 }
 
 .seed5-7{
@@ -27,4 +27,23 @@
 
 .standHead {
     background-color: #d3d3d3;
+    padding-top: -10px;
+}
+
+.AFC{
+    background-color: #D50A0A;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    color: white;
+    padding-bottom: 10px;
+    margin-bottom: 0px;
+}
+
+.NFC{
+    background-color: #013369;
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+    color: white;
+    padding-bottom: 10px;
+    margin-bottom: 0px;
 }

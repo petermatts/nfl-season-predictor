@@ -21,7 +21,7 @@
 
 .Tie-Button {
     box-shadow: 0px 2px 2px 0px #808080;
-    background-color: white;
+    background-color: #d3d3d3;
     color: black;
     border-radius: 10px;
     border: 3px solid black;
@@ -65,4 +65,6 @@
 .glow {
     box-shadow: 0px 0px 2.5px 5px white;
     font-weight: bolder;
+    transform: translateY(2px);
+    transition: 0.5s
 }

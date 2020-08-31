@@ -101,7 +101,7 @@ class Standing extends Component {
             const stand = list.map((team) => {
                 return (
                     <tr key={++rank}>
-                        <th scope="row" className={this.playColor(rank)}><small>{rank === 1 ? '1*':rank}</small></th>
+                        <th scope="row" className={this.playColor(rank)}><small>{rank}</small></th>
                         <td><small>{team.abrv}</small></td>
                         <td><small>{team.record}</small></td>
                         <td><small>{team.pct}</small></td>
@@ -145,7 +145,7 @@ class Standing extends Component {
 
         return(
             <div className="Standing">
-                <h4 className="">{header}</h4>    
+                <h4 className={this.props.confrence}>{header}</h4>    
                 <Table size="sm" borderless responsive hover className="list">
                     <thead>
                         <tr className="standHead">

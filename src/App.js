@@ -26,7 +26,7 @@ class App extends Component {
               <StandingsHolder />
             </div>
           </div>
-          <footer className="App-Footer"/>
+          <footer className="App-Footer" />
         </div>
       </Provider>
     );
