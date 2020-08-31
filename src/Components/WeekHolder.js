@@ -1,11 +1,10 @@
 import React, { PureComponent } from 'react';
 import { ButtonGroup, Button } from 'reactstrap';
-import { connect } from 'react-redux';
-//import { schedule as Schedule2020 } from '../Schedule/2020';
+import { schedule as Schedule2020 } from '../Schedule/2020';
 import { WeekPicker } from  './WeekPicker';
 import './WeekHolder.css';
 
-class Week extends PureComponent {
+class WeekHolder extends PureComponent {
     constructor(props) {
         super(props);
         this.state = { selected: 1 };
@@ -19,7 +18,6 @@ class Week extends PureComponent {
     }
 
     showWeek() {
-        const Schedule2020 = this.props.Schedule;
         const week1 = <WeekPicker games={Schedule2020.week1.games} byes={Schedule2020.week1.byes} week={1} />
         const week2 = <WeekPicker games={Schedule2020.week2.games} byes={Schedule2020.week2.byes} week={2} />
         const week3 = <WeekPicker games={Schedule2020.week3.games} byes={Schedule2020.week3.byes} week={3} />
@@ -173,13 +171,5 @@ class Week extends PureComponent {
         );
     }
 }
-
-
-const mapStateToProps = (state) => {
-    const { Schedule } = state;
-    return { Schedule };
-};
-
-const WeekHolder = connect(mapStateToProps)(Week);
 
 export { WeekHolder };

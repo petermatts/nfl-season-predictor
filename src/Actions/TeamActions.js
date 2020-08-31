@@ -5,27 +5,14 @@ export function gameResult(result, pressed, gameWeek, gameCode, tie) {
 
     if(!tie) {
         const { winner, loser } = result;
-        console.log(pressed);
-        if(pressed) {
-            if(winner.wins.lastIndexOf(loser.abrv) >= 0) {
-                winner.wins.splice(winner.wins.lastIndexOf(loser.abrv), 1);
-            } else if(winner.loses.lastIndexOf(loser.abrv) >= 0) {
-                winner.loses.splice(winner.loses.lastIndexOf(loser.abrv), 1);
-            } else if (winner.ties.lastIndexOf(loser.abrv) >= 0) {
-                winner.ties.splice(winner.ties.lastIndexOf(loser.abrv), 1);
-            }
+       
+        winner.wins[gameWeek-1] = loser;
+        winner.loses[gameWeek-1] = null;
+        winner.ties[gameWeek-1] = null;
 
-            if(loser.wins.lastIndexOf(winner.abrv) >= 0) {
-                loser.wins.splice(loser.wins.lastIndexOf(winner.abrv), 1);
-            } else if(loser.loses.lastIndexOf(winner.abrv) >= 0) {
-                loser.loses.splice(loser.loses.lastIndexOf(winner.abrv), 1);
-            } else if (loser.ties.lastIndexOf(winner.abrv) >= 0) {
-                loser.ties.splice(loser.ties.lastIndexOf(winner.abrv), 1);
-            }
-        }
-
-        winner.wins.push(loser);
-        loser.loses.push(winner);
+        loser.wins[gameWeek-1] =  null;
+        loser.loses[gameWeek-1] =  winner;     
+        loser.ties[gameWeek-1] =  null;
 
         streak(winner, 'W');
         streak(loser, 'L');
@@ -40,26 +27,13 @@ export function gameResult(result, pressed, gameWeek, gameCode, tie) {
     } else {
         const { home, away } = result;
 
-        if(pressed) {
-            if(home.wins.lastIndexOf(away.abrv) >= 0) {
-                home.wins.splice(home.wins.lastIndexOf(away.abrv), 1);
-            } else if(home.loses.lastIndexOf(away.abrv) >= 0) {
-                home.loses.splice(home.loses.lastIndexOf(away.abrv), 1);
-            } else if (home.ties.lastIndexOf(away.abrv) >= 0) {
-                home.ties.splice(home.ties.lastIndexOf(away.abrv), 1);
-            }
+        home.ties[gameWeek-1] = away;
+        home.wins[gameWeek-1] = null;
+        home.loses[gameWeek-1] = null;
 
-            if(away.wins.lastIndexOf(home.abrv) >= 0) {
-                away.wins.splice(away.wins.lastIndexOf(home.abrv), 1);
-            } else if(away.loses.lastIndexOf(home.abrv) >= 0) {
-                away.loses.splice(away.loses.lastIndexOf(home.abrv), 1);
-            } else if (away.ties.lastIndexOf(home.abrv) >= 0) {
-                away.ties.splice(away.ties.lastIndexOf(home.abrv), 1);
-            }
-        }
-
-        home.ties.push(away);
-        away.ties.push(home);
+        away.ties[gameWeek-1] = home;
+        away.wins[gameWeek-1] = null;
+        away.loses[gameWeek-1] = null;
 
         streak(home, 'T');
         streak(away, 'T');
@@ -114,16 +88,16 @@ const adjust = (team) => {
 
 
 const getRecord = (team) => {
-    const wins = team.wins.length;
-    const loses = team.loses.length;
-    const ties = team.ties.length;
+    const wins = team.wins.filter(game => game !== null).length;
+    const loses = team.loses.filter(game => game !== null).length;
+    const ties = team.ties.filter(game => game !== null).length;
     return ties === 0 ? `${wins}-${loses}`:`${wins}-${loses}-${ties}`;
 };
 
 const getPCT = (team) => {
-    const wins = team.wins.length;
-    const loses = team.loses.length;
-    const ties = team.ties.length;
+    const wins = team.wins.filter(game => game !== null).length;
+    const loses = team.loses.filter(game => game !== null).length;
+    const ties = team.ties.filter(game => game !== null).length;
     if(wins+loses+ties === 0)
         return '0.0000';
     else
@@ -136,21 +110,23 @@ const getPCT = (team) => {
  * element 1 is the pct
  */
 const getDivRecord_Pct = (team) => {
-    console.log();
+    const W = team.wins.filter(game => game !== null);
+    const T = team.ties.filter(game => game !== null);
+    const L = team.loses.filter(game => game !== null);
     let wins = 0;
     let loses = 0;
     let ties = 0;
     let pct, record;
 
-    for(let i = 0; i < team.wins.length; i++) {
+    for(let i = 0; i < W.length; i++) {
         if(team.wins[i].Confrence === team.Confrence && team.wins[i].Division === team.Division)
             wins++;
     }
-    for(let i = 0; i < team.ties.length; i++) {
+    for(let i = 0; i < T.length; i++) {
         if(team.ties[i].Confrence === team.Confrence && team.ties[i].Division === team.Division)
             ties++;
     }
-    for(let i = 0; i < team.loses.length; i++) {
+    for(let i = 0; i < L.length; i++) {
         if(team.loses[i].Confrence === team.Confrence && team.loses[i].Division === team.Division)
             loses++;
     }
@@ -161,6 +137,7 @@ const getDivRecord_Pct = (team) => {
     else
         pct = ((wins+(ties/2))/(wins+loses+ties)).toFixed(4);
 
+   
     return [record, pct];
 };
 
@@ -170,21 +147,23 @@ const getDivRecord_Pct = (team) => {
  * element 1 is the pct
  */
 const getConfRecord_Pct = (team) => {
-    console.log();
+    const W = team.wins.filter(game => game !== null);
+    const T = team.ties.filter(game => game !== null);
+    const L = team.loses.filter(game => game !== null);
     let wins = 0;
     let loses = 0;
     let ties = 0;
     let pct, record;
 
-    for(let i = 0; i < team.wins.length; i++) {
+    for(let i = 0; i < W.length; i++) {
         if(team.wins[i].Confrence === team.Confrence)
             wins++;
     }
-    for(let i = 0; i < team.ties.length; i++) {
+    for(let i = 0; i < T.length; i++) {
         if(team.ties[i].Confrence === team.Confrence)
             ties++;
     }
-    for(let i = 0; i < team.loses.length; i++) {
+    for(let i = 0; i < L.length; i++) {
         if(team.loses[i].Confrence === team.Confrence)
             loses++;
     }

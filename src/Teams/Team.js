@@ -8,9 +8,9 @@ export default class Team {
         this.Location = team[1].Location
         this.Confrence = team[1].Confrence;
         this.Division = team[1].Division;
-        this.wins = team[1].wins;
-        this.loses = team[1].loses;
-        this.ties = team[1].ties;
+        this.wins = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
+        this.loses = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
+        this.ties = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
         this.streak = '-';
         this.SOS = team[1].SOS;
         this.record = '0-0';

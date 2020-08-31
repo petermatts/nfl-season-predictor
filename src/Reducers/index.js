@@ -4,7 +4,7 @@ import ScheduleReducer from './ScheduleReducer';
 
 const reducers = combineReducers({
     NFL: TeamReducer,
-    Schedule: ScheduleReducer
+    //Schedule: ScheduleReducer
 });
 
 export default reducers;

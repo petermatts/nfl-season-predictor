@@ -1,18 +1,16 @@
+/* eslint-disable eqeqeq */
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { ButtonGroup } from 'reactstrap';
 import './GameButton.css';
 import '../Teams/TeamColors.css';
-import { gameResult, updateSchedule } from '../Actions';
-//import { bindActionCreators } from 'redux';
+import { gameResult } from '../Actions';
 
 class GameSelector extends PureComponent {
     constructor(props) {
         super(props);
+
         this.state = {
-            home: false,
-            tie: false,
-            away: false,
             hometeam: null,
             awayteam: null,
             pressed: false,
@@ -20,6 +18,25 @@ class GameSelector extends PureComponent {
             awaypress: false, 
             tiepress: false
         };
+    }
+
+    checkPressed() {
+        const { NFL, game, week } = this.props;
+
+        let t1 = false;
+        let t2 = false;
+
+        if(NFL[game.home].wins[week-1] !== null) {
+            t1 = true;
+            this.setState({ homepress: true });
+        } else if(NFL[game.away].wins[week-1] !== null) {
+            t2 = true;
+            this.setState({ awaypress: true });
+        } else if(NFL[game.home].ties[week-1] !== null && NFL[game.away].ties[week-1] !== null) {
+            this.setState({ tiepress: true });
+        }
+
+        this.setState({ pressed: t1 && t2 });
     }
 
     componentDidMount() {
@@ -30,38 +47,33 @@ class GameSelector extends PureComponent {
             hometeam: this.props.NFL[h_abrv], 
             awayteam: this.props.NFL[a_abrv]
         });
+
+        this.checkPressed();
     }
 
     render() {
+        //console.log(this.state.pressed)
         if(this.state.hometeam !== null) {
             const { game } = this.props;
             const home = this.state.hometeam;
             const away = this.state.awayteam;
-            const gameWeek = `week${this.props.week}`;
-            //!const pressed = this.props.game.picked;
-            const pressed = this.state.pressed; //temporary until schedule redux state feature is functional
-            const { code } = game; // ?
-    
-            // if(pressed) {
-            //     const { winner } = this.props.game;
-            //     if(winner === home.abrv)
-            //         this.setState({ home: true, away: false, tie: false });
-            //     else if(winner === away.abrv)
-            //         this.setState({ home: false, away: true, tie: false });
-            //     else if(winner === null)
-            //         this.setState({ home: false, away: false, tie: true });
-            // }
+            const gameWeek = this.props.week;
+            const pressed = this.state.pressed;
+            const { code } = game; // ? get rid of this in 2020.js first
+
+            if(code == 1)
+                console.log(this.state);
     
             let glowHome, glowAway, glowTie;
-            if(this.state.home) {
+            if(this.state.homepress) {
                 glowHome = 'glow';
                 glowTie ='';
                 glowAway ='';
-            } else if(this.state.tie) {
+            } else if(this.state.tiepress) {
                 glowHome = '';
                 glowTie ='glow';
                 glowAway ='';
-            } else if(this.state.away) {
+            } else if(this.state.awaypress) {
                 glowHome = '';
                 glowTie ='';
                 glowAway ='glow';
@@ -74,8 +86,7 @@ class GameSelector extends PureComponent {
                         disabled={this.state.homepress}
                         onClick={() => {
                             this.props.gameResult({ winner: home, loser: away }, pressed, gameWeek, code, false );     
-                            this.setState({ pressed: true, home: true, tie: false, away: false, homepress: true, awaypress: false, tiepress: false });
-                            // this.props.updateSchedule(gameWeek, false, { winner: home, loser: away }, code);
+                            this.setState({ pressed: true, homepress: true, awaypress: false, tiepress: false });
                         }}
                     >
                         {home.abrv}
@@ -85,7 +96,7 @@ class GameSelector extends PureComponent {
                         disabled={this.state.tiepress}
                         onClick={() => {
                             this.props.gameResult({ home, away }, pressed, gameWeek, code , true);
-                            this.setState({ pressed: true, home: false, tie: true, away: false, tiepress: true, awaypress: false, homepress: false });
+                            this.setState({ pressed: true, tiepress: true, awaypress: false, homepress: false });
                         }}
                     >
                         Tie
@@ -95,7 +106,7 @@ class GameSelector extends PureComponent {
                         disabled={this.state.awaypress}
                         onClick={() => {
                             this.props.gameResult({winner: away, loser: home }, pressed, gameWeek, code, false );
-                            this.setState({ pressed: true, home: false, tie: false, away: true, awaypress: true, tiepress: false, homepress: false });    
+                            this.setState({ pressed: true, awaypress: true, tiepress: false, homepress: false });    
                         }}
                     >
                         {away.abrv}
@@ -115,16 +126,5 @@ const mapStateToProps = (state) => {
     return { NFL };
 };
 
-// const mapDispatchToProps = (dispatch, ownProps) => {
-//     const boundActions = bindActionCreators({ gameResult, updateSchedule }, dispatch);
-//     return {
-//         gameResult: () => dispatch(gameResult()),
-//         updateSchedule: () => dispatch(updateSchedule()),
-//         ...boundActions,
-//         dispatch
-//     }
-// };
-
-//const GameButton = connect(null, mapDispatchToProps)(GameSelector);
-const GameButton = connect(mapStateToProps, { gameResult, updateSchedule })(GameSelector);
+const GameButton = connect(mapStateToProps, { gameResult })(GameSelector);
 export { GameButton };
