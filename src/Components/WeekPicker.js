@@ -78,10 +78,10 @@ class WeekPicker extends Component {
 
     byeDisplay() {
         const byes = this.state.byes.map((team) => {
-            const cn = `Bye ${team.abrv}`;
+            const cn = `Bye ${team}`;
             return (
                 <button className={cn} disabled>
-                    {team.abrv}
+                    {team}
                 </button>
             );
         });
