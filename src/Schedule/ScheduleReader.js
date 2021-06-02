@@ -55,6 +55,9 @@ async function getSchedule(year) {
     }
     console.log(gameGrid);
     console.log(schedule);
+
+    //Write JSON Files
+    //or move to DB
 }
 
 function game(away, home, d) {

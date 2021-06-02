@@ -10,6 +10,7 @@ Array index for each team found in ../Teams/TeamOrder.txt
 */
 import { game } from './ScheduleReader';
 
+//! DEPRECIATE 2020
 const schedule = {
     week1: {
         games: [
