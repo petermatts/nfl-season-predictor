@@ -7,6 +7,7 @@ import './App.css';
 import reducers from './Reducers';
 import { StandingsHolder } from './Components/StandingsHolder';
 import { WeekHolder } from './Components/WeekHolder';
+import { getSchedule } from './Schedule/ScheduleReader';
 
 class App extends Component {
   render() {
@@ -17,6 +18,11 @@ class App extends Component {
         <div className="App">
           <header className="App-header">
             NFL Season Predictor
+            <button onClick={() => {
+              getSchedule(2021);
+            }}>
+              scrape
+            </button>
           </header>
           <div className="App-Body">
             <div className="main-section">

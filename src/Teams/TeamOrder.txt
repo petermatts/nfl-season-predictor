@@ -1,6 +1,6 @@
 0: ARI  1: ATL  2: BAL  3: BUF  4: CAR  5: CHI  6: CIN  7: CLE
 8: DAL  9: DEN  10: DET  11: GB  12: HOU  13: IND  14: JAX  15: KC
-16: LV  17: LAC  18: LAR  19: MIA  20: MIN  21: NE  22: NYG  23: NYJ
-24: NO  25: PHI  26: PIT  27: SF  28: SEA  29: TB  30: TEN  31: WAS
+16: LV  17: LAC  18: LAR  19: MIA  20: MIN  21: NE  22: NO  23: NYG
+24: NYJ  25: PHI  26: PIT  27: SEA  28: SF  29: TB  30: TEN  31: WAS
 
 new Date(year, month(0index), day, hour(0-23), minutes)

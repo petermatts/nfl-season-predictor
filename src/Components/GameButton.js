@@ -21,12 +21,13 @@ class GameSelector extends PureComponent {
 
     checkPressed() {
         const { NFL, game, week } = this.props;
-
-        if(NFL[game.home].wins[week-1] !== null) {
+        //??
+        if(NFL[game.home].wins[week-1] !== undefined && NFL[game.home].wins[week-1] !== null) {
             this.setState({ homepress: true });
-        } else if(NFL[game.away].wins[week-1] !== null) {
+        } else if(NFL[game.away].wins[week-1] !== undefined && NFL[game.away].wins[week-1] !== null) {
             this.setState({ awaypress: true });
-        } else if(NFL[game.home].ties[week-1] !== null && NFL[game.away].ties[week-1] !== null) {
+        } else if((NFL[game.home].ties[week-1] !== undefined && NFL[game.away].ties[week-1] !== undefined) && 
+            (NFL[game.home].ties[week-1] !== null && NFL[game.away].ties[week-1] !== null)) {
             this.setState({ tiepress: true });
         }
     }
@@ -86,7 +87,7 @@ class GameSelector extends PureComponent {
                             this.setState({ tiepress: true, awaypress: false, homepress: false });
                         }}
                     >
-                        Tie
+                        @
                     </button>
                     <button
                         className={`AwayTeam-Button ${away.abrv} ${glowAway}`}

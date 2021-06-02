@@ -307,6 +307,20 @@
         }
     },
     {
+        "NO": {
+            "FullName": "New Orleans Saints",
+            "NickName": "Saints",
+            "Location": "New Orleans",
+            "Confrence": "NFC",
+            "Division": "South",
+            "wins": [],
+            "loses": [],
+            "ties": [],
+            "streak": 0,
+            "SOS": 0.490
+        }
+    },
+    {
         "NYG": {
             "FullName": "New York Giants",
             "NickName": "Giants",
@@ -332,20 +346,6 @@
             "ties": [],
             "streak": 0,
             "SOS": 0.533
-        }
-    },
-    {
-        "NO": {
-            "FullName": "New Orleans Saints",
-            "NickName": "Saints",
-            "Location": "New Orleans",
-            "Confrence": "NFC",
-            "Division": "South",
-            "wins": [],
-            "loses": [],
-            "ties": [],
-            "streak": 0,
-            "SOS": 0.490
         }
     },
     {
@@ -377,20 +377,6 @@
         }
     },
     {
-        "SF": {
-            "FullName": "San Francisco 49ers",
-            "NickName": "49ers",
-            "Location": "San Francisco",
-            "Confrence": "NFC",
-            "Division": "West",
-            "wins": [],
-            "loses": [],
-            "ties": [],
-            "streak": 0,
-            "SOS": 0.527
-        }
-    },
-    {
         "SEA": {
             "FullName": "Seattle Seahawks",
             "NickName": "Seahawks",
@@ -402,6 +388,20 @@
             "ties": [],
             "streak": 0,
             "SOS": 0.509
+        }
+    },
+    {
+        "SF": {
+            "FullName": "San Francisco 49ers",
+            "NickName": "49ers",
+            "Location": "San Francisco",
+            "Confrence": "NFC",
+            "Division": "West",
+            "wins": [],
+            "loses": [],
+            "ties": [],
+            "streak": 0,
+            "SOS": 0.527
         }
     },
     {

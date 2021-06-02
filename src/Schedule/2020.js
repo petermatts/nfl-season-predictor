@@ -8,32 +8,7 @@
 /*
 Array index for each team found in ../Teams/TeamOrder.txt
 */
-
-var num = 0;
-
-const game = (away, home, d) => {
-    const day = d.toLocaleDateString('en-US', { weekday: 'long' });
-    const date = d.toLocaleDateString('en-US');
-
-    const timeOptions = {
-        timeZone: 'America/New_York',
-        hour: '2-digit',
-        minute: '2-digit'
-    };
-    let time = d.toLocaleTimeString('en-US', timeOptions);
-    if(time.startsWith('0')) {
-        time = time.replace('0', '');
-    }
-
-    let primetime = false;
-    if(day === 'Thursday' || day === 'Monday' ||
-       day === 'Friday' || day === 'Saturday'
-       || (day === 'Sunday' && time === '8:20 PM')) {
-       primetime = true;
-    }
-
-    return { home, away, day, date, time, primetime, picked: false, winner: null, code: ++num };
-};
+import { game } from './ScheduleReader';
 
 const schedule = {
     week1: {

@@ -1,9 +1,11 @@
 import T from './Teams.json';
-import Team from './Team';
+import { Team } from './Team';
 
 const Teams = [];
+const TeamAbvrs = [];
 for(let i = 0; i < T.length; i++) {
     Teams[i] = new Team(T[i]);
+    TeamAbvrs[i] = Teams[i].abrv;
 }
 
 const CreateNFL = (Teams) => ({
@@ -30,4 +32,4 @@ const CreateNFL = (Teams) => ({
 // }
 
 // export { NFL, CreateNFL, Teams };
-export { CreateNFL, Teams };
+export { CreateNFL, Teams, TeamAbvrs };

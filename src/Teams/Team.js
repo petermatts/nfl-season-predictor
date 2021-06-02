@@ -1,4 +1,4 @@
-export default class Team {
+class Team {
     constructor(team) {
         team = Object.entries(team)[0];
 
@@ -8,9 +8,14 @@ export default class Team {
         this.Location = team[1].Location
         this.Confrence = team[1].Confrence;
         this.Division = team[1].Division;
-        this.wins = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
-        this.loses = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
-        this.ties = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
+        // this.wins = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
+        // this.loses = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
+        // this.ties = [null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null];
+        
+        this.wins = [];
+        this.loses = [];
+        this.ties = [];
+        
         this.streak = '-';
         this.SOS = team[1].SOS;
         this.record = '0-0';
@@ -23,6 +28,8 @@ export default class Team {
 
         //? this.homeRecord = '0-0';
         //? this.awayRecord = '0-0';
+
+        //this.hash = this.teamHash(team[0]);
         
         // ! this is for if individual team selection pages are made 
         //this.makeTeamSchedule();
@@ -47,9 +54,82 @@ export default class Team {
     //         return ((wins+(ties/2))/(wins+loses+ties)).toFixed(4);
     // }
 
-    // ! this is for if individual team selection pages are made 
+    // ! this is for if individual team selection pages are made
+    //! update this is being moved to a DB? or a datastructure 
     // makeTeamSchedule() {
     //     this.schedule = null;
     // }
 }
 
+function teamHash(id) {
+    switch(id) {
+        case 'ARI':
+            return 0;
+        case 'ATL':
+            return 1;
+        case 'BAL':
+            return 2;
+        case 'BUF':
+            return 3;
+        case 'CAR':
+            return 4;
+        case 'CHI':
+            return 5;
+        case 'CIN':
+            return 6;
+        case 'CLE':
+            return 7;
+        case 'DAL':
+            return 8;
+        case 'DEN':
+            return 9;
+        case 'DET':
+            return 10;
+        case 'GB':
+            return 11;
+        case 'HOU':
+            return 12;
+        case 'IND':
+            return 13;
+        case 'JAX':
+            return 14;
+        case 'KC':
+            return 15;
+        case 'LV':
+            return 16;
+        case 'LAC':
+            return 17;
+        case 'LAR':
+            return 18;
+        case 'MIA':
+            return 19;
+        case 'MIN':
+            return 20;
+        case 'NE':
+            return 21;
+        case 'NO':
+            return 22;
+        case 'NYG':
+            return 23;
+        case 'NYJ':
+            return 24;
+        case 'PHI':
+            return 25;
+        case 'PIT':
+            return 26;
+        case 'SEA':
+            return 27;
+        case 'SF':
+            return 28;
+        case 'TB':
+            return 29;
+        case 'TEN':
+            return 30;
+        case 'WAS': case'WSH':
+            return 31;
+        default:
+            return -1;
+    }
+}
+
+export { Team, teamHash };
