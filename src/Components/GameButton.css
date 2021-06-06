@@ -65,6 +65,6 @@
 .glow {
     box-shadow: 0px 0px 2.5px 5px white;
     font-weight: bolder;
-    transform: translateY(2px);
+    /* transform: translateY(2px); */
     transition: 0.5s
 }

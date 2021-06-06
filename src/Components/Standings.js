@@ -101,14 +101,15 @@ class Standing extends Component {
             const stand = list.map((team) => {
                 return (
                     <tr key={++rank}>
-                        <th scope="row" className={this.playColor(rank)}><small>{rank}</small></th>
+                        {/* <th scope="row" className={this.playColor(rank)}><small>{rank}</small></th> */}
+                        <th scope="row"><small>{rank}</small></th>
                         <td><small>{team.abrv}</small></td>
                         <td><small>{team.record}</small></td>
                         <td><small>{team.pct}</small></td>
                         {/* <td><small>{team.streak}</small></td> */}
                         <td><small>{team.confRecord}</small></td>
                         <td><small>{team.divRecord}</small></td>
-                        <td><small>{team.SOS.toFixed(3)}</small></td>
+                        {/* <td><small>{team.SOS.toFixed(3)}</small></td> */}
                     </tr>
                 )
             });
@@ -117,6 +118,7 @@ class Standing extends Component {
         }
     }
 
+    //? Dont need
     playColor(rank) {
         if(!this.props.division) {
             switch (rank) {
@@ -156,7 +158,7 @@ class Standing extends Component {
                             {/* <th>Strk</th> */}
                             <th>Conf</th>
                             <th>Div</th>
-                            <th>SOS</th>
+                            {/* <th>SOS</th> */}
                         </tr>
                     </thead>
                     <tbody>

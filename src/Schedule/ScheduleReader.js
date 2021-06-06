@@ -1,5 +1,6 @@
 import axios from 'axios';
 import cheerio from 'cheerio';
+import firebase from 'firebase';
 import { teamHash } from '../Teams/Team';
 
 async function getSchedule(year) {
@@ -56,8 +57,10 @@ async function getSchedule(year) {
     console.log(gameGrid);
     console.log(schedule);
 
-    //Write JSON Files
-    //or move to DB
+    //push scraped data to firebase
+    firebase.database().ref(`/data/${year}/GameList`).set(gameList);
+    firebase.database().ref(`/data/${year}/GameGrid`).set(gameGrid);
+    firebase.database().ref(`/data/${year}/Schedule`).set(schedule);
 }
 
 function game(away, home, d) {

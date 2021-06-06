@@ -109,6 +109,7 @@ function compareConfrence(a, b, wc) {
     
 }
 
+
 const sortDivision = (division) => {
     return division.sort((a, b) => compareDivision(a, b));
 };

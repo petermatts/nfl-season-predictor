@@ -56,31 +56,6 @@ export function gameResult(result, gameWeek, tie) {
     }
 }
 
-// const streak = (team, WLT) => {
-//     if(WLT === 'W') {
-//         if(team.streak.includes('W')) {
-//             const num = team.streak.split('')[1];
-//             team.streak = `W${parseInt(num, 10)+1}`;
-//         } else {
-//             team.streak = 'W1';
-//         }
-//     } else if(WLT === 'L') {
-//         if(team.streak.includes('L')) {
-//             const num = team.streak.split('')[1];
-//             team.streak = `L${parseInt(num, 10)+1}`;
-//         } else {
-//             team.streak = 'L1';
-//         }
-//     } else if(WLT === 'T') {
-//         if(team.streak.includes('T')) {
-//             const num = team.streak.split('')[1];
-//             team.streak = `T${parseInt(num, 10)+1}`;
-//         } else {
-//             team.streak = 'T1';
-//         }
-//     }
-// };
-
 const adjust = (team) => {
     team.record = getRecord(team);
     team.pct = getPCT(team);
