@@ -27,6 +27,8 @@ async function getSchedule(year) {
                 const teams = [];
                 for(let index = 0; index < teamNodes.length; index++) {
                     teams[index] = teamNodes[index].children[0].data;
+                    if(teams[index] === 'WSH')
+                        teams[index] = 'WAS';
                 }
                 
                 //evens in teams[] are home, odds are away
@@ -54,8 +56,8 @@ async function getSchedule(year) {
             console.log(error);
         });
     }
-    console.log(gameGrid);
-    console.log(schedule);
+    // console.log(gameGrid);
+    // console.log(schedule);
 
     //push scraped data to firebase
     firebase.database().ref(`/data/${year}/GameList`).set(gameList);

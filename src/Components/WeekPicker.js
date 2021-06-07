@@ -46,12 +46,13 @@ class WeekPicker extends Component {
 
     renderGameButtons(date) {
         const timesTaken = [];
+        let key = 0;
         const buttons = this.state.games.map(game => {
             if(game.day === date.day && game.date === date.date) {
                 const time = timesTaken.includes(game.time) ? null : this.timeString(game.time);
                 timesTaken.push(game.time);
                 return (
-                    <div className="select">
+                    <div className="select" key={++key}>
                         {time}
                         <GameButton game={game} week={this.props.week}/>
                     </div>

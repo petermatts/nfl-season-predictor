@@ -13,7 +13,7 @@ export const getGameGrid = (year) => (dispatch) => {
 
 export const getGameList = (year) => (dispatch) => {
     firebase.database().ref(`/data/${year}/GameList`).once('value').then((snapshot) => {
-        console.log(snapshot.val());
+        // console.log(snapshot.val());
         dispatch({ type: GET_GAMELIST, payload: snapshot.val() });
     })
     .catch(() => {
@@ -23,7 +23,7 @@ export const getGameList = (year) => (dispatch) => {
 
 export const getSchedule = (year) => (dispatch) => {
     firebase.database().ref(`/data/${year}/Schedule`).once('value').then((snapshot) => {
-        console.log(snapshot.val());
+        // console.log(snapshot.val());
         dispatch({ type: GET_SCHEDULE, payload: snapshot.val() });
     })
     .catch(() => {
