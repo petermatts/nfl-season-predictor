@@ -1,13 +1,24 @@
 import React, { PureComponent } from 'react';
 import { ButtonGroup, Button } from 'reactstrap';
+import { connect } from 'react-redux';
 import { schedule as Schedule2020 } from '../Schedule/2020';
 import { WeekPicker } from  './WeekPicker';
 import './WeekHolder.css';
+import { getGameGrid, getGameList, getSchedule } from '../Actions';
 
-class WeekHolder extends PureComponent {
+class weekholder extends PureComponent {
     constructor(props) {
         super(props);
+        props.getGameGrid(2021);
+        props.getGameList(2021);
+        props.getSchedule(2021);
         this.state = { selected: 1 };
+    }
+
+    componentDidMount() {
+        // props.getGameGrid(2021);
+        // props.getGameList(2021);
+        // props.getSchedule(2021);
     }
 
     highlightButton(weekNum) {
@@ -175,4 +186,10 @@ class WeekHolder extends PureComponent {
     }
 }
 
+const mapStateToProps = (state) => {
+    const { schedule } = state;
+    return { schedule };
+};
+
+const WeekHolder = connect(mapStateToProps, { getGameGrid, getGameList, getSchedule })(weekholder);
 export { WeekHolder };

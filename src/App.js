@@ -10,8 +10,6 @@ import { StandingsHolder } from './Components/StandingsHolder';
 import { WeekHolder } from './Components/WeekHolder';
 // import { getSchedule } from './Schedule/ScheduleReader';
 
-import { getGameGrid, getGameList, getSchedule } from './Actions';
-
 var firebaseConfig = {
   apiKey: "AIzaSyCzTqMNe7U5CrBWVI2YE3rnAxKuABqxHf8",
   authDomain: "nfl-season-predictor.firebaseapp.com",
@@ -40,13 +38,6 @@ class App extends Component {
             }}>
               scrape
             </button> */}
-            <button onClick={() => {
-              getGameGrid(2021);
-              getGameList(2021);
-              getSchedule(2021);
-            }}>
-              get
-            </button>
           </header>
           <div className="App-Body">
             <div className="main-section">

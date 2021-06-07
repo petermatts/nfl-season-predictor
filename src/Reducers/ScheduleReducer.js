@@ -1,4 +1,4 @@
-import { GET_GAMEGRID, GET_GAMELIST, GET_SCHEDULE } from './../actions/types';
+import { GET_GAMEGRID, GET_GAMELIST, GET_SCHEDULE } from './../Actions/types';
 
 const INITIAL_STATE = {
     gamegrid: null,

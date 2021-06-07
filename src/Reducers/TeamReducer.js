@@ -11,8 +11,8 @@ export default (state = INITIAL_STATE, action) => {
             return { ...state, [action.payload.home.abrv]: action.payload.home, [action.payload.away.abrv]: action.payload.away };
         default:
             const init = {};
-            for(let i = 0; i < state.length; i++) {
-                Object.assign(init, { [state[i].abrv]: state[i] });
+            for(let i = 0; i < Teams.length; i++) {
+                Object.assign(init, { [Teams[i].abrv]: Teams[i] });
             }
             return init;
     }
