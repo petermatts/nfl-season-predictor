@@ -8,9 +8,7 @@
             "Division": "West",
             "wins": [],
             "loses": [],
-            "ties": [],
-            "streak": 0,
-            "SOS": 0.518
+            "ties": []
         }
     },
     {
@@ -22,9 +20,7 @@
             "Division": "South",
             "wins": [],
             "loses": [],
-            "ties": [],
-            "streak": 0,
-            "SOS": 0.525
+            "ties": []
         }
     },
     {
@@ -36,9 +32,7 @@
             "Division": "North",
             "wins": [],
             "loses": [],
-            "ties": [],
-            "streak": 0,
-            "SOS": 0.438
+            "ties": []
         }
     },
     {
@@ -50,9 +44,7 @@
             "Division": "East",
             "wins": [],
             "loses": [],
-            "ties": [],
-            "streak": 0,
-            "SOS": 0.525
+            "ties": []
         }
     },
     {
@@ -64,9 +56,7 @@
             "Division": "South",
             "wins": [],
             "loses": [],
-            "ties": [],
-            "streak": 0,
-            "SOS": 0.500
+            "ties": []
         }
     },
     {
@@ -78,9 +68,7 @@
             "Division": "North",
             "wins": [],
             "loses": [],
-            "ties": [],
-            "streak": 0,
-            "SOS": 0.509
+            "ties": []
         }
     },
     {
@@ -92,9 +80,7 @@
             "Division": "North",
             "wins": [],
             "loses": [],
-            "ties": [],
-            "streak": 0,
-            "SOS": 0.477
+            "ties": []
         }
     },
     {
@@ -106,9 +92,7 @@
             "Division": "North",
             "wins": [],
             "loses": [],
-            "ties": [],
-            "streak": 0,
-            "SOS": 0.461
+            "ties": []
         }
     },
     {
@@ -120,9 +104,7 @@
             "Division": "East",
             "wins": [],
             "loses": [],
-            "ties": [],
-            "streak": 0,
-            "SOS": 0.459
+            "ties": []
         }
     },
     {
@@ -134,9 +116,7 @@
             "Division": "West",
             "wins": [],
             "loses": [],
-            "ties": [],
-            "streak": 0,
-            "SOS": 0.512
+            "ties": []
         }
     },
     {
@@ -148,9 +128,7 @@
             "Division": "North",
             "wins": [],
             "loses": [],
-            "ties": [],
-            "streak": 0,
-            "SOS": 0.525
+            "ties": []
         }
     },{
         "GB": {
@@ -161,9 +139,7 @@
             "Division": "North",
             "wins": [],
             "loses": [],
-            "ties": [],
-            "streak": 0,
-            "SOS": 0.504
+            "ties": []
         }
     },
     {
@@ -175,9 +151,7 @@
             "Division": "South",
             "wins": [],
             "loses": [],
-            "ties": [],
-            "streak": 0,
-            "SOS": 0.518
+            "ties": []
         }
     },
     {
@@ -189,9 +163,7 @@
             "Division": "South",
             "wins": [],
             "loses": [],
-            "ties": [],
-            "streak": 0,
-            "SOS": 0.502
+            "ties": []
         }
     },
     {
@@ -203,9 +175,7 @@
             "Division": "South",
             "wins": [],
             "loses": [],
-            "ties": [],
-            "streak": 0,
-            "SOS": 0.494
+            "ties": []
         }
     },
     {
@@ -217,9 +187,7 @@
             "Division": "West",
             "wins": [],
             "loses": [],
-            "ties": [],
-            "streak": 0,
-            "SOS": 0.500
+            "ties": []
         }
     },
     {
@@ -231,9 +199,7 @@
             "Division": "West",
             "wins": [],
             "loses": [],
-            "ties": [],
-            "streak": 0,
-            "SOS": 0.496
+            "ties": []
         }
     },
     {
@@ -245,9 +211,7 @@
             "Division": "West",
             "wins": [],
             "loses": [],
-            "ties": [],
-            "streak": 0,
-            "SOS": 0.492
+            "ties": []
         }
     },
     {
@@ -259,9 +223,7 @@
             "Division": "West",
             "wins": [],
             "loses": [],
-            "ties": [],
-            "streak": 0,
-            "SOS": 0.516
+            "ties": []
         }
     },
     {
@@ -273,9 +235,7 @@
             "Division": "East",
             "wins": [],
             "loses": [],
-            "ties": [],
-            "streak": 0,
-            "SOS": 0.529
+            "ties": []
         }
     },
     {
@@ -287,9 +247,7 @@
             "Division": "North",
             "wins": [],
             "loses": [],
-            "ties": [],
-            "streak": 0,
-            "SOS": 0.516
+            "ties": []
         }
     },
     {
@@ -301,9 +259,7 @@
             "Division": "East",
             "wins": [],
             "loses": [],
-            "ties": [],
-            "streak": 0,
-            "SOS": 0.537
+            "ties": []
         }
     },
     {
@@ -315,9 +271,7 @@
             "Division": "South",
             "wins": [],
             "loses": [],
-            "ties": [],
-            "streak": 0,
-            "SOS": 0.490
+            "ties": []
         }
     },
     {
@@ -329,9 +283,7 @@
             "Division": "East",
             "wins": [],
             "loses": [],
-            "ties": [],
-            "streak": 0,
-            "SOS": 0.482
+            "ties": []
         }
     },
     {
@@ -343,9 +295,7 @@
             "Division": "East",
             "wins": [],
             "loses": [],
-            "ties": [],
-            "streak": 0,
-            "SOS": 0.533
+            "ties": []
         }
     },
     {
@@ -357,9 +307,7 @@
             "Division": "East",
             "wins": [],
             "loses": [],
-            "ties": [],
-            "streak": 0,
-            "SOS": 0.486
+            "ties": []
         }
     },
     {
@@ -371,9 +319,7 @@
             "Division": "North",
             "wins": [],
             "loses": [],
-            "ties": [],
-            "streak": 0,
-            "SOS": 0.457
+            "ties": []
         }
     },
     {
@@ -385,9 +331,7 @@
             "Division": "West",
             "wins": [],
             "loses": [],
-            "ties": [],
-            "streak": 0,
-            "SOS": 0.509
+            "ties": []
         }
     },
     {
@@ -399,9 +343,7 @@
             "Division": "West",
             "wins": [],
             "loses": [],
-            "ties": [],
-            "streak": 0,
-            "SOS": 0.527
+            "ties": []
         }
     },
     {
@@ -413,9 +355,7 @@
             "Division": "South",
             "wins": [],
             "loses": [],
-            "ties": [],
-            "streak": 0,
-            "SOS": 0.502
+            "ties": []
         }
     },
     {
@@ -427,9 +367,7 @@
             "Division": "South",
             "wins": [],
             "loses": [],
-            "ties": [],
-            "streak": 0,
-            "SOS": 0.498
+            "ties": []
         }
     },
     {
@@ -441,9 +379,7 @@
             "Division": "East",
             "wins": [],
             "loses": [],
-            "ties": [],
-            "streak": 0,
-            "SOS": 0.465
+            "ties": []
         }
     }
 ]

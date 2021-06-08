@@ -4,10 +4,34 @@
 
 .buttonHolder {
     padding-bottom: 10px;
+    width: 98%;
 }
 
 .week {
     display: flex;
     flex-direction: row;
     justify-content: center;
+}
+
+.picked {
+    background-color: #013369;
+}
+
+.picked:hover {
+    background-color: #013369;
+    font-weight: bolder;
+}
+
+.picked:focus {
+    background-color: #013369;
+    box-shadow: 0px 0px 2px 2px lightblue;
+    transition: 0.5s
+}
+
+.notpicked {
+    background-color: gray;
+}
+
+.notpicked:hover {
+    font-weight: bolder;
 }

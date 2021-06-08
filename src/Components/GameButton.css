@@ -3,7 +3,7 @@
     background-color: green;
     color: white;
     border-radius: 10px;
-    border: 3px solid;
+    border: 2px solid; /* or 3px */
     width: 60px;
     height: 40px;
     margin: 5px;
@@ -24,7 +24,7 @@
     background-color: #d3d3d3;
     color: black;
     border-radius: 10px;
-    border: 3px solid black;
+    border: 2px solid black; /* or 3px */
     width: 40px;
     height: 40px;
     margin-top: 5px;
@@ -46,7 +46,7 @@
     background-color: red;
     color: white;
     border-radius: 10px;
-    border: 3px solid;
+    border: 2px solid;  /* or 3px */
     width: 60px;
     height: 40px;
     margin: 5px;
@@ -67,4 +67,11 @@
     font-weight: bolder;
     /* transform: translateY(2px); */
     transition: 0.5s
+}
+
+.button-group {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
 }

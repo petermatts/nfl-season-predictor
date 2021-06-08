@@ -14,11 +14,19 @@ class weekholder extends PureComponent {
         this.state = { selected: 1 };
     }
 
-    highlightButton(weekNum) {
-        if(weekNum === this.state.selected)
-            return 'primary';
-        else
-            return 'secondary';
+    // highlightButton(weekNum) {
+    //     if(weekNum === this.state.selected)
+    //         return 'primary';
+    //     else
+    //         return 'secondary';
+    // }
+
+    picked(key) {
+        if(key === this.state.selected) {
+            return 'picked picked:hover .picked:focus';
+        } else {
+            return 'notpicked notpicked:hover';
+        }
     }
 
     showWeek() {
@@ -59,8 +67,9 @@ class weekholder extends PureComponent {
                 return (
                     <Button 
                         key={key}
-                        color={this.highlightButton(weekNum)}
+                        // color={this.highlightButton(weekNum)}
                         onClick={() => {this.setState({ selected: key })}}
+                        className={`${this.picked(key)}`}
                     >
                         {weekNum}
                     </Button>

@@ -9,6 +9,15 @@ class StandingsHolder extends Component {
         this.state = { conf: true, div: false };
     }
 
+    picked(key) {
+        if(this.state[key]) {
+            return 'picked-s picked-s:hover .picked-s:focus';
+        } else {
+            return 'notpicked-s';
+            // return 'notpicked-s notpicked-s:hover';
+        }
+    }
+
     renderStandings() {
         if(this.state.conf) {
             return (
@@ -46,14 +55,14 @@ class StandingsHolder extends Component {
             <div className="holder">
                 <ButtonGroup className="options">
                     <Button
-                        className="button"
+                        className={`button ${this.picked('conf')}`}
                         color={this.state.conf ? "primary" : "secondary" }
                         onClick={() => {this.setState({ conf: true, div: false })}}
                     >
                         Confrence
                     </Button>
                     <Button
-                        className="button"
+                        className={`button ${this.picked('div')}`}
                         color={this.state.div ? "primary" : "secondary" }
                         onClick={() => {this.setState({ conf: false, div: true })}}
                     >

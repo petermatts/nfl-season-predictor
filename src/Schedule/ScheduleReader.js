@@ -37,7 +37,7 @@ async function getSchedule(year) {
                 for(let i = 0; i < times.length; i++) {
                     const homeTeam = teams[2*i];
                     const awayTeam = teams[2*i+1];
-                    const thisGame = new game(homeTeam, awayTeam, new Date(times[i]));
+                    const thisGame = new game(homeTeam, awayTeam, new Date(times[i]), gameList.length);
 
                     games.push(thisGame);
                     gameList.push(thisGame);
@@ -65,7 +65,7 @@ async function getSchedule(year) {
     firebase.database().ref(`/data/${year}/Schedule`).set(schedule);
 }
 
-function game(away, home, d) {
+function game(away, home, d, hash) {
     //!handle TBD dates
     const day = d.toLocaleDateString('en-US', { weekday: 'long' });
     const date = d.toLocaleDateString('en-US');
@@ -87,7 +87,7 @@ function game(away, home, d) {
        primetime = true;
     }
 
-    return { home, away, day, date, time, primetime, picked: false, winner: null };
+    return { home, away, day, date, time, primetime, picked: false, winner: null, hash };
 };
 
 export { game, getSchedule };

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { ListGroup, ListGroupItem } from 'reactstrap';
+import { ListGroup, ListGroupItem, UncontrolledTooltip } from 'reactstrap';
 import { GameButton } from './GameButton';
 import '../Teams/TeamColors.css';
 import './WeekPicker.css';
@@ -34,47 +34,89 @@ class WeekPicker extends Component {
         this.setState({ dates: array });
     }
 
-    timeString(time) {
-        return (
-            <div>
-                <small className="homeLabel">Home</small>
-                {time}
-                <small className="awayLabel">Away</small>
-            </div>
-        );
+    timeDisplay({date, day, time}) {
+        // console.log(day, date, time);
+        const dayAbrv = day==='Thursday' ? day.substring(0,4) : day.substring(0,3);
+        if(day==='Sunday' && time==='8:20 PM') {
+            return (
+                <div>
+                    <b id="snf">SNF</b>
+                    <UncontrolledTooltip target="snf" placement="top">
+                        {`${day}  ${date}  ${time}`}
+                    </UncontrolledTooltip>
+                </div>
+            );
+        } else if(day==='Thursday' && time==='8:20 PM') {
+            return (
+                <div>
+                    <b id="tnf">TNF</b>
+                    <UncontrolledTooltip target="tnf" placement="top">
+                        {`${day}  ${date}  ${time}`}
+                    </UncontrolledTooltip>
+                </div>
+            );
+        } else if(day==='Monday' && time==='8:15 PM') {
+            return (
+                <div>
+                    <b id="mnf">MNF</b>
+                    <UncontrolledTooltip target="mnf" placement="top">
+                        {`${day}  ${date}  ${time}`}
+                    </UncontrolledTooltip>
+                </div>
+            );
+        } else {
+            const id = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
+            return (
+                <div>
+                    <b id={`${id}`}>{`${dayAbrv} ${time}`}</b>
+                    <UncontrolledTooltip target={`${id}`} placement="top">
+                        {`${date}`}
+                    </UncontrolledTooltip>
+                </div>
+            );
+        }
     }
 
-    renderGameButtons(date) {
-        const timesTaken = [];
-        let key = 0;
-        const buttons = this.state.games.map(game => {
-            if(game.day === date.day && game.date === date.date) {
-                const time = timesTaken.includes(game.time) ? null : this.timeString(game.time);
-                timesTaken.push(game.time);
-                return (
-                    <div className="select" key={++key}>
-                        {time}
-                        <GameButton game={game} week={this.props.week}/>
+    displayGrid() {
+        let key = 0, count = 0;
+        const gamerow = this.state.games.map((game) => {
+            return (
+                <div key={++key}>
+                    {this.timeDisplay(game)}
+                    <GameButton game={game} week={this.props.week} />
+                </div>
+            );
+        });
+
+        const setup = [];
+        for(let index = 0; index < gamerow.length; index+=4) {
+            setup.push(gamerow.slice(index, index+4));
+        }
+
+        const row = setup.map((row) => {
+            const thing = row.map((item) => {
+                return(
+                    <div key={item.key}>
+                        {item}
                     </div>
                 );
-            } else
-                return null;
+            });
+            
+            return(
+                <div className="gamerow" key={++count}>
+                    {thing}
+                </div>
+            );
         });
-        return buttons;
-    }
 
-    renderColumnsHeads() {
-        let key = 0;
-        const cols = this.state.dates.map(dates => (
-            <ListGroupItem color="secondary" key={++key}>
-                <h5>
-                    <b>{`${dates.day}   `}</b>
-                    <small>{dates.date}</small>
-                </h5>
-                {this.renderGameButtons(dates)}
+        return (
+            <ListGroupItem color="secondary">
+                <h2>
+                    <b>{`Week ${this.props.week}`}</b>
+                </h2>
+                {row}
             </ListGroupItem>
-        ));
-        return cols;
+        );
     }
 
     byeDisplay() {
@@ -90,8 +132,8 @@ class WeekPicker extends Component {
         if(this.state.byes.length !== 0) {
             return (
                 <ListGroupItem color="secondary">
-                    <div className="ByeHolder">
-                        <h5 className="Day">Byes</h5>
+                    <h6 className="Day">Byes</h6>
+                    <div className="ByeHolder">                        
                         {byes}
                     </div>
                 </ListGroupItem>
@@ -103,8 +145,8 @@ class WeekPicker extends Component {
     render() {
         return (
             <div className="Component">
-                <ListGroup horizontal>
-                    {this.renderColumnsHeads()}
+                <ListGroup>
+                    {this.displayGrid()}
                     {this.byeDisplay()}
                 </ListGroup>
             </div>

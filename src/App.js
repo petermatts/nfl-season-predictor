@@ -4,6 +4,8 @@ import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import ReduxThunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faCog } from '@fortawesome/free-solid-svg-icons';
 import './App.css';
 import reducers from './Reducers';
 import { StandingsHolder } from './Components/StandingsHolder';
@@ -25,6 +27,7 @@ firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 
 class App extends Component {
+
   render() {
     const store = createStore(reducers, {}, composeWithDevTools(applyMiddleware(ReduxThunk)));
 
@@ -38,6 +41,7 @@ class App extends Component {
             }}>
               scrape
             </button> */}
+            {/* <FontAwesomeIcon icon={faCog} /> */}
           </header>
           <div className="App-Body">
             <div className="main-section">

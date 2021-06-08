@@ -68,7 +68,7 @@ class GameSelector extends PureComponent {
             }
     
             return (
-                <ButtonGroup>
+                <ButtonGroup className="button-group">
                     <button 
                         className={`HomeTeam-Button ${home.abrv} ${glowHome}`}
                         disabled={this.state.homepress}
