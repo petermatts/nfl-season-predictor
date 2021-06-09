@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { ButtonGroup, Button } from 'reactstrap';
+import { ButtonGroup, Button, Progress } from 'reactstrap';
 import { connect } from 'react-redux';
 import { getGameGrid, getGameList, getSchedule } from '../Actions';
 import { WeekPicker } from  './WeekPicker';
@@ -13,13 +13,6 @@ class weekholder extends PureComponent {
         props.getSchedule(2021);
         this.state = { selected: 1 };
     }
-
-    // highlightButton(weekNum) {
-    //     if(weekNum === this.state.selected)
-    //         return 'primary';
-    //     else
-    //         return 'secondary';
-    // }
 
     picked(key) {
         if(key === this.state.selected) {
@@ -67,7 +60,6 @@ class weekholder extends PureComponent {
                 return (
                     <Button 
                         key={key}
-                        // color={this.highlightButton(weekNum)}
                         onClick={() => {this.setState({ selected: key })}}
                         className={`${this.picked(key)}`}
                     >
@@ -82,6 +74,12 @@ class weekholder extends PureComponent {
     }
 
     render() {
+        const prog = this.props.userdata.gamespicked;
+        let tot = 1;
+        if(this.props.schedule.gamelist !== null)
+            tot = this.props.schedule.gamelist.length;
+        const pct = prog/tot;
+
         return (
             <div className="weekHolder">
                 <ButtonGroup className="buttonHolder">
@@ -91,14 +89,16 @@ class weekholder extends PureComponent {
                     </Button> */}
                 </ButtonGroup>
                 {this.showWeek()}
+                <div>{`Games Picked: ${prog}/${tot}`}</div>
+                <Progress value={pct}>{`${prog}/${tot}`}</Progress>
             </div>
         );
     }
 }
 
 const mapStateToProps = (state) => {
-    const { schedule } = state;
-    return { schedule };
+    const { schedule, userdata } = state;
+    return { schedule, userdata };
 };
 
 const WeekHolder = connect(mapStateToProps, { getGameGrid, getGameList, getSchedule })(weekholder);

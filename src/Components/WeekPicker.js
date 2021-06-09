@@ -64,6 +64,12 @@ class WeekPicker extends Component {
                     </UncontrolledTooltip>
                 </div>
             );
+        } else if(date==='Invalid Date') {
+            return (
+                <div>
+                    <b>TBD</b>
+                </div>
+            );
         } else {
             const id = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
             return (

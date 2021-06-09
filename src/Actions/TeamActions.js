@@ -1,25 +1,14 @@
 import { GAME_RESULT, GAME_RESULT_TIE } from './types';
 
-export function gameResult(result, gameWeek, tie) {
+export const gameResult = (result, tie) => (dispatch, getState) => {
     // console.log(result, pressed, tie);
+    // const state = getState();
+    // console.log(state);
 
     if(!tie) {
         const { winner, loser } = result;
-
-        // const l_team = { Division: loser.Division, Confrence: loser.Confrence };
-        // const w_team = { Division: winner.Division, Confrence: winner.Confrence };
-        //switch out with loser and winner, respectively based on l and w to prevent possible infinite nesting of state
-       
-        winner.wins[gameWeek-1] = loser;
-        winner.loses[gameWeek-1] = null;
-        winner.ties[gameWeek-1] = null;
-
-        loser.wins[gameWeek-1] =  null;
-        loser.loses[gameWeek-1] =  winner;     
-        loser.ties[gameWeek-1] =  null;
-
-        // streak(winner, 'W');
-        // streak(loser, 'L');
+        winner.wins.push(loser.abrv);
+        loser.loses.push(winner.abrv);
 
         adjust(winner);
         adjust(loser);
@@ -30,21 +19,8 @@ export function gameResult(result, gameWeek, tie) {
         };
     } else {
         const { home, away } = result;
-
-        // const h_team = { Division: home.Division, Confrence: home.Confrence };
-        // const a_team = { Division: away.Division, Confrence: away.Confrence };
-         //switch out with home and away, respectively based on h and a to prevent possible infinite nesting of state
-
-        home.ties[gameWeek-1] = away;
-        home.wins[gameWeek-1] = null;
-        home.loses[gameWeek-1] = null;
-
-        away.ties[gameWeek-1] = home;
-        away.wins[gameWeek-1] = null;
-        away.loses[gameWeek-1] = null;
-
-        // streak(home, 'T');
-        // streak(away, 'T');
+        home.ties.push(away.abrv);
+        away.ties.push(home.abrv);
 
         adjust(home);
         adjust(away);
@@ -71,16 +47,16 @@ const adjust = (team) => {
 
 
 const getRecord = (team) => {
-    const wins = team.wins.filter(game => game !== null).length;
-    const loses = team.loses.filter(game => game !== null).length;
-    const ties = team.ties.filter(game => game !== null).length;
+    const wins = team.wins.length;
+    const loses = team.loses.length;
+    const ties = team.ties.length;
     return ties === 0 ? `${wins}-${loses}`:`${wins}-${loses}-${ties}`;
 };
 
 const getPCT = (team) => {
-    const wins = team.wins.filter(game => game !== null).length;
-    const loses = team.loses.filter(game => game !== null).length;
-    const ties = team.ties.filter(game => game !== null).length;
+    const wins = team.wins.length;
+    const loses = team.loses.length;
+    const ties = team.ties.length;
     if(wins+loses+ties === 0)
         return '0.0000';
     else
@@ -93,9 +69,9 @@ const getPCT = (team) => {
  * element 1 is the pct
  */
 const getDivRecord_Pct = (team) => {
-    const W = team.wins.filter(game => game !== null);
-    const T = team.ties.filter(game => game !== null);
-    const L = team.loses.filter(game => game !== null);
+    const W = team.wins;
+    const T = team.ties;
+    const L = team.loses;
     let wins = 0;
     let loses = 0;
     let ties = 0;
@@ -130,9 +106,9 @@ const getDivRecord_Pct = (team) => {
  * element 1 is the pct
  */
 const getConfRecord_Pct = (team) => {
-    const W = team.wins.filter(game => game !== null);
-    const T = team.ties.filter(game => game !== null);
-    const L = team.loses.filter(game => game !== null);
+    const W = team.wins;
+    const T = team.ties;
+    const L = team.loses;
     let wins = 0;
     let loses = 0;
     let ties = 0;

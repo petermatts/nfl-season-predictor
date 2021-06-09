@@ -54,37 +54,12 @@ class Standing extends Component {
             if(this.props.confrence === 'AFC') {
                 const arr = NFL.AFC_East.concat(NFL.AFC_North.concat(NFL.AFC_South.concat(NFL.AFC_West)));
                 this.setState({ teamList: arr });
-
-                // this.setState({
-                //     teamList: {
-                //         East: NFL.AFC_East,
-                //         North: NFL.AFC_North,
-                //         South: NFL.AFC_South,
-                //         West: NFL.AFC_West
-                //     }
-                // });
             } else if(this.props.confrence === 'NFC') {
                 const arr = NFL.NFC_East.concat(NFL.NFC_North.concat(NFL.NFC_South.concat(NFL.NFC_West)));
                 this.setState({ teamList: arr });
-
-                // this.setState({
-                //     teamList: {
-                //         East: NFL.NFC_East,
-                //         North: NFL.NFC_North,
-                //         South: NFL.NFC_South,
-                //         West: NFL.NFC_West
-                //     }
-                // });
             }
         }
     }
-
-    // calcPCT(wins, loses, ties) {
-    //     if(wins+loses+ties === 0)
-    //         return '0.0000';
-    //     else
-    //         return ((wins+(ties/2))/(wins+loses+ties)).toFixed(4);
-    // }
 
     renderRows() {
         // ! sort teamList//

@@ -22,7 +22,8 @@
 }
 
 .options {
-    padding: 10px;
+    padding-top: 10px;
+    padding-bottom: 5px;
 }
 
 .button {

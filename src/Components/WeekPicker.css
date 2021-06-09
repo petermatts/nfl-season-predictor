@@ -1,6 +1,7 @@
 .Component {
-    margin: 5px;
+    /* margin: 5px; */
     display: flex;
+    width: 100%;
 }
 
 .Day {

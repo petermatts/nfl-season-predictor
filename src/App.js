@@ -35,7 +35,7 @@ class App extends Component {
       <Provider store={store}>
         <div className="App">
           <header className="App-header">
-            NFL Season Predictor
+            <b>NFL Season Predictor</b>
             {/* <button onClick={() => {
               getSchedule(2021);
             }}>
