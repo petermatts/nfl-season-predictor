@@ -1,0 +1,43 @@
+.settingsButton {
+    background-color: Transparent;
+    /* background-repeat:no-repeat; */
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    margin-right: 50px; 
+}
+.settingsButton:hover {
+    transform: translateY(-1px);
+    transition: 0.5s;
+}
+/* .settingsButton:active {
+
+} */
+.settingsButton:focus {
+    outline:none;
+    border: none;
+}
+
+.menuHeader {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+}
+
+.menu-item {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: center;
+}
+
+.item-button {
+    margin-left: 5px;
+}
+
+.gear {
+    color: white;
+}

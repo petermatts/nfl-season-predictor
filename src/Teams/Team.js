@@ -14,14 +14,14 @@ class Team {
         this.ties = [];
         
         // this.streak = '-';
-        // this.SOS = team[1].SOS;
         this.record = '0-0';
         this.pct = '0.0000';
         this.confRecord = '0-0';
         this.confPct = '0.0000';
         this.divRecord = '0-0';
         this.divPct = '0.0000';
-        this.SOV = '0.000';
+        this.SOV = 0.000;
+        this.SOS = 0.000;
 
         //? this.homeRecord = '0-0';
         //? this.awayRecord = '0-0';

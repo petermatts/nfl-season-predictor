@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ButtonGroup, Button } from 'reactstrap';
 import { Standings } from './Standings';
-import './StandingsHolder.css';
+import './CSS/StandingsHolder.css';
 
 class StandingsHolder extends Component {
     constructor(props) {

@@ -3,7 +3,7 @@ import { Table } from 'reactstrap';
 import { connect } from 'react-redux';
 import { CreateNFL } from '../Teams/NFL_Teams';
 import { sortDivision, sortConfrence } from '../Actions/SortStandings';
-import './Standings.css';
+import './CSS/Standings.css';
 
 class Standing extends Component {
     constructor(props) {
@@ -84,7 +84,7 @@ class Standing extends Component {
                         {/* <td><small>{team.streak}</small></td> */}
                         <td><small>{team.confRecord}</small></td>
                         <td><small>{team.divRecord}</small></td>
-                        {/* <td><small>{team.SOS.toFixed(3)}</small></td> */}
+                        <td><small>{team.SOS.toFixed(3)}</small></td>
                     </tr>
                 )
             });
@@ -133,7 +133,7 @@ class Standing extends Component {
                             {/* <th>Strk</th> */}
                             <th>Conf</th>
                             <th>Div</th>
-                            {/* <th>SOS</th> */}
+                            <th>SOS</th>
                         </tr>
                     </thead>
                     <tbody>

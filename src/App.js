@@ -5,11 +5,12 @@ import { Provider } from 'react-redux';
 import ReduxThunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import { faCog } from '@fortawesome/free-solid-svg-icons';
+// import { faCog, faFootballBall } from '@fortawesome/free-solid-svg-icons';
 import './App.css';
 import reducers from './Reducers';
 import { StandingsHolder } from './Components/StandingsHolder';
 import { WeekHolder } from './Components/WeekHolder';
+import { SettingsMenu } from './Components/SettingsMenu';
 // import { getSchedule } from './Schedule/ScheduleReader';
 
 var firebaseConfig = {
@@ -35,14 +36,20 @@ class App extends Component {
       <Provider store={store}>
         <div className="App">
           <header className="App-header">
-            <b>NFL Season Predictor</b>
+            <b className="title">NFL Season Predictor</b>
             {/* <button onClick={() => {
               getSchedule(2021);
             }}>
               scrape
             </button> */}
-            {/* <FontAwesomeIcon icon={faCog} /> */}
+            <SettingsMenu />
+            {/* <FontAwesomeIcon icon={faFootballBall} rotation={45} /> */}
           </header>
+
+          {/* <h2 className="App-subheader">
+            2021
+          </h2> */}
+
           <div className="App-Body">
             <div className="main-section">
               <WeekHolder />

@@ -2,7 +2,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { ButtonGroup } from 'reactstrap';
-import './GameButton.css';
+import './CSS/GameButton.css';
 import '../Teams/TeamColors.css';
 import { gameResult, updateUserGamePicks } from '../Actions';
 import { homewin, awaywin, tiegame } from '../Actions/Constants';
@@ -90,8 +90,8 @@ class GameSelector extends PureComponent {
                         className={`HomeTeam-Button ${home.abrv} ${glowHome}`}
                         disabled={this.state.homepress}
                         onClick={() => {
-                            this.props.gameResult({ winner: home, loser: away }, false);
                             this.props.updateUserGamePicks(gameId, homewin, gridLoc, week);
+                            this.props.gameResult({ winner: home, loser: away }, gameId);
                             this.setState({ homepress: true, awaypress: false, tiepress: false });
                         }}
                     >
@@ -101,8 +101,8 @@ class GameSelector extends PureComponent {
                         className={`Tie-Button ${glowTie}`}
                         disabled={this.state.tiepress}
                         onClick={() => {
-                            this.props.gameResult({ home, away }, true);
                             this.props.updateUserGamePicks(gameId, tiegame, gridLoc, week);
+                            this.props.gameResult({ home, away }, gameId);
                             this.setState({ tiepress: true, awaypress: false, homepress: false });
                         }}
                     >
@@ -112,8 +112,8 @@ class GameSelector extends PureComponent {
                         className={`AwayTeam-Button ${away.abrv} ${glowAway}`}
                         disabled={this.state.awaypress}
                         onClick={() => {
-                            this.props.gameResult({winner: away, loser: home }, false);
                             this.props.updateUserGamePicks(gameId, awaywin, gridLoc, week);
+                            this.props.gameResult({winner: away, loser: home }, gameId);
                             this.setState({ awaypress: true, tiepress: false, homepress: false });    
                         }}
                     >

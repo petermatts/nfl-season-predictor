@@ -1,6 +1,7 @@
 //Team Actopms
 export const GAME_RESULT = 'game_result';
 export const GAME_RESULT_TIE = 'game_result_tie';
+export const UPDATE_SOV = 'update_SOV';
 
 // Sort Standings Actions
 // export const SORT_DIVISION = 'sort_division';
@@ -15,3 +16,8 @@ export const GET_SCHEDULE = 'get_schedule';
 
 //User Data actions
 export const UPDATE_UGAMELIST = 'update_ugamelist';
+export const UPDATE_GAMEPICKS = 'update_gamepicks';
+
+//Settings Actions
+export const UPDATE_PROGRESSBAR = 'update_progressbar';
+export const CHANGE_PICK_TYPE = 'change_pick_type';

@@ -3,8 +3,13 @@ import { Team } from './Team';
 
 const Teams = [];
 const TeamAbvrs = [];
+
+// const SOS2020 = [0.518, 0.525, 0.438, 0.525, 0.500, 0.509, 0.477, 0.461, 0.459, 0.512, 0.525, 0.504, 0.518, 0.502, 0.494, 0.500, 0.496, 0.492, 0.516, 0.529, 0.516, 0.537, 0.490, 0.482, 0.533, 0.486, 0.457, 0.509, 0.527, 0.502, 0.498, 0.465];
+const SOS2021 = [0.507, 0.454, 0.563, 0.478, 0.472, 0.550, 0.529, 0.518, 0.452, 0.471, 0.529, 0.542, 0.504, 0.478, 0.491, 0.511, 0.526, 0.493, 0.515, 0.471, 0.531, 0.489, 0.483, 0.474, 0.489, 0.430, 0.574, 0.511, 0.489, 0.465, 0.507, 0.504];
+
 for(let i = 0; i < T.length; i++) {
     Teams[i] = new Team(T[i]);
+    Teams[i].SOS = SOS2021[i];
     TeamAbvrs[i] = Teams[i].abrv;
 }
 
@@ -19,17 +24,6 @@ const CreateNFL = (Teams) => ({
     NFC_East: [Teams.DAL, Teams.NYG, Teams.PHI, Teams.WAS],
     NFC_West: [Teams.ARI, Teams.LAR, Teams.SEA, Teams.SF]
 });
-
-// const NFL = {
-//     AFC_North: [Teams[2], Teams[6], Teams[7], Teams[26]],
-//     AFC_South: [Teams[12], Teams[13], Teams[14], Teams[30]],
-//     AFC_East: [Teams[3], Teams[19], Teams[21], Teams[23]],
-//     AFC_West: [Teams[9], Teams[15], Teams[16], Teams[17]],
-//     NFC_North: [Teams[5], Teams[10], Teams[11], Teams[20]],
-//     NFC_South: [Teams[1], Teams[4], Teams[24], Teams[29]],
-//     NFC_East: [Teams[8], Teams[22], Teams[25], Teams[31]],
-//     NFC_West: [Teams[0], Teams[18], Teams[27], Teams[28]]
-// }
 
 // export { NFL, CreateNFL, Teams };
 export { CreateNFL, Teams, TeamAbvrs };

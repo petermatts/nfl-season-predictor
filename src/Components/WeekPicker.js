@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { ListGroup, ListGroupItem, UncontrolledTooltip } from 'reactstrap';
 import { GameButton } from './GameButton';
 import '../Teams/TeamColors.css';
-import './WeekPicker.css';
+import './CSS/WeekPicker.css';
 
 
 class WeekPicker extends Component {

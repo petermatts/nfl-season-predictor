@@ -9,7 +9,7 @@
  * ! 3 Best won-lost-tied percentage in common games
  * 4 Best won-lost-tied percentage in games played within the conference
  * ! 5 Strength of victory
- * ! 6 Strength of schedule
+ * 6 Strength of schedule
  * ! 7 Best combined ranking among conference teams in points scored and points allowed
  * ! 8 Best combined ranking among all teams in points scored and points allowed
  * ! 9 Best net points in common games
@@ -32,17 +32,17 @@ function compareDivision(a, b) {
             if(a.confPct !== b.confPct) {
                 return b.confPct - a.confPct;
             } else {
-                //SOS
-                // if(a.SOS !== b.SOS) {
-                //     return b.SOS - a.SOS;
-                // } else {
+                // SOS
+                if(a.SOS !== b.SOS) {
+                    return b.SOS - a.SOS;
+                } else {
                     //Coin toss
                     if(Math.random() < 0.50) {
                         return -1;
                     } else {
                         return 1;
                     }
-                //}
+                }
             }
         }
     }
@@ -64,7 +64,7 @@ function compareDivision(a, b) {
  * 2 Best won-lost-tied percentage in games played within the conference
  * ! 3 Best won-lost-tied percentage in common games, minimum of four
  * ! 4 Strength of victory
- * ! 5 Strength of schedule
+ * 5 Strength of schedule
  * ! 6 Best combined ranking among conference teams in points scored and points allowed
  * ! 7 Best combined ranking among all teams in points scored and points allowed
  * ! 8 Best net points in conference games
@@ -93,16 +93,16 @@ function compareConfrence(a, b, wc) {
                 return b.confPct - a.confPct;
             } else {
                 //SOS
-                // if(a.SOS !== b.SOS) {
-                //     return b.SOS - a.SOS;
-                // } else {
+                if(a.SOS !== b.SOS) {
+                    return b.SOS - a.SOS;
+                } else {
                     //Coin toss
                     if(Math.random() < 0.50) {
                         return -1;
                     } else {
                         return 1;
                     }
-                //}
+                }
             }
         }
     }

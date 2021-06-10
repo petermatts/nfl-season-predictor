@@ -3,7 +3,7 @@ import { ButtonGroup, Button, Progress } from 'reactstrap';
 import { connect } from 'react-redux';
 import { getGameGrid, getGameList, getSchedule } from '../Actions';
 import { WeekPicker } from  './WeekPicker';
-import './WeekHolder.css';
+import './CSS/WeekHolder.css';
 
 class weekholder extends PureComponent {
     constructor(props) {
@@ -73,12 +73,22 @@ class weekholder extends PureComponent {
         }
     }
 
+    renderPB(prog, tot, pct) {
+        if(this.props.settings.showProgress)
+            return (
+                <div>
+                    <div>{`Games Picked: ${prog}/${tot}`}</div>
+                    <Progress value={pct}>{prog<=12 ? '':`${pct.toFixed(2)}%`}</Progress>
+                </div>
+            );
+    }
+
     render() {
         const prog = this.props.userdata.gamespicked;
         let tot = 1;
         if(this.props.schedule.gamelist !== null)
             tot = this.props.schedule.gamelist.length;
-        const pct = prog/tot;
+        const pct = (prog/tot)*100;
 
         return (
             <div className="weekHolder">
@@ -89,16 +99,15 @@ class weekholder extends PureComponent {
                     </Button> */}
                 </ButtonGroup>
                 {this.showWeek()}
-                <div>{`Games Picked: ${prog}/${tot}`}</div>
-                <Progress value={pct}>{`${prog}/${tot}`}</Progress>
+                {this.renderPB(prog, tot, pct)}
             </div>
         );
     }
 }
 
 const mapStateToProps = (state) => {
-    const { schedule, userdata } = state;
-    return { schedule, userdata };
+    const { schedule, userdata, settings } = state;
+    return { schedule, userdata, settings };
 };
 
 const WeekHolder = connect(mapStateToProps, { getGameGrid, getGameList, getSchedule })(weekholder);

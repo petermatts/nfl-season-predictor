@@ -14,6 +14,18 @@
   color: white;
 }
 
+.App-subheader {
+  background-color: #D50A0A;
+  /* min-height: 100;
+  width: 100%; */
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(8px + 2vmin);
+  color: white;
+}
+
 .App-Body {
   /* background-color: #D3D3D3; */
   display: flex;
@@ -30,8 +42,13 @@
   justify-content: center;
 }
 
+.title {
+  flex: 1;
+}
+
 .App-Footer {
   background-color: gray;
+  align-self: flex-end;
 }
 
 .App-logo {
