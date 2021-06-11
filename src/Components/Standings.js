@@ -73,48 +73,53 @@ class Standing extends Component {
             else if (this.props.confrence)
                 list = sortConfrence(this.state.teamList);
 
-            const stand = list.map((team) => {
-                return (
-                    <tr key={++rank}>
-                        {/* <th scope="row" className={this.playColor(rank)}><small>{rank}</small></th> */}
-                        <th scope="row"><small>{rank}</small></th>
-                        <td><small>{team.abrv}</small></td>
-                        <td><small>{team.record}</small></td>
-                        <td><small>{team.pct}</small></td>
-                        {/* <td><small>{team.streak}</small></td> */}
-                        <td><small>{team.confRecord}</small></td>
-                        <td><small>{team.divRecord}</small></td>
-                        <td><small>{team.SOS.toFixed(3)}</small></td>
-                    </tr>
-                )
-            });
+            const AS = this.props.settings.advancedStandings;
+            const playoffs = this.props.settings.showplayoffpic;
+
+            let stand = null;
+            if(!playoffs && this.props.division===undefined) {
+                stand = list.map((team) => {
+                    return (
+                        <tr key={++rank}>
+                            {rank < 8 ? <th scope="row"><small><b>{rank}</b></small></th> : <th scope="row"><small>{rank}</small></th>}
+                            <td><small>{team.abrv}</small></td>
+                            <td><small>{team.record}</small></td>
+                            <td><small>{team.pct}</small></td>
+                            {/* <td><small>{team.streak}</small></td> */}
+                            {AS > 1 ? <td><small>{team.confRecord}</small></td> : null}
+                            {AS > 1 ? <td><small>{team.divRecord}</small></td> : null}
+                            {AS > 2 ? <td><small>{team.SOS.toFixed(3)}</small></td> : null}
+                            {AS > 2 ? <td><small>{team.SOV.toFixed(3)}</small></td> : null}
+                        </tr>
+                    );
+                });
+            } else {
+                stand = list.slice(0,7).map((team) => {
+                    return (
+                        <tr key={++rank}>
+                            <th scope="row"><small><b>{rank}</b></small></th>
+                            <td><small>{team.abrv}</small></td>
+                            <td><small>{team.record}</small></td>
+                            <td><small>{team.pct}</small></td>
+                            {/* <td><small>{team.streak}</small></td> */}
+                            {AS > 1 ? <td><small>{team.confRecord}</small></td> : null}
+                            {AS > 1 ? <td><small>{team.divRecord}</small></td> : null}
+                            {AS > 2 ? <td><small>{team.SOS.toFixed(3)}</small></td> : null}
+                            {AS > 2 ? <td><small>{team.SOV.toFixed(3)}</small></td> : null}
+                        </tr>
+                    );
+                });
+            }
+           
 
             return stand;
         }
     }
 
-    //? Dont need
-    playColor(rank) {
-        if(!this.props.division) {
-            switch (rank) {
-                case 1:
-                    return 'seed1';
-                case 2:
-                case 3:
-                case 4:
-                    return 'seed2-4';
-                case 5:
-                case 6:
-                case 7:
-                    return 'seed5-7';
-                default:
-                    return '';
-            }
-        } 
-    }
 
     render() {
         let header = '';
+        const AS = this.props.settings.advancedStandings;
         if(this.props.confrence && this.props.division)
             header = `${this.props.confrence} ${this.props.division}`;
         else if (this.props.confrence)
@@ -131,9 +136,10 @@ class Standing extends Component {
                             <th>Record</th>
                             <th>Pct</th>
                             {/* <th>Strk</th> */}
-                            <th>Conf</th>
-                            <th>Div</th>
-                            <th>SOS</th>
+                            {AS > 1 ? <th>Conf</th> : null}
+                            {AS > 1 ? <th>Div</th> : null}
+                            {AS > 2 ? <th>SOS</th> : null}
+                            {AS > 2 ? <th>SOV</th> : null}
                         </tr>
                     </thead>
                     <tbody>
@@ -146,8 +152,8 @@ class Standing extends Component {
 }
 
 const mapStateToProps = (state) => {
-    const { NFL } = state;
-    return { NFL };
+    const { NFL, settings } = state;
+    return { NFL, settings };
 };
 
 const Standings = connect(mapStateToProps)(Standing);

@@ -10,8 +10,7 @@ export default (state = INITIAL_STATE, action) => {
         case GAME_RESULT_TIE:
             return { ...state, [action.payload.home.abrv]: action.payload.home, [action.payload.away.abrv]: action.payload.away };
         case UPDATE_SOV:
-            console.log('anything happening?');
-            return { ...state, [action.payload.abrv]: action.payload.SOV };
+            return { ...state, [action.payload.abrv]: action.payload.otherTeam };
         default:
             const init = {};
             for(let i = 0; i < Teams.length; i++) {

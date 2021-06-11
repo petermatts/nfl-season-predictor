@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { Button, ButtonGroup, Popover, PopoverHeader, PopoverBody } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
-import { updatePB, changePickType } from '../Actions';
+import { updatePB, changePickType, standingsDetail, updatePlayoffPic } from '../Actions';
 import './CSS/SettingsMenu.css';
 
 class Settings extends Component {
@@ -13,7 +13,71 @@ class Settings extends Component {
     }
 
     comingSoon() {
-        return <h6>Cooming Soon</h6>
+        return <h6>Coming Soon!</h6>
+    }
+
+    renderPB(settings) {
+        return (
+            <div className="menu-item">
+                Show Progress Bar:
+                <Button
+                    size='sm'
+                    className="item-button"
+                    color={settings.showProgress ? 'success':'danger'}
+                    onClick={() => {this.props.updatePB()}}
+                >
+                    {settings.showProgress ? 'On':'Off'}
+                </Button>
+            </div>
+        );
+    }
+
+    renderStandingsSettings(settings) {
+        return (
+            <div>
+                <h6>Standings</h6>
+                <div className="menu-item">
+                    Detail:
+                    <ButtonGroup>
+                        <Button
+                            size='sm'
+                            className="item-button"
+                            color={settings.advancedStandings===1 ? 'primary':'secondary'}
+                            onClick={() => {this.props.standingsDetail(1)}}
+                        >
+                            Simple
+                        </Button>
+                        <Button
+                            size='sm'
+                            className="item-button"
+                            color={settings.advancedStandings===2 ? 'primary':'secondary'}
+                            onClick={() => {this.props.standingsDetail(2)}}
+                        >
+                            Moderate
+                        </Button>
+                        <Button
+                            size='sm'
+                            className="item-button"
+                            color={settings.advancedStandings===3 ? 'primary':'secondary'}
+                            onClick={() => {this.props.standingsDetail(3)}}
+                        >
+                            High
+                        </Button>
+                    </ButtonGroup>
+                </div>
+                <div className="menu-item">
+                    Only Playoff Teams:
+                    <Button
+                    size='sm'
+                    className="item-button"
+                    color={settings.showplayoffpic ? 'success':'danger'}
+                    onClick={() => {this.props.updatePlayoffPic()}}
+                >
+                    {settings.showplayoffpic ? 'On':'Off'}
+                </Button>
+                </div>
+            </div>
+        );
     }
 
     render() {
@@ -39,17 +103,9 @@ class Settings extends Component {
                         </div>
                     </PopoverHeader>
                     <PopoverBody>
-                        <div className="menu-item">
-                            Show Progress Bar:
-                            <Button
-                                size='sm'
-                                className="item-button"
-                                color={settings.showProgress ? 'success':'danger'}
-                                onClick={() => {this.props.updatePB()}}
-                            >
-                                {settings.showProgress ? 'On':'Off'}
-                            </Button>
-                        </div>
+                        {this.renderPB(settings)}
+                        <hr />
+                        {this.renderStandingsSettings(settings)}
                         <hr />
                         {this.comingSoon()}
                         <div className="menu-item">
@@ -73,35 +129,6 @@ class Settings extends Component {
                                 </Button>
                             </ButtonGroup>
                         </div>
-                        {/* <div className="menu-item">
-                            Standings Detail:
-                            <ButtonGroup>
-                                <Button disabled
-                                    size='sm'
-                                    className="item-button"
-                                    color={settings.pickByTeam ? 'danger':'success'}
-                                    onClick={() => {this.props.changePickType()}}
-                                >
-                                    Low
-                                </Button>
-                                <Button disabled
-                                    size='sm'
-                                    className="item-button"
-                                    color={settings.pickByTeam ? 'success':'danger'}
-                                    onClick={() => {this.props.changePickType()}}
-                                >
-                                    Medium
-                                </Button>
-                                <Button disabled
-                                    size='sm'
-                                    className="item-button"
-                                    color={settings.pickByTeam ? 'danger':'success'}
-                                    onClick={() => {this.props.changePickType()}}
-                                >
-                                    High
-                                </Button>
-                            </ButtonGroup>
-                        </div> */}
                     </PopoverBody>
                 </Popover>
             </div>
@@ -114,6 +141,6 @@ const mapStateToProps = (state) => {
     return { settings }
 }
 
-const SettingsMenu = connect(mapStateToProps, { updatePB, changePickType })(Settings);
+const SettingsMenu = connect(mapStateToProps, { updatePB, changePickType, standingsDetail, updatePlayoffPic })(Settings);
 
 export { SettingsMenu };

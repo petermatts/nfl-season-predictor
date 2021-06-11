@@ -8,7 +8,7 @@
  * 2 Best won-lost-tied percentage in games played within the division
  * ! 3 Best won-lost-tied percentage in common games
  * 4 Best won-lost-tied percentage in games played within the conference
- * ! 5 Strength of victory
+ * 5 Strength of victory
  * 6 Strength of schedule
  * ! 7 Best combined ranking among conference teams in points scored and points allowed
  * ! 8 Best combined ranking among all teams in points scored and points allowed
@@ -20,27 +20,40 @@
  * @param {team} b
  */
 function compareDivision(a, b) {
-    //win pct
+    // 0 win pct
     if(a.pct !== b.pct)
-        return b.pct-a.pct;
+        return b.pct - a.pct;
     else {
-        //Division pct
-        if(a.divPct !== b.divPct) {
-            return b.divPct - a.divPct;
+        // 1 head to head
+        const a_wins = a.wins.filter((win) => win===b.abrv).length;
+        const b_wins = b.wins.filter((win) => win===a.abrv).length;
+
+        if(a_wins !== b_wins) {
+            return b_wins - a_wins;
         } else {
-            //Confrence pct
-            if(a.confPct !== b.confPct) {
-                return b.confPct - a.confPct;
+            // 2 Division pct
+            if(a.divPct !== b.divPct) {
+                return b.divPct - a.divPct;
             } else {
-                // SOS
-                if(a.SOS !== b.SOS) {
-                    return b.SOS - a.SOS;
+                // 4 Confrence pct
+                if(a.confPct !== b.confPct) {
+                    return b.confPct - a.confPct;
                 } else {
-                    //Coin toss
-                    if(Math.random() < 0.50) {
-                        return -1;
+                    // 5 SOV
+                    if(a.SOV !== b.SOV) {
+                        return b.SOV - a.SOV;
                     } else {
-                        return 1;
+                        // 6 SOS
+                        if(a.SOS !== b.SOS) {
+                            return b.SOS - a.SOS;
+                        } else {
+                            // 12 Coin toss
+                            if(Math.random() < 0.50) {
+                                return -1;
+                            } else {
+                                return 1;
+                            }
+                        }
                     }
                 }
             }
@@ -63,7 +76,7 @@ function compareDivision(a, b) {
  * 1 Head-to-head, if applicable
  * 2 Best won-lost-tied percentage in games played within the conference
  * ! 3 Best won-lost-tied percentage in common games, minimum of four
- * ! 4 Strength of victory
+ * 4 Strength of victory
  * 5 Strength of schedule
  * ! 6 Best combined ranking among conference teams in points scored and points allowed
  * ! 7 Best combined ranking among all teams in points scored and points allowed
@@ -76,11 +89,11 @@ function compareDivision(a, b) {
  * @param {*} b 
  */
 function compareConfrence(a, b, wc) {
-    //win pct
+    // 0 win pct
     if(a.pct !== b.pct) {
         return b.pct - a.pct;
     } else {
-        //head to head
+        // 1 head to head
         const winnerA = a.wins.includes(b);
         const winnerB = b.wins.includes(a);
         if(winnerA && !winnerB)
@@ -88,19 +101,24 @@ function compareConfrence(a, b, wc) {
         else if (!winnerA && winnerB)
             return 1;
         else {
-            //Confrence pct
+            // 2 Confrence pct
             if(a.confPct !== b.confPct) {
                 return b.confPct - a.confPct;
             } else {
-                //SOS
-                if(a.SOS !== b.SOS) {
-                    return b.SOS - a.SOS;
+                // 4 SOV
+                if(a.SOV !== b.SOV) {
+                    return b.SOV - a.SOV;
                 } else {
-                    //Coin toss
-                    if(Math.random() < 0.50) {
-                        return -1;
+                    // 5 SOS
+                    if(a.SOS !== b.SOS) {
+                        return b.SOS - a.SOS;
                     } else {
-                        return 1;
+                        // 11 Coin toss
+                        if(Math.random() < 0.50) {
+                            return -1;
+                        } else {
+                            return 1;
+                        }
                     }
                 }
             }

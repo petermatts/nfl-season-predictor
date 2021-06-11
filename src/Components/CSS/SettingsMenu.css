@@ -32,6 +32,7 @@
     flex-direction: row;
     align-items: center;
     text-align: center;
+    margin: 5px;
 }
 
 .item-button {

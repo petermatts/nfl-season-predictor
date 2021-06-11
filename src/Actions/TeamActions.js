@@ -27,8 +27,8 @@ export const gameResult = (result, gameId) => (dispatch, getState) => {
 
         adjust(winner, state);
         adjust(loser, state);
-        // updateSOV(winner, state.NFL, dispatch);
-        // updateSOV(loser, state.NFL, dispatch);
+        updateSOV(winner, state.NFL, dispatch);
+        updateSOV(loser, state.NFL, dispatch);
 
         dispatch({
             type: UPDATE_GAMEPICKS,
@@ -63,8 +63,8 @@ export const gameResult = (result, gameId) => (dispatch, getState) => {
 
         adjust(home, state);
         adjust(away, state);
-        // updateSOV(home, state.NFL, dispatch);
-        // updateSOV(away, state.NFL, dispatch);
+        updateSOV(home, state.NFL, dispatch);
+        updateSOV(away, state.NFL, dispatch);
 
         dispatch({
             type: UPDATE_GAMEPICKS,
@@ -189,23 +189,24 @@ const getConfRecord_Pct = (team, League) => {
 };
 
 const updateSOV = (team, League, dispatch) => {
-    //! needs work
     const loses = team.loses;
     for(let i = 0; i < loses.length; i++) {
-        const wins = League[loses[i]].wins;
+        const otherTeam = League[loses[i]];
+        const wins = otherTeam.wins;
         const len = wins.length;
         let sum = 0;
+        
         for(let j = 0; j < wins.length; j++) {
             if(wins[j]===team.abrv)
-                sum += team.pct;
+                sum += parseFloat(team.pct);
             else
-                sum += League[wins[j]].pct;
+                sum += parseFloat(League[wins[j]].pct);
         }
-        const SOV = (sum/len).toFixed(3);
+        otherTeam.SOV = parseFloat((sum/len).toFixed(3));
         
         dispatch({
             type: UPDATE_SOV,
-            payload: { abrv: loses[i], SOV}
+            payload: { abrv: loses[i], otherTeam }
         });
     }
 };
