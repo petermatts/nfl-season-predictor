@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { SettingsMenu, WeekHolder, StandingsHolder } from './Components';
-import { getSchedule } from './Schedule/ScheduleReader';
+import { getGameGrid, getGameList, getSchedule } from './Actions';
+import { SettingsMenu, WeekHolder, StandingsHolder, TeamHolder } from './Components';
+import { scrapeSchedule } from './Schedule/ScheduleReader';
 import './App.css'
 
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -9,15 +10,16 @@ import './App.css'
 /* <FontAwesomeIcon icon={faFootballBall} rotation={45} /> */
 
 class Home extends Component { 
-    // constructor(props) {
-    //     super(props);
-    // }
+    componentDidMount() {
+        this.props.getGameGrid(2021);
+        this.props.getGameList(2021);
+        this.props.getSchedule(2021);
+    }
 
-    //
     scrapeButton() {
         return (
             <button onClick={() => {
-                getSchedule(2021);
+                scrapeSchedule(2021);
             }}>
                 scrape
             </button>
@@ -26,7 +28,7 @@ class Home extends Component {
 
     pickStyle() {
         if(this.props.settings.pickByTeam) {
-            return null;
+            return <TeamHolder />;
         } else {
             return <WeekHolder />
         }
@@ -64,6 +66,6 @@ const mapStateToProps = (state) => {
     return { settings };
 };
 
-const AppHome = connect(mapStateToProps, {})(Home);
+const AppHome = connect(mapStateToProps, { getGameGrid, getGameList, getSchedule })(Home);
 
 export { AppHome };

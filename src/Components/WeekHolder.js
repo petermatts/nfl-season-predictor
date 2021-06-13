@@ -1,16 +1,14 @@
 import React, { PureComponent } from 'react';
-import { ButtonGroup, Button, Progress } from 'reactstrap';
+import { ButtonGroup, Button } from 'reactstrap';
 import { connect } from 'react-redux';
-import { getGameGrid, getGameList, getSchedule } from '../Actions';
+// import { getGameGrid, getGameList, getSchedule } from '../Actions';
 import { WeekPicker } from  './WeekPicker';
+import { ProgressBar } from './ProgressBar';
 import './CSS/WeekHolder.css';
 
 class weekholder extends PureComponent {
     constructor(props) {
         super(props);
-        props.getGameGrid(2021);
-        props.getGameList(2021);
-        props.getSchedule(2021);
         this.state = { selected: 1 };
     }
 
@@ -73,23 +71,7 @@ class weekholder extends PureComponent {
         }
     }
 
-    renderPB(prog, tot, pct) {
-        if(this.props.settings.showProgress)
-            return (
-                <div>
-                    <div>{`Games Picked: ${prog}/${tot}`}</div>
-                    <Progress value={pct}>{prog<=12 ? '':`${pct.toFixed(2)}%`}</Progress>
-                </div>
-            );
-    }
-
     render() {
-        const prog = this.props.userdata.gamespicked;
-        let tot = 1;
-        if(this.props.schedule.gamelist !== null)
-            tot = this.props.schedule.gamelist.length;
-        const pct = (prog/tot)*100;
-
         return (
             <div className="weekHolder">
                 <ButtonGroup className="buttonHolder">
@@ -99,7 +81,7 @@ class weekholder extends PureComponent {
                     </Button> */}
                 </ButtonGroup>
                 {this.showWeek()}
-                {this.renderPB(prog, tot, pct)}
+                <ProgressBar />
             </div>
         );
     }
@@ -110,5 +92,5 @@ const mapStateToProps = (state) => {
     return { schedule, userdata, settings };
 };
 
-const WeekHolder = connect(mapStateToProps, { getGameGrid, getGameList, getSchedule })(weekholder);
+const WeekHolder = connect(mapStateToProps, {})(weekholder);
 export { WeekHolder };

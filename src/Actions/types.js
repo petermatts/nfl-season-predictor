@@ -17,9 +17,11 @@ export const GET_SCHEDULE = 'get_schedule';
 //User Data actions
 export const UPDATE_UGAMELIST = 'update_ugamelist';
 export const UPDATE_GAMEPICKS = 'update_gamepicks';
+export const ADD_BYE = 'add_bye';
 
 //Settings Actions
 export const UPDATE_PROGRESSBAR = 'update_progressbar';
 export const CHANGE_PICK_TYPE = 'change_pick_type';
 export const UPDATE_STANDINGS_DETAILS = 'update_standings_detail';
 export const UPDATE_PLAYOFF_PIC = 'update_playoff_pic';
+export const CHANGE_TEAM_PICK = 'change_team_pick';

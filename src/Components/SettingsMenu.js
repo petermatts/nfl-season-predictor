@@ -111,18 +111,18 @@ class Settings extends Component {
                         <div className="menu-item">
                             Pick By:
                             <ButtonGroup>
-                                <Button disabled
+                                <Button
                                     size='sm'
                                     className="item-button"
-                                    color={settings.pickByTeam ? 'danger':'success'}
+                                    color={settings.pickByTeam ? 'secondary':'primary'}
                                     onClick={() => {this.props.changePickType()}}
                                 >
                                     Week
                                 </Button>
-                                <Button disabled
+                                <Button
                                     size='sm'
                                     className="item-button"
-                                    color={settings.pickByTeam ? 'success':'danger'}
+                                    color={settings.pickByTeam ? 'primary':'secondary'}
                                     onClick={() => {this.props.changePickType()}}
                                 >
                                     Team

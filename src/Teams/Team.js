@@ -104,4 +104,75 @@ function teamHash(id) {
     }
 }
 
-export { Team, teamHash };
+function teamReverseHash(hash) {
+    switch(hash) {
+        case 0:
+            return 'ARI';
+        case 1:
+            return 'ATL';
+        case 2:
+            return 'BAL';
+        case 3:
+            return 'BUF';
+        case 4:
+            return 'CAR';
+        case 5:
+            return 'CHI';
+        case 6:
+            return 'CIN';
+        case 7:
+            return 'CLE';
+        case 8:
+            return 'DAL';
+        case 9:
+            return 'DEN';
+        case 10:
+            return 'DET';
+        case 11:
+            return 'GB';
+        case 12:
+            return 'HOU';
+        case 13:
+            return 'IND';
+        case 14:
+            return 'JAX';
+        case 15:
+            return 'KC';
+        case 16:
+            return 'LV';
+        case 17:
+            return 'LAC';
+        case 18:
+            return 'LAR';
+        case 19:
+            return 'MIA';
+        case 20:
+            return 'MIN';
+        case 21:
+            return 'NE';
+        case 22:
+            return 'NO';
+        case 23:
+            return 'NYG';
+        case 24:
+            return 'NYJ';
+        case 25:
+            return 'PHI';
+        case 26:
+            return 'PIT';
+        case 27:
+            return 'SEA';
+        case 28:
+            return 'SF';
+        case 29:
+            return 'TB';
+        case 30:
+            return 'TEN';
+        case 31:
+            return 'WAS';
+        default:
+            return 'Error: Not a team';
+    }
+}
+
+export { Team, teamHash, teamReverseHash };

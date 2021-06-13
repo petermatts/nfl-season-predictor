@@ -1,4 +1,10 @@
-import { UPDATE_PROGRESSBAR, CHANGE_PICK_TYPE, UPDATE_STANDINGS_DETAILS, UPDATE_PLAYOFF_PIC } from './types';
+import { 
+    UPDATE_PROGRESSBAR,
+    CHANGE_PICK_TYPE,
+    UPDATE_STANDINGS_DETAILS,
+    UPDATE_PLAYOFF_PIC,
+    CHANGE_TEAM_PICK
+} from './types';
 
 export const updatePB = () => {
     return {
@@ -24,3 +30,10 @@ export const updatePlayoffPic = () => {
         type: UPDATE_PLAYOFF_PIC
     };
 }
+
+export const changeTeamPick = (newPick) => {
+    return {
+        type: CHANGE_TEAM_PICK,
+        payload: newPick
+    };
+};

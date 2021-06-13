@@ -6,3 +6,4 @@ export const tiegame = 3;
 export const win = 'W';
 export const loss = 'L';
 export const tie = 'T';
+export const BYE = 'BYE';

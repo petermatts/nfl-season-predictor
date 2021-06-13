@@ -3,7 +3,7 @@ import cheerio from 'cheerio';
 import firebase from 'firebase';
 import { teamHash } from '../Teams/Team';
 
-async function getSchedule(year) {
+async function scrapeSchedule(year) {
     const gameList = [];
     const schedule = {};
     const gameGrid = new Array(32);
@@ -90,4 +90,4 @@ function game(away, home, d, hash) {
     return { home, away, day, date, time, primetime, picked: false, winner: null, hash };
 };
 
-export { game, getSchedule };
+export { game, scrapeSchedule };

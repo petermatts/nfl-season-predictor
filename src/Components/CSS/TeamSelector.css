@@ -1,0 +1,46 @@
+.confrence {
+    display: flex;
+    flex-direction: row;
+}
+
+.league {
+    display: flex;
+    flex-direction: row;
+    margin:  10px;
+    width: 100%;
+}
+
+.division {
+    margin: 5px;
+}
+
+.division-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.team-button {
+    box-shadow: 0px 2px 2px 0px #808080;
+    color: white;
+    border-radius: 10px;
+    width: 60px;
+    height: 40px;
+    margin: 5px;
+    font-weight: 500;
+    outline: none !important;
+}
+.team-button:hover {
+    transform: translateY(-1px);
+    transition: 0.5s 
+}
+.team-button:active {
+    position: relative;
+    top: 2px;
+}
+
+.glow {
+    box-shadow: 0px 0px 2.5px 5px white;
+    font-weight: bolder;
+    transition: 0.5s
+}

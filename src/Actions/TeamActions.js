@@ -2,7 +2,7 @@ import { GAME_RESULT, GAME_RESULT_TIE, UPDATE_GAMEPICKS, UPDATE_SOV } from './ty
 import { tiegame } from './../Actions/Constants';
 
 export const gameResult = (result, gameId) => (dispatch, getState) => {
-    // console.log(result, pressed, tie);
+    // console.log(result);
     const state = getState();
     const isTie = state.userdata.gamelist[gameId]===tiegame;
     const gamepick = state.userdata.gamepicks[gameId];

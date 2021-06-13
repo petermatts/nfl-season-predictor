@@ -38,6 +38,8 @@ class GameSelector extends PureComponent {
         const h_abrv = this.props.game.home;
         const a_abrv = this.props.game.away;
 
+        console.log(h_abrv, a_abrv);
+
         this.setState({
             hometeam: this.props.NFL[h_abrv], 
             awayteam: this.props.NFL[a_abrv]
@@ -86,16 +88,16 @@ class GameSelector extends PureComponent {
     
             return (
                 <ButtonGroup className="button-group">
-                    <button 
-                        className={`HomeTeam-Button ${home.abrv} ${glowHome}`}
-                        disabled={this.state.homepress}
+                    <button
+                        className={`AwayTeam-Button ${away.abrv} ${glowAway}`}
+                        disabled={this.state.awaypress}
                         onClick={() => {
-                            this.props.updateUserGamePicks(gameId, homewin, gridLoc, week);
-                            this.props.gameResult({ winner: home, loser: away }, gameId);
-                            this.setState({ homepress: true, awaypress: false, tiepress: false });
+                            this.props.updateUserGamePicks(gameId, awaywin, gridLoc, week);
+                            this.props.gameResult({winner: away, loser: home }, gameId);
+                            this.setState({ awaypress: true, tiepress: false, homepress: false });    
                         }}
                     >
-                        {home.abrv}
+                        {away.abrv}
                     </button>
                     <button 
                         className={`Tie-Button ${glowTie}`}
@@ -108,16 +110,16 @@ class GameSelector extends PureComponent {
                     >
                         @
                     </button>
-                    <button
-                        className={`AwayTeam-Button ${away.abrv} ${glowAway}`}
-                        disabled={this.state.awaypress}
+                    <button 
+                        className={`HomeTeam-Button ${home.abrv} ${glowHome}`}
+                        disabled={this.state.homepress}
                         onClick={() => {
-                            this.props.updateUserGamePicks(gameId, awaywin, gridLoc, week);
-                            this.props.gameResult({winner: away, loser: home }, gameId);
-                            this.setState({ awaypress: true, tiepress: false, homepress: false });    
+                            this.props.updateUserGamePicks(gameId, homewin, gridLoc, week);
+                            this.props.gameResult({ winner: home, loser: away }, gameId);
+                            this.setState({ homepress: true, awaypress: false, tiepress: false });
                         }}
                     >
-                        {away.abrv}
+                        {home.abrv}
                     </button>
                 </ButtonGroup>
             );

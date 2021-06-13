@@ -1,4 +1,4 @@
-import { UPDATE_UGAMELIST } from './types';
+import { UPDATE_UGAMELIST, ADD_BYE } from './types';
 
 /**
  * pick = 0 => unpicked 
@@ -13,4 +13,11 @@ export const updateUserGamePicks = (gameId, pick, gridLocs, week) => {
         type: UPDATE_UGAMELIST,
         payload: { key: gameId, gridLocs, pick, week }
     }
+};
+
+export const addBye = (pickTeam, teamSchedulePicks) => {
+    return {
+        type: ADD_BYE,
+        payload: { pickTeam, teamSchedulePicks }
+    };
 };
