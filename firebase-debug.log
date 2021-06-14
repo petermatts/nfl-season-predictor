@@ -1,0 +1,83 @@
+[debug] [2021-06-14T20:10:08.793Z] ----------------------------------------------------------------------
+[debug] [2021-06-14T20:10:08.794Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\mpete\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2021-06-14T20:10:08.795Z] CLI Version:   9.12.1
+[debug] [2021-06-14T20:10:08.795Z] Platform:      win32
+[debug] [2021-06-14T20:10:08.795Z] Node Version:  v13.10.1
+[debug] [2021-06-14T20:10:08.795Z] Time:          Mon Jun 14 2021 16:10:08 GMT-0400 (Eastern Daylight Time)
+[debug] [2021-06-14T20:10:08.795Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2021-06-14T20:10:08.800Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-06-14T20:10:08.800Z] > authorizing via signed-in user (mpeters0514@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Users\mpete\Documents\Projects\nfl-season-predictor
+
+Before we get started, keep in mind:
+
+  * You are initializing in an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[info] i  .firebaserc already has a default project, using nfl-season-predictor. 
+[debug] [2021-06-14T20:10:15.548Z] > refreshing access token with scopes: []
+[debug] [2021-06-14T20:10:15.548Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-06-14T20:10:15.679Z] <<< HTTP RESPONSE 200 {"cache-control":"no-cache, no-store, max-age=0, must-revalidate","date":"Mon, 14 Jun 2021 20:10:17 GMT","pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-06-14T20:10:15.688Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/nfl-season-predictor [none]
+[debug] [2021-06-14T20:10:15.960Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/nfl-season-predictor 200
+[debug] [2021-06-14T20:10:15.960Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/nfl-season-predictor {"projectId":"nfl-season-predictor","projectNumber":"5313500236","displayName":"nfl-season-predictor","name":"projects/nfl-season-predictor","resources":{"hostingSite":"nfl-season-predictor","realtimeDatabaseInstance":"nfl-season-predictor-default-rtdb"},"state":"ACTIVE"}
+[info] 
+=== Database Setup
+[info] i  database: ensuring required API firebasedatabase.googleapis.com is enabled... 
+[debug] [2021-06-14T20:10:15.963Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-06-14T20:10:15.963Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-06-14T20:10:16.092Z] <<< HTTP RESPONSE 200 {"cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","date":"Mon, 14 Jun 2021 20:10:17 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-06-14T20:10:16.099Z] >>> HTTP REQUEST GET https://serviceusage.googleapis.com/v1/projects/nfl-season-predictor/services/firebasedatabase.googleapis.com  
+ 
+[debug] [2021-06-14T20:10:16.533Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Mon, 14 Jun 2021 20:10:18 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] +  database: required API firebasedatabase.googleapis.com is enabled 
+[info] 
+[debug] [2021-06-14T20:10:16.535Z] > refreshing access token with scopes: []
+[debug] [2021-06-14T20:10:16.535Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-06-14T20:10:16.670Z] <<< HTTP RESPONSE 200 {"expires":"Mon, 01 Jan 1990 00:00:00 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","date":"Mon, 14 Jun 2021 20:10:18 GMT","pragma":"no-cache","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-06-14T20:10:16.678Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/nfl-season-predictor [none]
+[debug] [2021-06-14T20:10:16.901Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/nfl-season-predictor 200
+[debug] [2021-06-14T20:10:16.901Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/nfl-season-predictor {"projectId":"nfl-season-predictor","projectNumber":"5313500236","displayName":"nfl-season-predictor","name":"projects/nfl-season-predictor","resources":{"hostingSite":"nfl-season-predictor","realtimeDatabaseInstance":"nfl-season-predictor-default-rtdb"},"state":"ACTIVE"}
+[debug] [2021-06-14T20:10:16.901Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2021-06-14T20:10:16.901Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ <request body omitted>
+[debug] [2021-06-14T20:10:17.041Z] <<< HTTP RESPONSE 200 {"date":"Mon, 14 Jun 2021 20:10:18 GMT","cache-control":"no-cache, no-store, max-age=0, must-revalidate","pragma":"no-cache","expires":"Mon, 01 Jan 1990 00:00:00 GMT","content-type":"application/json; charset=utf-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","server":"scaffolding on HTTPServer2","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[debug] [2021-06-14T20:10:17.050Z] >>> HTTP REQUEST GET https://firebasedatabase.googleapis.com/v1beta/projects/nfl-season-predictor/locations/-/instances/nfl-season-predictor-default-rtdb  
+ 
+[debug] [2021-06-14T20:10:17.402Z] <<< HTTP RESPONSE 200 {"content-type":"application/json; charset=UTF-8","vary":"X-Origin, Referer, Origin,Accept-Encoding","date":"Mon, 14 Jun 2021 20:10:19 GMT","server":"ESF","cache-control":"private","x-xss-protection":"0","x-frame-options":"SAMEORIGIN","x-content-type-options":"nosniff","alt-svc":"h3=\":443\"; ma=2592000,h3-29=\":443\"; ma=2592000,h3-T051=\":443\"; ma=2592000,h3-Q050=\":443\"; ma=2592000,h3-Q046=\":443\"; ma=2592000,h3-Q043=\":443\"; ma=2592000,quic=\":443\"; ma=2592000; v=\"46,43\"","accept-ranges":"none","transfer-encoding":"chunked"}
+[info] 
+[info] Firebase Realtime Database Security Rules allow you to define how your data should be
+[info] structured and when your data can be read from and written to.
+[info] 
+[debug] [2021-06-14T20:10:29.287Z] >>> HTTP REQUEST GET https://nfl-season-predictor-default-rtdb.firebaseio.com/.settings/rules.json  
+ 
+[debug] [2021-06-14T20:10:29.531Z] <<< HTTP RESPONSE 200 {"server":"nginx","date":"Mon, 14 Jun 2021 20:10:31 GMT","content-type":"application/json; charset=utf-8","content-length":"59","connection":"keep-alive","access-control-allow-origin":"*","cache-control":"no-cache","strict-transport-security":"max-age=31556926; includeSubDomains; preload"}
+[info] +  Database Rules for nfl-season-predictor-default-rtdb have been written to database.rules.json. 
+[info] Future modifications to database.rules.json will update Realtime Database Security Rules when you run
+[info] firebase deploy.
+[info] 
+=== Hosting Setup
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 
