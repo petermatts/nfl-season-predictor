@@ -38,7 +38,7 @@ class GameSelector extends PureComponent {
         const h_abrv = this.props.game.home;
         const a_abrv = this.props.game.away;
 
-        console.log(h_abrv, a_abrv);
+        // console.log(h_abrv, a_abrv);
 
         this.setState({
             hometeam: this.props.NFL[h_abrv], 

@@ -1,3 +1,15 @@
+.title {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.title-piece {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+}
+
 .gamerow {
     margin-top: -20px;
     margin-bottom: -30px;

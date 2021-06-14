@@ -28,13 +28,14 @@ class Picker extends Component {
                 </div>
             );
         } else {
+            const id = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 7);
             const {day, date, time} = game;
             const dayAbrv = day==='Thursday' ? day.substring(0,4) : day.substring(0,3);
             if(day==='Sunday' && time==='8:20 PM') {
                 return (
                     <div>
-                        <b id="snf">{`Week ${week} SNF`}</b>
-                        <UncontrolledTooltip target="snf" placement="top">
+                        <b id={`snf${id}`}>{`Week ${week} SNF`}</b>
+                        <UncontrolledTooltip target={`snf${id}`} placement="top">
                             {`${dayAbrv}  ${date}  ${time}`}
                         </UncontrolledTooltip>
                     </div>
@@ -42,8 +43,8 @@ class Picker extends Component {
             } else if(day==='Thursday' && time==='8:20 PM') {
                 return (
                     <div>
-                        <b id="tnf">{`Week ${week} TNF`}</b>
-                        <UncontrolledTooltip target="tnf" placement="top">
+                        <b id={`tnf${id}`}>{`Week ${week} TNF`}</b>
+                        <UncontrolledTooltip target={`tnf${id}`} placement="top">
                             {`${dayAbrv}  ${date}  ${time}`}
                         </UncontrolledTooltip>
                     </div>
@@ -51,8 +52,8 @@ class Picker extends Component {
             } else if(day==='Monday' && time==='8:15 PM') {
                 return (
                     <div>
-                        <b id="mnf">{`Week ${week} MNF`}</b>
-                        <UncontrolledTooltip target="mnf" placement="top">
+                        <b id={`mnf${id}`}>{`Week ${week} MNF`}</b>
+                        <UncontrolledTooltip target={`mnf${id}`} placement="top">
                             {`${dayAbrv}  ${date}  ${time}`}
                         </UncontrolledTooltip>
                     </div>
@@ -64,7 +65,6 @@ class Picker extends Component {
                     </div>
                 );
             } else {
-                const id = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 5);
                 return (
                     <div>
                         <b id={`${id}`}>{`Week ${week}`}</b>
@@ -130,8 +130,10 @@ class Picker extends Component {
                 <div>
                     <ListGroup>
                         <ListGroupItem color="secondary">
-                            <div>
-                                <h5><b>{team.FullName}</b></h5>
+                            <div className="title">
+                                <div className="title-piece">{`${team.Confrence} ${team.Division}`}</div>
+                                <h5 className="title-piece"><b>{team.FullName}</b></h5>
+                                <div className="title-piece">{`(${team.record})`}</div>
                             </div>
                         </ListGroupItem>
                         <ListGroupItem color="secondary">

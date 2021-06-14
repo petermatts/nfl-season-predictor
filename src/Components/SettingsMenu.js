@@ -17,6 +17,7 @@ class Settings extends Component {
     }
 
     renderPB(settings) {
+        //? add a header
         return (
             <div className="menu-item">
                 Show Progress Bar:
@@ -80,6 +81,33 @@ class Settings extends Component {
         );
     }
 
+    renderPickTypeSwitch(settings) {
+        //? add a header
+        return(
+            <div className="menu-item">
+                Pick By:
+                <ButtonGroup>
+                    <Button
+                        size='sm'
+                        className="item-button"
+                        color={settings.pickByTeam ? 'secondary':'primary'}
+                        onClick={() => {this.props.changePickType()}}
+                    >
+                        Week
+                    </Button>
+                    <Button
+                        size='sm'
+                        className="item-button"
+                        color={settings.pickByTeam ? 'primary':'secondary'}
+                        onClick={() => {this.props.changePickType()}}
+                    >
+                        Team
+                    </Button>
+                </ButtonGroup>
+            </div>
+);
+    }
+
     render() {
         const { settings } = this.props;
         return (
@@ -107,28 +135,8 @@ class Settings extends Component {
                         <hr />
                         {this.renderStandingsSettings(settings)}
                         <hr />
-                        {this.comingSoon()}
-                        <div className="menu-item">
-                            Pick By:
-                            <ButtonGroup>
-                                <Button
-                                    size='sm'
-                                    className="item-button"
-                                    color={settings.pickByTeam ? 'secondary':'primary'}
-                                    onClick={() => {this.props.changePickType()}}
-                                >
-                                    Week
-                                </Button>
-                                <Button
-                                    size='sm'
-                                    className="item-button"
-                                    color={settings.pickByTeam ? 'primary':'secondary'}
-                                    onClick={() => {this.props.changePickType()}}
-                                >
-                                    Team
-                                </Button>
-                            </ButtonGroup>
-                        </div>
+                        {/* {this.comingSoon()} */}
+                        {this.renderPickTypeSwitch(settings)}
                     </PopoverBody>
                 </Popover>
             </div>
