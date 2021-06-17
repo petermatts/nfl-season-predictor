@@ -5,8 +5,9 @@
 
 .league {
     display: flex;
+    justify-content: center;
     flex-direction: row;
-    margin:  10px;
+    margin: 20px;
     width: 100%;
 }
 

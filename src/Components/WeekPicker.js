@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { ListGroup, ListGroupItem, UncontrolledTooltip } from 'reactstrap';
+import { isMobile, isMobileOnly } from 'react-device-detect';
 import { GameButton } from './GameButton';
 import '../Teams/TeamColors.css';
 import './CSS/WeekPicker.css';
@@ -41,27 +42,27 @@ class WeekPicker extends Component {
             return (
                 <div>
                     <b id="snf">SNF</b>
-                    <UncontrolledTooltip target="snf" placement="top">
+                    {!isMobile && <UncontrolledTooltip target="snf" placement="top">
                         {`${day}  ${date}  ${time}`}
-                    </UncontrolledTooltip>
+                    </UncontrolledTooltip>}
                 </div>
             );
         } else if(day==='Thursday' && time==='8:20 PM') {
             return (
                 <div>
                     <b id="tnf">TNF</b>
-                    <UncontrolledTooltip target="tnf" placement="top">
+                    {!isMobile && <UncontrolledTooltip target="tnf" placement="top">
                         {`${day}  ${date}  ${time}`}
-                    </UncontrolledTooltip>
+                    </UncontrolledTooltip>}
                 </div>
             );
         } else if(day==='Monday' && time==='8:15 PM') {
             return (
                 <div>
                     <b id="mnf">MNF</b>
-                    <UncontrolledTooltip target="mnf" placement="top">
+                    {!isMobile && <UncontrolledTooltip target="mnf" placement="top">
                         {`${day}  ${date}  ${time}`}
-                    </UncontrolledTooltip>
+                    </UncontrolledTooltip>}
                 </div>
             );
         } else if(date==='Invalid Date') {
@@ -75,9 +76,9 @@ class WeekPicker extends Component {
             return (
                 <div>
                     <b id={`${id}`}>{`${dayAbrv} ${time}`}</b>
-                    <UncontrolledTooltip target={`${id}`} placement="top">
+                   {!isMobile && <UncontrolledTooltip target={`${id}`} placement="top">
                         {`${date}`}
-                    </UncontrolledTooltip>
+                    </UncontrolledTooltip>}
                 </div>
             );
         }
@@ -95,8 +96,11 @@ class WeekPicker extends Component {
         });
 
         const setup = [];
-        for(let index = 0; index < gamerow.length; index+=4) {
-            setup.push(gamerow.slice(index, index+4));
+        let GPR = 4;
+        if(isMobileOnly)
+            GPR = 3;
+        for(let index = 0; index < gamerow.length; index+=GPR) {
+            setup.push(gamerow.slice(index, index+GPR));
         }
 
         const row = setup.map((row) => {
@@ -129,7 +133,7 @@ class WeekPicker extends Component {
         const byes = this.state.byes.map((team) => {
             const cn = `Bye ${team}`;
             return (
-                <button className={cn} disabled>
+                <button key={team} className={cn} disabled>
                     {team}
                 </button>
             );

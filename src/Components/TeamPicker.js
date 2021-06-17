@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ListGroup, ListGroupItem, UncontrolledTooltip } from 'reactstrap';
+import { isMobile } from 'react-device-detect';
 import { teamReverseHash } from '../Teams/Team';
 import { TeamGameButton } from '../Components';
 import { addBye } from '../Actions'
@@ -22,9 +23,9 @@ class Picker extends Component {
             return (
                 <div>
                     <b id="Bye">{`Week ${week}`}</b>
-                    <UncontrolledTooltip target="Bye" placement="top">
+                    {!isMobile && <UncontrolledTooltip target="Bye" placement="top">
                         {BYE}
-                    </UncontrolledTooltip>
+                    </UncontrolledTooltip>}
                 </div>
             );
         } else {
@@ -35,27 +36,27 @@ class Picker extends Component {
                 return (
                     <div>
                         <b id={`snf${id}`}>{`Week ${week} SNF`}</b>
-                        <UncontrolledTooltip target={`snf${id}`} placement="top">
+                        {!isMobile && <UncontrolledTooltip target={`snf${id}`} placement="top">
                             {`${dayAbrv}  ${date}  ${time}`}
-                        </UncontrolledTooltip>
+                        </UncontrolledTooltip>}
                     </div>
                 );
             } else if(day==='Thursday' && time==='8:20 PM') {
                 return (
                     <div>
                         <b id={`tnf${id}`}>{`Week ${week} TNF`}</b>
-                        <UncontrolledTooltip target={`tnf${id}`} placement="top">
+                        {!isMobile && <UncontrolledTooltip target={`tnf${id}`} placement="top">
                             {`${dayAbrv}  ${date}  ${time}`}
-                        </UncontrolledTooltip>
+                        </UncontrolledTooltip>}
                     </div>
                 );
             } else if(day==='Monday' && time==='8:15 PM') {
                 return (
                     <div>
                         <b id={`mnf${id}`}>{`Week ${week} MNF`}</b>
-                        <UncontrolledTooltip target={`mnf${id}`} placement="top">
+                        {!isMobile && <UncontrolledTooltip target={`mnf${id}`} placement="top">
                             {`${dayAbrv}  ${date}  ${time}`}
-                        </UncontrolledTooltip>
+                        </UncontrolledTooltip>}
                     </div>
                 );
             } else if(date==='Invalid Date') {
@@ -68,9 +69,9 @@ class Picker extends Component {
                 return (
                     <div>
                         <b id={`${id}`}>{`Week ${week}`}</b>
-                        <UncontrolledTooltip target={`${id}`} placement="top">
+                        {!isMobile && <UncontrolledTooltip target={`${id}`} placement="top">
                             {`${dayAbrv} ${date}  ${time}`}
-                        </UncontrolledTooltip>
+                        </UncontrolledTooltip>}
                     </div>
                 );
             }

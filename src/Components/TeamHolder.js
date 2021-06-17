@@ -1,11 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { TeamPicker, TeamSelector, ProgressBar } from '../Components';
+import './CSS/TeamHolder.css';
 
 class Holder extends Component {
     render() {
         return(
-            <div>
+            <div className="teamHolder">
                 <TeamSelector />
                 <TeamPicker />
                 <ProgressBar />

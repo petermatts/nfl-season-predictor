@@ -10,8 +10,12 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  font-size: calc(20px + 2vmin);
   color: white;
+  position: sticky;
+  position: -webkit-sticky; 
+  top: 0;
+  z-index: 1;
 }
 
 .App-subheader {
@@ -32,6 +36,12 @@
   flex-direction: row;
   height: 100%;
   flex: 1;
+}
+
+.mobile {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
 }
 
 .main-section {

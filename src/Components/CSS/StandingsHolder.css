@@ -1,8 +1,9 @@
 .holder {
     display: flex;
     flex-direction: column;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin: 10px;
+    /* margin-left: 20px; */
+    /* margin-right: 20px; */
     height: 100%;
     width: 100%;
 }
@@ -24,8 +25,8 @@
 }
 
 .options {
-    padding-top: 10px;
-    padding-bottom: 5px;
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 .button {

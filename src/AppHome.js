@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { isMobile } from 'react-device-detect';
 import { getGameGrid, getGameList, getSchedule } from './Actions';
 import { SettingsMenu, WeekHolder, StandingsHolder, TeamHolder } from './Components';
 import { scrapeSchedule } from './Schedule/ScheduleReader';
@@ -35,6 +36,11 @@ class Home extends Component {
     }
 
     render() {
+        let m = '';
+        if(isMobile) {
+            m = 'mobile';
+        }
+
         return(
             <div className="App">
                 <header className="App-header">
@@ -47,7 +53,7 @@ class Home extends Component {
                     2021
                 </h2> */}
 
-                <div className="App-Body">
+                <div className={`App-Body ${m}`}>
                     <div className="main-section">
                         {this.pickStyle()}
                     </div>

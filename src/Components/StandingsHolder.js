@@ -28,11 +28,7 @@ class StandingsHolder extends Component {
             );
         } else if (this.state.div) {
             return(
-                <div className="thing">
-                    <div className="divisionDisplay">
-                        <Standings confrence="AFC" division="East" />
-                        <Standings confrence="NFC" division="East" />
-                    </div>
+                <div className="thing">               
                     <div className="divisionDisplay">
                         <Standings confrence="AFC" division="North" />
                         <Standings confrence="NFC" division="North" />
@@ -40,6 +36,10 @@ class StandingsHolder extends Component {
                     <div className="divisionDisplay">
                         <Standings confrence="AFC" division="South" />
                         <Standings confrence="NFC" division="South" />
+                    </div>
+                    <div className="divisionDisplay">
+                        <Standings confrence="AFC" division="East" />
+                        <Standings confrence="NFC" division="East" />
                     </div>
                     <div className="divisionDisplay">
                         <Standings confrence="AFC" division="West" />
