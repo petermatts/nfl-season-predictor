@@ -5,8 +5,7 @@
     cursor:pointer;
     overflow: hidden;
     outline:none;
-    margin-right: 50px; 
-    margin-left: -50px;
+    text-align: center;
 }
 .settingsButton:hover {
     transform: translateY(-1px);

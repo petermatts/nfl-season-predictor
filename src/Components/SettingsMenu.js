@@ -1,17 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { Button, ButtonGroup, Popover, PopoverHeader, PopoverBody } from 'reactstrap';
+import { Button, ButtonGroup, UncontrolledPopover, PopoverHeader, PopoverBody } from 'reactstrap';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCog } from '@fortawesome/free-solid-svg-icons';
 import { updatePB, changePickType, standingsDetail, updatePlayoffPic } from '../Actions';
 import './CSS/SettingsMenu.css';
 
 class Settings extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { visible: false };
-    }
-
     comingSoon() {
         return <h6>Coming Soon!</h6>
     }
@@ -113,16 +108,15 @@ class Settings extends Component {
         return (
             <div>
                 <button 
-                    className="settingsButton"
+                    className="settingsButton gear"
                     id="pop"
-                    onClick={() => {this.setState({ visible: !this.state.visible });}}
                 >
-                    <FontAwesomeIcon icon={faCog} className="gear" />
+                    Settings
+                    <FontAwesomeIcon icon={faCog} />
                 </button>
-                <Popover 
-                    // trigger="click"
+                <UncontrolledPopover 
+                    trigger="legacy"
                     placement="bottom"
-                    isOpen={this.state.visible}
                     target="pop"
                 >
                     <PopoverHeader>
@@ -138,7 +132,7 @@ class Settings extends Component {
                         {/* {this.comingSoon()} */}
                         {this.renderPickTypeSwitch(settings)}
                     </PopoverBody>
-                </Popover>
+                </UncontrolledPopover>
             </div>
         );
     }

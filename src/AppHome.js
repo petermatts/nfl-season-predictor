@@ -46,12 +46,12 @@ class Home extends Component {
                 <header className="App-header">
                     <b className="title">NFL Season Predictor</b>
                     {/* {this.scrapeButton()} //! for dev use only */}
-                    <SettingsMenu />                 
+                    {/* <SettingsMenu /> */}
                 </header>
 
-                {/* <h2 className="App-subheader">
-                    2021
-                </h2> */}
+                <h2 className="App-subheader">
+                    <SettingsMenu />
+                </h2>
 
                 <div className={`App-Body ${m}`}>
                     <div className="main-section">

@@ -128,6 +128,7 @@ class Standing extends Component {
         return(
             <div className="Standing">
                 <h4 className={this.props.confrence}>{header}</h4>    
+                {/* <Table size="sm" borderless responsive hover className="list"> */}
                 <Table size="sm" borderless responsive hover className="list">
                     <thead>
                         <tr className="standHead">
