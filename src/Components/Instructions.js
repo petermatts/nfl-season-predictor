@@ -1,26 +1,20 @@
 import React, { Component } from 'react';
-import { Popover, PopoverHeader, PopoverBody } from 'reactstrap';
+import { UncontrolledPopover, PopoverHeader, PopoverBody } from 'reactstrap';
 import './CSS/Instructions.css';
 
 class Instructions extends Component {
-    constructor(props) {
-        super(props);
-        this.state = { view: false };
-    }
-
     render() {
         return (
             <div className="instructionsHolder">
                 <button
                     className="instructionsButton"
                     id="instructions"
-                    onClick={() => this.setState({ view: !this.state.view })}
                 >
                     Instructions
                 </button>
-                <Popover
+                <UncontrolledPopover
                     placement="bottom"
-                    isOpen={this.state.view}
+                    trigger="legacy"
                     target="instructions"
                 >
                     <PopoverHeader>
@@ -40,7 +34,7 @@ class Instructions extends Component {
                             <p className="paragraph"><u>Show Progress Bar</u> toggles a viewer of how many games you have picked, this helps make sure you haven't missed one.</p>                        
                         </div>
                     </PopoverBody>
-                </Popover>
+                </UncontrolledPopover>
             </div>
         );
     }
