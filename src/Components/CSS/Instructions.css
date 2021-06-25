@@ -1,0 +1,37 @@
+.instructionsButton {
+    background-color: Transparent;
+    color: white;
+    /* background-repeat:no-repeat; */
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    text-align: center;
+}
+.instructionsButton:hover {
+    transform: translateY(-1px);
+    transition: 0.5s;
+}
+/* .instructionsButton:active {
+
+} */
+.instructionsButton:focus {
+    outline:none;
+    border: none;
+}
+
+.instructionsHolder {
+    flex: 1;
+}
+
+.instructionsHeader {
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: calc(6px + 2vmin);
+}
+
+.paragraph {
+    padding-left: 20px;
+}

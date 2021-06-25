@@ -22,7 +22,9 @@
 .menuHeader {
     width: 100%;
     justify-content: center;
+    align-items: center;
     text-align: center;
+    font-size: calc(6px + 2vmin);
 }
 
 .menu-item {
@@ -41,4 +43,8 @@
 
 .gear {
     color: white;
+}
+
+.settingsHolder {
+    flex: 1;
 }

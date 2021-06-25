@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ButtonGroup } from 'reactstrap';
-import { gameResult, updateUserGamePicks } from '../Actions';
-import { BYE, homewin, awaywin, tiegame } from '../Actions/Constants';
-import { teamHash } from '../Teams/Team';
-import '../Teams/TeamColors.css';
+import { gameResult, updateUserGamePicks } from '../../Actions';
+import { BYE, homewin, awaywin, tiegame } from '../../Actions/Constants';
+import { teamHash } from '../../Teams/Team';
+import '../../Teams/TeamColors.css';
 import './CSS/TeamGameButton.css';
 
 class TeamGameSelector extends Component {

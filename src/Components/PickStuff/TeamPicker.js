@@ -2,10 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ListGroup, ListGroupItem, UncontrolledTooltip } from 'reactstrap';
 import { isMobile } from 'react-device-detect';
-import { teamReverseHash } from '../Teams/Team';
-import { TeamGameButton } from '../Components';
-import { addBye } from '../Actions'
-import { BYE } from '../Actions/Constants';
+import { teamReverseHash } from '../../Teams/Team';
+import { TeamGameButton } from '../PickStuff';
+import { addBye } from '../../Actions'
+import { BYE } from '../../Actions/Constants';
 import './CSS/TeamPicker.css';
 
 class Picker extends Component {

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { ListGroup, ListGroupItem, UncontrolledTooltip } from 'reactstrap';
 import { isMobile, isMobileOnly } from 'react-device-detect';
 import { GameButton } from './GameButton';
-import '../Teams/TeamColors.css';
+import '../../Teams/TeamColors.css';
 import './CSS/WeekPicker.css';
 
 

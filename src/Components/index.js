@@ -1,11 +1,8 @@
-export * from './GameButton';
 export * from './SettingsMenu';
 export * from './Standings';
 export * from './StandingsHolder';
-export * from './WeekHolder';
-export * from './WeekPicker';
-export * from './TeamSelector';
-export * from './TeamHolder';
-export * from './TeamPicker';
-export * from './TeamGameButton';
 export * from './ProgressBar';
+export * from './Instructions';
+export * from './About';
+
+export * from './PickStuff';

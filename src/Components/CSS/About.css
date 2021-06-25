@@ -1,0 +1,25 @@
+.aboutButton {
+    background-color: Transparent;
+    color: white;
+    /* background-repeat:no-repeat; */
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    text-align: center;
+}
+.aboutButton:hover {
+    transform: translateY(-1px);
+    transition: 0.5s;
+}
+/* .aboutButton:active {
+
+} */
+.aboutButton:focus {
+    outline:none;
+    border: none;
+}
+
+.aboutHolder {
+    flex: 1;
+}

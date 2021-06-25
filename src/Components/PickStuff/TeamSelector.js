@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ListGroup, ListGroupItem } from 'reactstrap';
-import { changeTeamPick } from '../Actions';
-import { teamHash } from '../Teams/Team';
-import { CreateNFL } from '../Teams/NFL_Teams';
+import { changeTeamPick } from '../../Actions';
+import { teamHash } from '../../Teams/Team';
+import { CreateNFL } from '../../Teams/NFL_Teams';
 import './CSS/TeamSelector.css';
-import '../Teams/TeamColors.css';
+import '../../Teams/TeamColors.css';
 
 class PickTeamButtons extends Component {
     constructor(props) {

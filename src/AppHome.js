@@ -1,22 +1,39 @@
 import React, { Component } from 'react';
+import { Collapse, Card, CardBody } from 'reactstrap';
 import { connect } from 'react-redux';
 import { isMobile } from 'react-device-detect';
+import ReactMarkdown from 'react-markdown';
 import { getGameGrid, getGameList, getSchedule } from './Actions';
-import { SettingsMenu, WeekHolder, StandingsHolder, TeamHolder } from './Components';
+import { WeekHolder, TeamHolder, SettingsMenu, StandingsHolder, Instructions, AboutButton } from './Components';
 import { scrapeSchedule } from './Schedule/ScheduleReader';
-import './App.css'
+import ReadMePath from './README.md';
+import './App.css';
 
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faFootballBall } from '@fortawesome/free-solid-svg-icons';
 /* <FontAwesomeIcon icon={faFootballBall} rotation={45} /> */
 
-class Home extends Component { 
+class Home extends Component {
+    constructor(props) {
+        super(props);
+        this.state = { README: null };
+    }
+
     componentDidMount() {
         this.props.getGameGrid(2021);
         this.props.getGameList(2021);
         this.props.getSchedule(2021);
+
+        fetch(ReadMePath).then((response) => response.text()).then((text) => {
+            // console.log(text);
+            this.setState({ README: text })
+        })
+        .catch(err => console.log(err));
     }
 
+    /**
+     * ! This button is for dev use ONLY
+     */
     scrapeButton() {
         return (
             <button onClick={() => {
@@ -45,13 +62,24 @@ class Home extends Component {
             <div className="App">
                 <header className="App-header">
                     <b className="title">NFL Season Predictor</b>
-                    {/* {this.scrapeButton()} //! for dev use only */}
-                    {/* <SettingsMenu /> */}
                 </header>
 
                 <h2 className="App-subheader">
+                    {/* {this.scrapeButton()} */}
+                    <AboutButton />
+                    <Instructions />
                     <SettingsMenu />
                 </h2>
+
+                <div className="App-Body">
+                    <Collapse isOpen={this.props.settings.showAbout} className="Collapse">
+                        <Card className="Card">
+                            <CardBody>
+                                <ReactMarkdown children={this.state.README} className="md" />
+                            </CardBody>
+                        </Card>
+                    </Collapse>
+                </div>
 
                 <div className={`App-Body ${m}`}>
                     <div className="main-section">

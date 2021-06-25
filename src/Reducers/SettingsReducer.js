@@ -3,13 +3,15 @@ import {
     CHANGE_PICK_TYPE,
     UPDATE_STANDINGS_DETAILS,
     UPDATE_PLAYOFF_PIC,
-    CHANGE_TEAM_PICK
+    CHANGE_TEAM_PICK,
+    SHOW_ABOUT
 } from './../Actions/types';
 
 const INITIAL_STATE = {
-    showProgress: true,
-    pickByTeam: false,
+    showProgress: false,
+    pickByTeam: true,
     pickTeam: null,
+    showAbout: false,
 
     advancedStandings: 1,
     showplayoffpic: false
@@ -27,6 +29,8 @@ export default (state=INITIAL_STATE, action) => {
             return { ...state, showplayoffpic: !state.showplayoffpic };
         case CHANGE_TEAM_PICK:
             return { ...state, pickTeam: action.payload };
+        case SHOW_ABOUT:
+            return { ...state, showAbout: !state.showAbout };
         default:
             return state;
     }

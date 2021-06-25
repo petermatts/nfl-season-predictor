@@ -12,18 +12,20 @@ class Settings extends Component {
     }
 
     renderPB(settings) {
-        //? add a header
         return (
-            <div className="menu-item">
-                Show Progress Bar:
-                <Button
-                    size='sm'
-                    className="item-button"
-                    color={settings.showProgress ? 'success':'danger'}
-                    onClick={() => {this.props.updatePB()}}
-                >
-                    {settings.showProgress ? 'On':'Off'}
-                </Button>
+            <div>
+                <h5>Status</h5>
+                <div className="menu-item">
+                    Show Progress Bar:
+                    <Button
+                        size='sm'
+                        className="item-button"
+                        color={settings.showProgress ? 'success':'danger'}
+                        onClick={() => {this.props.updatePB()}}
+                    >
+                        {settings.showProgress ? 'On':'Off'}
+                    </Button>
+                </div>
             </div>
         );
     }
@@ -31,7 +33,7 @@ class Settings extends Component {
     renderStandingsSettings(settings) {
         return (
             <div>
-                <h6>Standings</h6>
+                <h5>Standings</h5>
                 <div className="menu-item">
                     Detail:
                     <ButtonGroup>
@@ -77,39 +79,41 @@ class Settings extends Component {
     }
 
     renderPickTypeSwitch(settings) {
-        //? add a header
         return(
-            <div className="menu-item">
-                Pick By:
-                <ButtonGroup>
-                    <Button
-                        size='sm'
-                        className="item-button"
-                        color={settings.pickByTeam ? 'secondary':'primary'}
-                        onClick={() => {this.props.changePickType()}}
-                    >
-                        Week
-                    </Button>
-                    <Button
-                        size='sm'
-                        className="item-button"
-                        color={settings.pickByTeam ? 'primary':'secondary'}
-                        onClick={() => {this.props.changePickType()}}
-                    >
-                        Team
-                    </Button>
-                </ButtonGroup>
+            <div>
+                <h5>Pick Style</h5>
+                <div className="menu-item">
+                    Pick By:
+                    <ButtonGroup>
+                        <Button
+                            size='sm'
+                            className="item-button"
+                            color={settings.pickByTeam ? 'primary':'secondary'}
+                            onClick={() => {this.props.changePickType()}}
+                        >
+                            Team
+                        </Button>
+                        <Button
+                            size='sm'
+                            className="item-button"
+                            color={settings.pickByTeam ? 'secondary':'primary'}
+                            onClick={() => {this.props.changePickType()}}
+                        >
+                            Week
+                        </Button>
+                    </ButtonGroup>
+                </div>
             </div>
-);
+        );
     }
 
     render() {
         const { settings } = this.props;
         return (
-            <div>
+            <div className="settingsHolder">
                 <button 
                     className="settingsButton gear"
-                    id="pop"
+                    id="settings"
                 >
                     Settings
                     <FontAwesomeIcon icon={faCog} />
@@ -117,7 +121,7 @@ class Settings extends Component {
                 <UncontrolledPopover 
                     trigger="legacy"
                     placement="bottom"
-                    target="pop"
+                    target="settings"
                 >
                     <PopoverHeader>
                         <div className="menuHeader">

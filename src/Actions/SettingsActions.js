@@ -3,7 +3,8 @@ import {
     CHANGE_PICK_TYPE,
     UPDATE_STANDINGS_DETAILS,
     UPDATE_PLAYOFF_PIC,
-    CHANGE_TEAM_PICK
+    CHANGE_TEAM_PICK,
+    SHOW_ABOUT
 } from './types';
 
 export const updatePB = () => {
@@ -37,3 +38,9 @@ export const changeTeamPick = (newPick) => {
         payload: newPick
     };
 };
+
+export const showAbout = () => {
+    return {
+        type: SHOW_ABOUT
+    }
+}

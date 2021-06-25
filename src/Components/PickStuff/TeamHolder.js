@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { TeamPicker, TeamSelector, ProgressBar } from '../Components';
+import { TeamPicker, TeamSelector } from '../PickStuff';
+import { ProgressBar } from '../../Components';
 import './CSS/TeamHolder.css';
 
 class Holder extends Component {

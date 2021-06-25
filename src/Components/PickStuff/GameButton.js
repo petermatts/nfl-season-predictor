@@ -3,10 +3,10 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { ButtonGroup } from 'reactstrap';
 import './CSS/GameButton.css';
-import '../Teams/TeamColors.css';
-import { gameResult, updateUserGamePicks } from '../Actions';
-import { homewin, awaywin, tiegame } from '../Actions/Constants';
-import { teamHash } from '../Teams/Team';
+import '../../Teams/TeamColors.css';
+import { gameResult, updateUserGamePicks } from '../../Actions';
+import { homewin, awaywin, tiegame } from '../../Actions/Constants';
+import { teamHash } from '../../Teams/Team';
 
 class GameSelector extends PureComponent {
     constructor(props) {

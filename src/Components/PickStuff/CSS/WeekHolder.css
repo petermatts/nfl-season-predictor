@@ -19,16 +19,17 @@
 .picked {
     background-color: #013369;
 }
-
 .picked:hover {
     background-color: #013369;
     font-weight: bolder;
 }
-
+/* .picked:active{
+    z-index: -1;
+} */
 .picked:focus {
     background-color: #013369;
     box-shadow: 0px 0px 2px 2px lightblue;
-    transition: 0.5s
+    transition: 0.5s;
 }
 
 .notpicked {

@@ -3,7 +3,7 @@ import { ButtonGroup, Button } from 'reactstrap';
 import { connect } from 'react-redux';
 // import { getGameGrid, getGameList, getSchedule } from '../Actions';
 import { WeekPicker } from  './WeekPicker';
-import { ProgressBar } from './ProgressBar';
+import { ProgressBar } from '../ProgressBar';
 import './CSS/WeekHolder.css';
 
 class weekholder extends PureComponent {
