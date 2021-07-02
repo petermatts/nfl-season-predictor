@@ -2,7 +2,7 @@
 
 ## Abstract
 
-This project was created in freetime by a lowerclassmen college student who likes coding and football.
+This project was created in free time by a lowerclassmen college student who likes coding and football.
 
 ## How It Began
 
@@ -31,9 +31,11 @@ The idea hatched when I watched a YouTube video of Adam Rank predicting all the 
   - More detailed standings (2)
 - More Tie Breakers implemented (2)
 
-1. short term/near future goal
-2. intermediate future goal
-3. longer term/distant future goal
+(1) short term/near future goal
+
+(2) intermediate future goal
+
+(3) longer term/distant future goal
 
 ## More
 
