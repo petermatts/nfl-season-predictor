@@ -4,19 +4,21 @@ import { connect } from 'react-redux';
 import { isMobile } from 'react-device-detect';
 import ReactMarkdown from 'react-markdown';
 import { getGameGrid, getGameList, getSchedule } from './Actions';
-import { WeekHolder, TeamHolder, SettingsMenu, StandingsHolder, Instructions, AboutButton } from './Components';
+import { WeekHolder, TeamHolder, SettingsMenu, StandingsHolder, InstructionsButton, AboutButton } from './Components';
 import { scrapeSchedule } from './Schedule/ScheduleReader';
-import ReadMePath from './README.md';
+import AboutPath from './About.md';
+import InstructionsPath from './Instructions.md';
 import './App.css';
 
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faFootballBall } from '@fortawesome/free-solid-svg-icons';
-/* <FontAwesomeIcon icon={faFootballBall} rotation={45} /> */
+/* import { showInstructions } from './Actions/SettingsActions';
+<FontAwesomeIcon icon={faFootballBall} rotation={45} /> */
 
 class Home extends Component {
     constructor(props) {
         super(props);
-        this.state = { README: null };
+        this.state = { about: null, instr: null };
     }
 
     componentDidMount() {
@@ -24,9 +26,15 @@ class Home extends Component {
         this.props.getGameList(2021);
         this.props.getSchedule(2021);
 
-        fetch(ReadMePath).then((response) => response.text()).then((text) => {
+        fetch(AboutPath).then((response) => response.text()).then((text) => {
             // console.log(text);
-            this.setState({ README: text })
+            this.setState({ about: text });
+        })
+        .catch(err => console.log(err));
+
+        fetch(InstructionsPath).then((response) => response.text()).then((text) => {
+            // console.log(text);
+            this.setState({ instr: text });
         })
         .catch(err => console.log(err));
     }
@@ -67,15 +75,26 @@ class Home extends Component {
                 <h2 className="App-subheader">
                     {/* {this.scrapeButton()} */}
                     <AboutButton />
-                    <Instructions />
+                    <InstructionsButton />
                     <SettingsMenu />
                 </h2>
 
+                <div className="Body">
                 <div className="App-Body">
                     <Collapse isOpen={this.props.settings.showAbout} className="Collapse">
                         <Card className="Card">
                             <CardBody>
-                                <ReactMarkdown children={this.state.README} className="md" />
+                                <ReactMarkdown children={this.state.about} linkTarget="_blank" className="md" />
+                            </CardBody>
+                        </Card>
+                    </Collapse>
+                </div>
+
+                <div className="App-Body">
+                    <Collapse isOpen={this.props.settings.showInstructions} className="Collapse">
+                        <Card className="Card">
+                            <CardBody>
+                                <ReactMarkdown children={this.state.instr} className="md" />
                             </CardBody>
                         </Card>
                     </Collapse>
@@ -89,7 +108,11 @@ class Home extends Component {
                         <StandingsHolder />
                     </div>
                 </div>
-                <footer className="App-Footer" />
+                </div>
+                
+                <footer className="App-Footer">
+                    
+                </footer>
             </div>
         );
     }

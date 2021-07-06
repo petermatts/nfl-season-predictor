@@ -26,3 +26,4 @@ export const UPDATE_STANDINGS_DETAILS = 'update_standings_detail';
 export const UPDATE_PLAYOFF_PIC = 'update_playoff_pic';
 export const CHANGE_TEAM_PICK = 'change_team_pick';
 export const SHOW_ABOUT = 'show_about';
+export const SHOW_INSTRUCTIONS = 'show_instructions';

@@ -4,6 +4,8 @@
 
 This project was created in free time by a lowerclassmen college student who likes coding and football.
 
+View the code [here](https://github.com/petermatts/nfl-season-predictor)
+
 ## How It Began
 
 The idea hatched when I watched a YouTube video of Adam Rank predicting all the football games for the 2019 season (the very same video he had the niners going 3-13). I thought the way he was pushing the buttons to pick games was fun and it would be nice if everyone had access to a way to make predictions in such a manner. So I decided to take my knowledge and enjoyment of coding and football and use it to build this season predictor for fun and for all to use (for free)!
@@ -22,7 +24,7 @@ The idea hatched when I watched a YouTube video of Adam Rank predicting all the 
 ### Features On The Way
 
 - Login to save your picks in files
-  - Looking into the ability to make multiple saves (1)
+  - Looking into the ability to save picks under an account (1)
   - Share picks with friends or other users (2)
   - Create community statistics for game predictions (3)
   - Pick accuracy feedback (3)
@@ -39,6 +41,6 @@ The idea hatched when I watched a YouTube video of Adam Rank predicting all the 
 
 ## More
 
-This was designed for desktop/laptop monitors, but I have made it atleast usable (hopefully) for mobile devices, the bigger the screen the better it will probably look... but this is something I will keep working on.
+This webapp was designed for desktop/laptop monitors, but I have made it atleast usable (hopefully) for mobile devices, the bigger the screen the better it will probably look... but this is something I will keep working on.
 
 I'll continue updating the README.md as I think of more details and stories about this project ;)

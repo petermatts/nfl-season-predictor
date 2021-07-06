@@ -4,7 +4,8 @@ import {
     UPDATE_STANDINGS_DETAILS,
     UPDATE_PLAYOFF_PIC,
     CHANGE_TEAM_PICK,
-    SHOW_ABOUT
+    SHOW_ABOUT,
+    SHOW_INSTRUCTIONS
 } from './types';
 
 export const updatePB = () => {
@@ -42,5 +43,11 @@ export const changeTeamPick = (newPick) => {
 export const showAbout = () => {
     return {
         type: SHOW_ABOUT
+    }
+}
+
+export const showInstructions = () => {
+    return {
+        type: SHOW_INSTRUCTIONS
     }
 }
