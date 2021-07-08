@@ -5,18 +5,20 @@ import {
     UPDATE_PLAYOFF_PIC,
     CHANGE_TEAM_PICK,
     SHOW_ABOUT,
-    SHOW_INSTRUCTIONS
+    SHOW_INSTRUCTIONS,
+    SHOW_LOGIN
 } from './../Actions/types';
 
 const INITIAL_STATE = {
     showProgress: false,
     pickByTeam: true,
     pickTeam: null,
+    advancedStandings: 1,
+    showplayoffpic: false,
+
     showAbout: false,
     showInstructions: false,
-
-    advancedStandings: 1,
-    showplayoffpic: false
+    showLogin: false
 }
 
 export default (state=INITIAL_STATE, action) => {
@@ -35,6 +37,8 @@ export default (state=INITIAL_STATE, action) => {
             return { ...state, showAbout: !state.showAbout, showInstructions: false };
         case SHOW_INSTRUCTIONS:
             return { ...state, showInstructions: !state.showInstructions, showAbout: false };
+        case SHOW_LOGIN:
+            return { ...state, showLogin: !state.showLogin };
         default:
             return state;
     }

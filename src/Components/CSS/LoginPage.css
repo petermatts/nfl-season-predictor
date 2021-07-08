@@ -1,0 +1,64 @@
+.login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: space-around;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-input {
+    width: 250px;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding-left: 10px;
+    margin-bottom: 8px;
+}.text-input:focus {
+    outline: none;
+}
+
+.sign-button {
+    border: 1px solid black;
+    border-radius: 10px;
+    width: 250px;
+    margin-bottom: 5px;
+}.sign-button:hover {
+    transform: translateY(-1px);
+    transition: 0.5s
+}.sign-button:active {
+    position: relative;
+    top: 2px;
+}.sign-button:focus {
+    outline: none;
+}
+
+.text-button {
+    color: blue;
+    background: transparent;
+    border: none;
+    margin: 5px;
+}.text-button:focus {
+    outline: none;
+}
+
+.visibility-toggle {
+    margin-left: -20ox;
+    cursor: pointer;
+}
+
+.input-labels {
+    text-align: left;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    width: 250px;
+}
+
+.auth-error {
+    font-weight: bold;
+    color: red;
+    margin-bottom: 10px;
+}

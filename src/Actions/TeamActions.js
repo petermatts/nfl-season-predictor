@@ -1,25 +1,57 @@
 import { GAME_RESULT, GAME_RESULT_TIE, UPDATE_GAMEPICKS, UPDATE_SOV } from './types';
-import { tiegame } from './../Actions/Constants';
+import { teamHash } from '../Teams/Team';
+import { tiegame, win, loss, tie } from './../Actions/Constants';
 
 export const gameResult = (result, gameId) => (dispatch, getState) => {
-    // console.log(result);
     const state = getState();
-    const isTie = state.userdata.gamelist[gameId]===tiegame;
+    const { gamelist, gamegrid } = state.userdata;
+    const isTie = gamelist[gameId]===tiegame;
     const gamepick = state.userdata.gamepicks[gameId];
 
     if(!isTie) {
         const { winner, loser } = result;
-        
-        if(gamepick.picked) {
-            //remove last existence of other team from wins, loses, or ties array
-            winner.loses.splice(winner.loses.lastIndexOf(loser.abrv), 1);
-            loser.wins.splice(loser.wins.lastIndexOf(winner.abrv), 1);
-            winner.ties.splice(winner.ties.lastIndexOf(loser.abrv), 1);
-            loser.ties.splice(loser.ties.lastIndexOf(winner.abrv), 1);
+
+        winner.wins = [];
+        winner.loses = [];
+        winner.ties = [];
+        loser.wins = [];
+        loser.loses = [];
+        loser.ties = [];
+
+        const w_hash = teamHash(winner.abrv);
+        const l_hash = teamHash(loser.abrv);
+
+        for(let i = 0; i < gamegrid[w_hash].length; i++) {
+            switch(gamegrid[w_hash][i]) {
+                case win:
+                    winner.wins.push(otherTeam(gamepick, winner.abrv));
+                    break;
+                case loss:
+                    winner.loses.push(otherTeam(gamepick, winner.abrv));
+                    break;
+                case tie:
+                    winner.ties.push(otherTeam(gamepick, winner.abrv));
+                    break;
+                default:
+                    continue;
+            }
         }
 
-        winner.wins.push(loser.abrv);
-        loser.loses.push(winner.abrv);
+        for(let i = 0; i < gamegrid[l_hash].length; i++) {
+            switch(gamegrid[l_hash][i]) {
+                case win:
+                    loser.wins.push(otherTeam(gamepick, winner.abrv));
+                    break;
+                case loss:
+                    loser.loses.push(otherTeam(gamepick, winner.abrv));
+                    break;
+                case tie:
+                    loser.ties.push(otherTeam(gamepick, winner.abrv));
+                    break;
+                default:
+                    continue;
+            }
+        }
 
         gamepick.picked = true;
         gamepick.winner = winner;
@@ -43,19 +75,47 @@ export const gameResult = (result, gameId) => (dispatch, getState) => {
     } else {
         const { home, away } = result;
 
-        if(gamepick.picked) {
-            //remove last existence of other team from wins, loses, or ties array
-            home.loses.splice(home.loses.lastIndexOf(away.abrv), 1);
-            away.wins.splice(away.wins.lastIndexOf(home.abrv), 1);
-            home.wins.splice(home.wins.lastIndexOf(away.abrv), 1);
-            away.loses.splice(away.loses.lastIndexOf(home.abrv), 1);
-            //? unneccessary
-            // home.ties.splice(home.ties.lastIndexOf(away.abrv), 1);
-            // away.ties.splice(away.ties.lastIndexOf(home.abrv), 1);
+        home.wins = [];
+        home.loses = [];
+        home.ties = [];
+        away.wins = [];
+        away.loses = [];
+        away.ties = [];
+
+        const h_hash = teamHash(home.abrv);
+        const a_hash = teamHash(away.abrv);
+
+        for(let i = 0; i < gamegrid[h_hash].length; i++) {
+            switch(gamegrid[h_hash][i]) {
+                case win:
+                    home.wins.push(otherTeam(gamepick, home.abrv));
+                    break;
+                case loss:
+                    home.loses.push(otherTeam(gamepick, home.abrv));
+                    break;
+                case tie:
+                    home.ties.push(otherTeam(gamepick, home.abrv));
+                    break;
+                default:
+                    continue;
+            }
         }
 
-        home.ties.push(away.abrv);
-        away.ties.push(home.abrv);
+        for(let i = 0; i < gamegrid[a_hash].length; i++) {
+            switch(gamegrid[a_hash][i]) {
+                case win:
+                    away.wins.push(otherTeam(gamepick, away.abrv));
+                    break;
+                case loss:
+                    away.loses.push(otherTeam(gamepick, away.abrv));
+                    break;
+                case tie:
+                    away.ties.push(otherTeam(gamepick, away.abrv));
+                    break;
+                default:
+                    continue;
+            }
+        }
 
         gamepick.picked = true;
         gamepick.winner = null;
@@ -76,6 +136,15 @@ export const gameResult = (result, gameId) => (dispatch, getState) => {
             payload: { home, away }
         };
     }
+}
+
+const otherTeam = (game, thisTeam) => {
+    if(game.away === thisTeam)
+        return game.home;
+    else if(game.home === thisTeam)
+        return game.away;
+    else
+        return null; //must be an error
 }
 
 const adjust = (team, state) => {

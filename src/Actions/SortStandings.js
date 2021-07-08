@@ -4,6 +4,7 @@
  */
 
 /**
+ * 0 Win-Loss-Tie percentage
  * 1 Head-to-head (best won-lost-tied percentage in games between the clubs)
  * 2 Best won-lost-tied percentage in games played within the division
  * ! 3 Best won-lost-tied percentage in common games
@@ -35,23 +36,47 @@ function compareDivision(a, b) {
             if(a.divPct !== b.divPct) {
                 return b.divPct - a.divPct;
             } else {
-                // 4 Confrence pct
-                if(a.confPct !== b.confPct) {
-                    return b.confPct - a.confPct;
+                // 3 Common Games
+                const a_games = a.wins.concat(a.loses).concat(a.ties);
+                const b_games = b.wins.concat(b.loses).concat(b.ties);
+                const commonGames = a_games.filter((game) => b_games.includes(game));
+                let a_c_score = 0; //a common game score
+                let b_c_score = 0; //b common game score
+
+                for(let i = 0; i < commonGames.length; i++) {
+                    const game = commonGames[i];
+                    if(a.wins.includes(game))
+                        a_c_score++;
+                    else if(a.ties.includes(game))
+                        a_c_score += 0.5;
+                    
+                    if(b.wins.includes(game))
+                        b_c_score++;
+                    else if(b.ties.includes(game))
+                        b_c_score += 0.5;
+                }
+
+                if(a_c_score !== b_c_score) {
+                    return b_c_score - a_c_score;
                 } else {
-                    // 5 SOV
-                    if(a.SOV !== b.SOV) {
-                        return b.SOV - a.SOV;
+                    // 4 Confrence pct
+                    if(a.confPct !== b.confPct) {
+                        return b.confPct - a.confPct;
                     } else {
-                        // 6 SOS
-                        if(a.SOS !== b.SOS) {
-                            return b.SOS - a.SOS;
+                        // 5 SOV
+                        if(a.SOV !== b.SOV) {
+                            return b.SOV - a.SOV;
                         } else {
-                            // 12 Coin toss
-                            if(Math.random() < 0.50) {
-                                return -1;
+                            // 6 SOS
+                            if(a.SOS !== b.SOS) {
+                                return b.SOS - a.SOS;
                             } else {
-                                return 1;
+                                // 12 Coin toss
+                                if(Math.random() < 0.50) {
+                                    return -1;
+                                } else {
+                                    return 1;
+                                }
                             }
                         }
                     }
@@ -73,6 +98,7 @@ function compareDivision(a, b) {
  * 7 The wild card club with the third-best record
  * 
  * Seeding rules: (for wild card apply division rules if teams are in the same division)
+ * 0 Win-Loss-Tie percentage
  * 1 Head-to-head, if applicable
  * 2 Best won-lost-tied percentage in games played within the conference
  * ! 3 Best won-lost-tied percentage in common games, minimum of four
@@ -105,19 +131,45 @@ function compareConfrence(a, b, wc) {
             if(a.confPct !== b.confPct) {
                 return b.confPct - a.confPct;
             } else {
-                // 4 SOV
-                if(a.SOV !== b.SOV) {
-                    return b.SOV - a.SOV;
+                // 3 Common Games
+                const a_games = a.wins.concat(a.loses).concat(a.ties);
+                const b_games = b.wins.concat(b.loses).concat(b.ties);
+                const commonGames = a_games.filter((game) => b_games.includes(game));
+                let a_c_score = 0; //a common game score
+                let b_c_score = 0; //b common game score
+
+                if(commonGames.length >= 4) { 
+                    for(let i = 0; i < commonGames.length; i++) {
+                        const game = commonGames[i];
+                        if(a.wins.includes(game))
+                            a_c_score++;
+                        else if(a.ties.includes(game))
+                            a_c_score += 0.5;
+                       
+                        if(b.wins.includes(game))
+                            b_c_score++;
+                        else if(b.ties.includes(game))
+                            b_c_score += 0.5;
+                   }
+                }
+ 
+                if(a_c_score !== b_c_score) {
+                    return b_c_score - a_c_score;
                 } else {
-                    // 5 SOS
-                    if(a.SOS !== b.SOS) {
-                        return b.SOS - a.SOS;
+                    // 4 SOV
+                    if(a.SOV !== b.SOV) {
+                        return b.SOV - a.SOV;
                     } else {
-                        // 11 Coin toss
-                        if(Math.random() < 0.50) {
-                            return -1;
+                        // 5 SOS
+                        if(a.SOS !== b.SOS) {
+                            return b.SOS - a.SOS;
                         } else {
-                            return 1;
+                            // 11 Coin toss
+                            if(Math.random() < 0.50) {
+                                return -1;
+                            } else {
+                                return 1;
+                            }
                         }
                     }
                 }

@@ -18,6 +18,7 @@ export const GET_SCHEDULE = 'get_schedule';
 export const UPDATE_UGAMELIST = 'update_ugamelist';
 export const UPDATE_GAMEPICKS = 'update_gamepicks';
 export const ADD_BYE = 'add_bye';
+export const NAME = 'name';
 
 //Settings Actions
 export const UPDATE_PROGRESSBAR = 'update_progressbar';
@@ -27,3 +28,4 @@ export const UPDATE_PLAYOFF_PIC = 'update_playoff_pic';
 export const CHANGE_TEAM_PICK = 'change_team_pick';
 export const SHOW_ABOUT = 'show_about';
 export const SHOW_INSTRUCTIONS = 'show_instructions';
+export const SHOW_LOGIN = "show_login";

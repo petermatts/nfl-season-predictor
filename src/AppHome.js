@@ -4,7 +4,17 @@ import { connect } from 'react-redux';
 import { isMobile } from 'react-device-detect';
 import ReactMarkdown from 'react-markdown';
 import { getGameGrid, getGameList, getSchedule } from './Actions';
-import { WeekHolder, TeamHolder, SettingsMenu, StandingsHolder, InstructionsButton, AboutButton } from './Components';
+import {
+    WeekHolder,
+    TeamHolder,
+    SettingsMenu,
+    StandingsHolder,
+    InstructionsButton,
+    AboutButton,
+    LoginButton,
+    LoginPage,
+    ProfilePage
+} from './Components';
 import { scrapeSchedule } from './Schedule/ScheduleReader';
 import AboutPath from './About.md';
 import InstructionsPath from './Instructions.md';
@@ -60,12 +70,54 @@ class Home extends Component {
         }
     }
 
-    render() {
+    renderBody() {
         let m = '';
         if(isMobile) {
             m = 'mobile';
         }
 
+        if(!this.props.settings.showLogin) {
+            return (
+                <div className="Body">
+                    <div className="App-Body">
+                        <Collapse isOpen={this.props.settings.showAbout} className="Collapse">
+                            <Card className="Card">
+                                <CardBody>
+                                    <ReactMarkdown children={this.state.about} linkTarget="_blank" className="md" />
+                                </CardBody>
+                            </Card>
+                        </Collapse>
+                    </div>
+
+                    <div className="App-Body">
+                        <Collapse isOpen={this.props.settings.showInstructions} className="Collapse">
+                            <Card className="Card">
+                                <CardBody>
+                                    <ReactMarkdown children={this.state.instr} className="md" />
+                                </CardBody>
+                            </Card>
+                        </Collapse>
+                    </div>
+
+                    <div className={`App-Body ${m}`}>
+                        <div className="main-section">
+                            {this.pickStyle()}
+                        </div>
+                        <div className="main-section">
+                            <StandingsHolder />
+                        </div>
+                    </div>
+                </div>
+            );
+        } else {
+            if(this.props.userdata.name === null)
+                return <LoginPage />;
+            else
+                return <ProfilePage />;
+        }
+    }
+
+    render() {
         return(
             <div className="App">
                 <header className="App-header">
@@ -73,54 +125,26 @@ class Home extends Component {
                 </header>
 
                 <h2 className="App-subheader">
+                    {/* <LoginButton /> */}
                     {/* {this.scrapeButton()} */}
                     <AboutButton />
                     <InstructionsButton />
                     <SettingsMenu />
                 </h2>
 
-                <div className="Body">
-                <div className="App-Body">
-                    <Collapse isOpen={this.props.settings.showAbout} className="Collapse">
-                        <Card className="Card">
-                            <CardBody>
-                                <ReactMarkdown children={this.state.about} linkTarget="_blank" className="md" />
-                            </CardBody>
-                        </Card>
-                    </Collapse>
-                </div>
+                {this.renderBody()}
 
-                <div className="App-Body">
-                    <Collapse isOpen={this.props.settings.showInstructions} className="Collapse">
-                        <Card className="Card">
-                            <CardBody>
-                                <ReactMarkdown children={this.state.instr} className="md" />
-                            </CardBody>
-                        </Card>
-                    </Collapse>
-                </div>
-
-                <div className={`App-Body ${m}`}>
-                    <div className="main-section">
-                        {this.pickStyle()}
-                    </div>
-                    <div className="main-section">
-                        <StandingsHolder />
-                    </div>
-                </div>
-                </div>
-                
-                <footer className="App-Footer">
-                    
-                </footer>
+                {/* <footer className="App-Footer">
+                    Footer
+                </footer> */}
             </div>
         );
     }
 }
 
 const mapStateToProps = (state) => {
-    const { settings } = state;
-    return { settings };
+    const { settings, userdata } = state;
+    return { settings, userdata };
 };
 
 const AppHome = connect(mapStateToProps, { getGameGrid, getGameList, getSchedule })(Home);

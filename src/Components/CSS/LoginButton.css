@@ -1,0 +1,25 @@
+.loginButton {
+    background-color: Transparent;
+    color: white;
+    /* background-repeat:no-repeat; */
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+    text-align: center;
+}
+.loginButton:hover {
+    transform: translateY(-1px);
+    transition: 0.5s;
+}
+/* .loginButton:active {
+
+} */
+.loginButton:focus {
+    outline:none;
+    border: none;
+}
+
+.loginButtonHolder {
+    flex: 1;
+}

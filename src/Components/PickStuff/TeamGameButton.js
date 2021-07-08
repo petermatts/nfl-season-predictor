@@ -8,16 +8,24 @@ import '../../Teams/TeamColors.css';
 import './CSS/TeamGameButton.css';
 
 class TeamGameSelector extends Component {
-    getGridLocations(gameId, week, team, otherTeam) {
+    getGridLocations(gameId, week, team, otherTeam, isHome) {
         const { gamegrid } = this.props.schedule;
         const result = {};
         for(let i = 0; i < gamegrid.length; i++) {
             if(gamegrid[i][week-1] === gameId) {
-                if(i === teamHash(team))
-                    Object.assign(result, { home: i });
+                if(i === teamHash(team)) {
+                    if(isHome)
+                        Object.assign(result, { home: i });
+                    else
+                        Object.assign(result, { away: i });
+                }
 
-                if(i === teamHash(otherTeam))
-                    Object.assign(result, { away: i });
+                if(i === teamHash(otherTeam)) {
+                    if(isHome)
+                        Object.assign(result, { away: i });
+                    else
+                        Object.assign(result, { home: i });
+                }
             }
         }
         return result;
@@ -34,7 +42,7 @@ class TeamGameSelector extends Component {
             const thisTeam = NFL[team];
             const isHome = team===game.home;
             const where = isHome ? 'VS' : '@';
-            const gridLoc = this.getGridLocations(gameId, week, team, otherTeam.abrv);
+            const gridLoc = this.getGridLocations(gameId, week, team, otherTeam.abrv, isHome);
 
             let glowThisTeam, glowOtherTeam, glowTie;
             if(isHome) {
@@ -86,7 +94,7 @@ class TeamGameSelector extends Component {
                     </button>
                     <button 
                         className={`Tie-Button ${glowTie}`}
-                        disabled={glowTie==='Tie'}
+                        disabled={glowTie==='glow'}
                         onClick={() => {
                             this.props.updateUserGamePicks(gameId, tiegame, gridLoc, week);
                             if(isHome) {

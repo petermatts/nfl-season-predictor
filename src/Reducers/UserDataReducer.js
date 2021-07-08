@@ -1,4 +1,4 @@
-import { UPDATE_UGAMELIST, GET_GAMELIST, UPDATE_GAMEPICKS, ADD_BYE } from './../Actions/types';
+import { UPDATE_UGAMELIST, GET_GAMELIST, UPDATE_GAMEPICKS, ADD_BYE, NAME } from './../Actions/types';
 import { unpicked, homewin, awaywin, tiegame, win, loss, tie } from './../Actions/Constants';
 
 const defaultList = new Array(272).fill(unpicked, 0,272);
@@ -10,7 +10,8 @@ const INITIAL_STATE = {
     gamelist: defaultList, //Important gamelist and gamepicks are parrallel
     gamepicks: null, 
     gamegrid: defaultGrid,
-    gamespicked: 0
+    gamespicked: 0,
+    name: null
 };
 
 export default (state=INITIAL_STATE, action) => {
@@ -25,9 +26,11 @@ export default (state=INITIAL_STATE, action) => {
 
             const newGrid = state.gamegrid;
             if(pick === homewin) {
+                console.log('homewin');
                 newGrid[home][week-1] = win;
                 newGrid[away][week-1] = loss;
             } else if(pick === awaywin) {
+                console.log('awaywin', home);
                 newGrid[home][week-1] = loss;
                 newGrid[away][week-1] = win;
             } else if(pick === tiegame) {
@@ -46,6 +49,8 @@ export default (state=INITIAL_STATE, action) => {
             const tempGrid = state.gamegrid;
             tempGrid[action.payload.pickTeam] = action.payload.teamSchedulePicks;
             return { ...state, gamegrid: tempGrid };
+        case NAME:
+            return { ...state, name: action.payload };
         default:
             return state;
     }
