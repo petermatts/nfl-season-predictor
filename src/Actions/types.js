@@ -19,6 +19,7 @@ export const UPDATE_UGAMELIST = 'update_ugamelist';
 export const UPDATE_GAMEPICKS = 'update_gamepicks';
 export const ADD_BYE = 'add_bye';
 export const NAME = 'name';
+export const LOAD_SAVE = 'load_save';
 
 //Settings Actions
 export const UPDATE_PROGRESSBAR = 'update_progressbar';

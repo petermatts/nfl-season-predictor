@@ -1,4 +1,11 @@
-import { UPDATE_UGAMELIST, GET_GAMELIST, UPDATE_GAMEPICKS, ADD_BYE, NAME } from './../Actions/types';
+import {
+    UPDATE_UGAMELIST,
+    GET_GAMELIST,
+    UPDATE_GAMEPICKS,
+    ADD_BYE,
+    NAME,
+    LOAD_SAVE
+} from './../Actions/types';
 import { unpicked, homewin, awaywin, tiegame, win, loss, tie } from './../Actions/Constants';
 
 const defaultList = new Array(272).fill(unpicked, 0,272);
@@ -11,7 +18,10 @@ const INITIAL_STATE = {
     gamepicks: null, 
     gamegrid: defaultGrid,
     gamespicked: 0,
-    name: null
+    name: null,
+
+    saveStatus: null,
+    saveData: null
 };
 
 export default (state=INITIAL_STATE, action) => {
@@ -51,6 +61,8 @@ export default (state=INITIAL_STATE, action) => {
             return { ...state, gamegrid: tempGrid };
         case NAME:
             return { ...state, name: action.payload };
+        case LOAD_SAVE:
+            return { ...state, saveData: action.payload.save, saveStatus: action.payload.saveName };
         default:
             return state;
     }

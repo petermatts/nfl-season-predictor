@@ -15,7 +15,7 @@ class PB extends Component {
             return (
                 <div className="bar-holder">
                     <div>{`Games Picked: ${prog}/${tot}`}</div>
-                    <Progress value={pct}>{prog<=12 ? '':`${pct.toFixed(2)}%`}</Progress>
+                    <Progress value={pct}>{prog<=14 ? '':`${pct.toFixed(2)}%`}</Progress>
                 </div>
             );
         } else {

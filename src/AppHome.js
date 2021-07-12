@@ -13,7 +13,9 @@ import {
     AboutButton,
     LoginButton,
     LoginPage,
-    ProfilePage
+    ProfilePage,
+    SaveButton,
+    LoadButton
 } from './Components';
 import { scrapeSchedule } from './Schedule/ScheduleReader';
 import AboutPath from './About.md';
@@ -134,9 +136,10 @@ class Home extends Component {
 
                 {this.renderBody()}
 
-                {/* <footer className="App-Footer">
-                    Footer
-                </footer> */}
+                {this.props.userdata.name!==null && <footer className="App-Footer">
+                    <LoadButton />
+                    <SaveButton />
+                </footer>}
             </div>
         );
     }

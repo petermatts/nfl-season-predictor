@@ -1,4 +1,5 @@
-import { UPDATE_UGAMELIST, ADD_BYE, NAME } from './types';
+import { UPDATE_UGAMELIST, ADD_BYE, NAME, LOAD_SAVE } from './types';
+import firebase from 'firebase';
 
 /**
  * pick = 0 => unpicked 
@@ -31,4 +32,19 @@ export const name = (name) => {
         type: NAME,
         payload: name
     };
+}
+
+export const loadSave = (saveName, season) => (dispatch) => {
+    const { uid } = firebase.auth().currentUser;
+    firebase.database().ref(`/users/${uid}/saves/${season}/${saveName}`).once('value')
+        .then((snapshot) => {
+            dispatch({
+                type: LOAD_SAVE,
+                payload: { save: snapshot.val(), saveName: `/${season}/${saveName}` }
+            });
+            console.log(snapshot.val());
+        })
+        .catch(() => {
+            console.log('Failed to read data');
+        });
 }

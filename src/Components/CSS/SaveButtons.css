@@ -1,0 +1,59 @@
+.save-buttons {
+    /* background-color: #42BA96; */
+    background-color: lightgreen;
+    color: white;
+    border: 2px solid green;
+    border-radius: 15px;
+    margin: 5px;
+}.save-buttons:hover {
+    transform: translateY(-1px);
+    transition: 0.5s;
+}.save-buttons:active {
+    position: relative;
+    top: 2px;
+}.save-buttons:focus {
+    outline: none;
+}
+
+.save-holder {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.cancel-modal {
+    background-color: #dc3545;
+    border: 1px solid black;
+    border-radius: 10px;
+    color: white;
+    font-weight: 400;
+    padding: 5px;
+    flex: 1;
+}.cancel-modal:hover {
+    transform: translateY(-1px);
+    transition: 0.5s;
+}.cancel-modal {
+    position: relative;
+    top: 2px;
+}.cancel-modal:focus {
+    outline: none;
+}
+
+.submit-modal {
+    background-color: #28a745;
+    border: 1px solid black;
+    border-radius: 10px;
+    color: white;
+    font-weight: 400;
+    padding: 5px;
+    flex: 1;
+}.submit-modal:hover {
+    transform: translateY(-1px);
+    transition: 0.5s;
+}.submit-modal {
+    position: relative;
+    top: 2px;
+}.submit-modal:focus {
+    outline: none;
+}

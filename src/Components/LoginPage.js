@@ -15,6 +15,7 @@ const ERR = {
     emailFormat: "Badly formated email",
     password: "Incorrect Password",
     exists: "Email address in use by another account",
+    dne: "User does not exist under this email",
     other: "Something went wrong :(",
     clear: ""
 };
@@ -22,8 +23,17 @@ const ERR = {
 class Login extends Component {
     constructor(props) {
         super(props);
-        this.state = { type: IN, email: "", password: "", confirm: "", name: "", loading: false, error: "" };
-        //! TODO handle and display error messages and also dont forget to deal with forgot/reset password
+        this.state = {
+            type: IN,
+            email: "",
+            password: "",
+            confirm: "",
+            name: "",
+            loading: false,
+            error: "", 
+            forgot: false
+        };
+        //! dont forget to deal with forgot/reset password
         
         this.emailChange = this.emailChange.bind(this);
         this.passwordChange = this.passwordChange.bind(this);
@@ -31,6 +41,7 @@ class Login extends Component {
         this.nameChange = this.nameChange.bind(this);
         this.signIn = this.signIn.bind(this);
         this.signUp = this.signUp.bind(this);
+        this.sendReset = this.sendReset.bind(this);
     }
 
     emailChange(event) { this.setState({ email: event.target.value }); }
@@ -64,11 +75,8 @@ class Login extends Component {
     signInSuccess() { 
         this.setState({ email: "", password: "", confirm: "", name: "", loading: false, error: "" });
 
-        const { uid } = firebase.auth().currentUser;
-        firebase.database().ref(`/users/${uid}/profile/uname`).once('value').then((snapshot) => {
-            this.props.name(snapshot.val());
-        })
-        .catch((error) => console.log(error));
+        const { displayName } = firebase.auth().currentUser;
+        this.props.name(displayName);
         this.props.showLogin();
     }
 
@@ -103,16 +111,77 @@ class Login extends Component {
 
     signUpSuccess() {
         const { name } = this.state;
-        const { uid } = firebase.auth().currentUser;
-        // console.log(uid);
+        const user = firebase.auth().currentUser;
         this.props.name(name);
-        firebase.database().ref(`/users/${uid}/profile/uname`).set(name);
+        user.updateProfile({ displayName: name });
+        
         this.setState({ email: "", password: "", confirm: "", name: "", loading: false, error: ERR.clear });
         this.props.showLogin();
     }
 
     fail(error) {
-        this.setState({ password: "", confirm: "", error });
+        if(error === ERR.email || error === ERR.emailFormat)
+            this.setState({ email: "", password: "", confirm: "", error });
+        else
+            this.setState({ password: "", confirm: "", error });
+    }
+
+    sendReset() {
+        const { email } = this.state;
+        firebase.auth().sendPasswordResetEmail(email)
+            .then(() => console.log('email sent'))
+            .catch((error) => {
+                console.log(`Error code: ${error.code}\nMessage: ${error.message}`);
+                switch(error.code) {
+                    case "auth/user-not-found":
+                        this.fail(ERR.dne);
+                        break;
+                    default:
+                        this.fail(ERR.other);
+                        console.log(error.code);
+                }
+            });
+    }
+
+    sendResetSuccess() {
+        this.setState({ email: "", password: "", confirm: "", name: "", loading: false, error: ERR.clear });
+    }
+
+    renderForgotPassword() {
+        return(
+            <div>
+                <h3>Password Reset</h3>
+                <div className="input-group">
+                    <label htmlFor="email" className="input-labels">Email:</label>
+                    <input
+                        placeholder="Email"
+                        type="email"
+                        id="email"
+                        className="text-input" 
+                        value={this.state.email}
+                        onChange={this.emailChange}
+                        required
+                    />
+                </div>
+                <div className="input-group auth-error">{this.state.error}</div>
+                <div className="input-group">
+                    <button
+                        className="sign-button"
+                        onClick={this.sendReset}
+                    >
+                        Send Reset Email
+                    </button>
+                </div>
+                <div className="input-group">
+                    <button 
+                        className="text-button"
+                        onClick={() => this.setState({ forgot: false, error: ERR.clear })}
+                    >
+                        <u>Cancel</u>
+                    </button>
+                </div>
+            </div>
+        );
     }
 
     renderForm() {
@@ -121,7 +190,6 @@ class Login extends Component {
                 <div className="login-form">
                     <h3>Sign In</h3>
                     <div className="input-group">
-                        {/* <label for="email">Email:</label> */}
                         <input
                             placeholder="Email"
                             type="email"
@@ -152,7 +220,6 @@ class Login extends Component {
                             Sign In
                         </button>
                     </div>
-
                     <div className="input-group">
                         <button
                             className="text-button"
@@ -161,13 +228,14 @@ class Login extends Component {
                             <u>Sign Up</u>
                         </button>
                     </div>
-                    {/* <div className="input-group">
+                    <div className="input-group">
                         <button
                             className="text-button"
+                            onClick={() => this.setState({ forgot: true, password: "", confirm: "", name: "", error: ERR.clear })}
                         >
                             <u>Forgot Password</u>
                         </button>
-                    </div> */}
+                    </div>
                     <div className="input-group">
                         <button 
                             className="text-button"
@@ -252,11 +320,11 @@ class Login extends Component {
     }
 
     render() {
-        return (
-            <div>
-                {this.renderForm()}
-            </div>
-        );
+        if(!this.state.forgot) {
+            return <div>{this.renderForm()}</div>;
+        } else {
+            return <div>{this.renderForgotPassword()}</div>;
+        }
     }
 }
 

@@ -18,9 +18,10 @@ class Profile extends Component {
 
     updateName() { 
         const { name } = this.state;
-        const { uid } = firebase.auth().currentUser;
+        const user = firebase.auth().currentUser;
         this.props.name(name);
-        firebase.database().ref(`/users/${uid}/profile/uname`).set(name);
+        user.updateProfile({ displayName: name });
+        // firebase.database().ref(`/users/${uid}/profile/uname`).set(name);
     }
 
     componentDidMount() {
@@ -61,7 +62,7 @@ class Profile extends Component {
                     className="text-input"
                     value={this.state.name}
                     onChange={this.nameChange}
-                    autocomplete="off"
+                    autoComplete="off"
                     required
                 />
                 {this.state.name !== this.props.userdata.name && <button
