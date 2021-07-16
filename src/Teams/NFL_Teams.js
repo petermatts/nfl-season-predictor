@@ -1,16 +1,30 @@
 import T from './Teams.json';
 import { Team } from './Team';
 
-const Teams = [];
 const TeamAbvrs = [];
 
 // const SOS2020 = [0.518, 0.525, 0.438, 0.525, 0.500, 0.509, 0.477, 0.461, 0.459, 0.512, 0.525, 0.504, 0.518, 0.502, 0.494, 0.500, 0.496, 0.492, 0.516, 0.529, 0.516, 0.537, 0.490, 0.482, 0.533, 0.486, 0.457, 0.509, 0.527, 0.502, 0.498, 0.465];
 const SOS2021 = [0.507, 0.454, 0.563, 0.478, 0.472, 0.550, 0.529, 0.518, 0.452, 0.471, 0.529, 0.542, 0.504, 0.478, 0.491, 0.511, 0.526, 0.493, 0.515, 0.471, 0.531, 0.489, 0.483, 0.474, 0.489, 0.430, 0.574, 0.511, 0.489, 0.465, 0.507, 0.504];
 
-for(let i = 0; i < T.length; i++) {
-    Teams[i] = new Team(T[i]);
-    Teams[i].SOS = SOS2021[i];
-    TeamAbvrs[i] = Teams[i].abrv;
+
+//! needs to become adaptable to changing a season
+
+const Teams = (season) => {
+    const teamlist = [];
+    let SOS = null;
+    // eslint-disable-next-line eqeqeq
+    if(season == 2021)
+        SOS = SOS2021;
+    else
+        return [];
+
+    for(let i = 0; i < T.length; i++) {
+        teamlist[i] = new Team(T[i]);
+        teamlist[i].SOS = SOS[i];
+        TeamAbvrs[i] = teamlist[i].abrv;
+    }
+
+    return teamlist;
 }
 
 const CreateNFL = (Teams) => ({

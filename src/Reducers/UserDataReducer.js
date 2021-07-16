@@ -4,14 +4,21 @@ import {
     UPDATE_GAMEPICKS,
     ADD_BYE,
     NAME,
-    LOAD_SAVE
+    LOAD_SAVE,
+    SAVE_SAVE
 } from './../Actions/types';
 import { unpicked, homewin, awaywin, tiegame, win, loss, tie } from './../Actions/Constants';
 
-const defaultList = new Array(272).fill(unpicked, 0,272);
-const defaultGrid = new Array(32);
-for(let i = 0; i < defaultGrid.length; i++)
-    defaultGrid[i] = new Array(18).fill(unpicked, 0, 18);
+const list = () => new Array(272).fill(unpicked, 0,272);
+const grid = () => {
+    const arr = new Array(32);
+    for(let i = 0; i < arr.length; i++)
+        arr[i] = new Array(18).fill(unpicked, 0, 18);
+    return arr;
+};
+
+const defaultList = list();
+const defaultGrid = grid();
 
 const INITIAL_STATE = {
     gamelist: defaultList, //Important gamelist and gamepicks are parrallel
@@ -36,11 +43,9 @@ export default (state=INITIAL_STATE, action) => {
 
             const newGrid = state.gamegrid;
             if(pick === homewin) {
-                console.log('homewin');
                 newGrid[home][week-1] = win;
                 newGrid[away][week-1] = loss;
             } else if(pick === awaywin) {
-                console.log('awaywin', home);
                 newGrid[home][week-1] = loss;
                 newGrid[away][week-1] = win;
             } else if(pick === tiegame) {
@@ -52,8 +57,10 @@ export default (state=INITIAL_STATE, action) => {
         case GET_GAMELIST:
             return { ...state, gamepicks: action.payload };
         case UPDATE_GAMEPICKS:
+            console.log('update gamepicks', action.payload);
             const newGamePicks = state.gamepicks;
             newGamePicks[action.payload.key] = action.payload.gamepick;
+            console.log(newGamePicks[action.payload.key]);
             return { ...state, gamepicks: newGamePicks };
         case ADD_BYE:
             const tempGrid = state.gamegrid;
@@ -62,7 +69,16 @@ export default (state=INITIAL_STATE, action) => {
         case NAME:
             return { ...state, name: action.payload };
         case LOAD_SAVE:
-            return { ...state, saveData: action.payload.save, saveStatus: action.payload.saveName };
+            return {
+                ...state,
+                saveData: action.payload.save,
+                saveStatus: action.payload.saveName,
+                gamespicked: 0,
+                gamelist: list(),
+                gamegrid: grid()
+            };
+        case SAVE_SAVE:
+            return { ...state, saveData: action.payload };
         default:
             return state;
     }

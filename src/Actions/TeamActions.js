@@ -4,6 +4,7 @@ import { tiegame, win, loss, tie } from './../Actions/Constants';
 
 export const gameResult = (result, gameId) => (dispatch, getState) => {
     const state = getState();
+    const keyGrid = state.schedule.gamegrid;
     const { gamelist, gamegrid } = state.userdata;
     const isTie = gamelist[gameId]===tiegame;
     const gamepick = state.userdata.gamepicks[gameId];
@@ -24,13 +25,13 @@ export const gameResult = (result, gameId) => (dispatch, getState) => {
         for(let i = 0; i < gamegrid[w_hash].length; i++) {
             switch(gamegrid[w_hash][i]) {
                 case win:
-                    winner.wins.push(otherTeam(gamepick, winner.abrv));
+                    winner.wins.push(otherTeam(state.userdata.gamepicks[keyGrid[w_hash][i]], winner.abrv));
                     break;
                 case loss:
-                    winner.loses.push(otherTeam(gamepick, winner.abrv));
+                    winner.loses.push(otherTeam(state.userdata.gamepicks[keyGrid[w_hash][i]], winner.abrv));
                     break;
                 case tie:
-                    winner.ties.push(otherTeam(gamepick, winner.abrv));
+                    winner.ties.push(otherTeam(state.userdata.gamepicks[keyGrid[w_hash][i]], winner.abrv));
                     break;
                 default:
                     continue;
@@ -40,13 +41,13 @@ export const gameResult = (result, gameId) => (dispatch, getState) => {
         for(let i = 0; i < gamegrid[l_hash].length; i++) {
             switch(gamegrid[l_hash][i]) {
                 case win:
-                    loser.wins.push(otherTeam(gamepick, winner.abrv));
+                    loser.wins.push(otherTeam(state.userdata.gamepicks[keyGrid[l_hash][i]], loser.abrv));
                     break;
                 case loss:
-                    loser.loses.push(otherTeam(gamepick, winner.abrv));
+                    loser.loses.push(otherTeam(state.userdata.gamepicks[keyGrid[l_hash][i]], loser.abrv));
                     break;
                 case tie:
-                    loser.ties.push(otherTeam(gamepick, winner.abrv));
+                    loser.ties.push(otherTeam(state.userdata.gamepicks[keyGrid[l_hash][i]], loser.abrv));
                     break;
                 default:
                     continue;
@@ -67,7 +68,7 @@ export const gameResult = (result, gameId) => (dispatch, getState) => {
             payload: { key: gameId, gamepick }
         });
 
-        return  {
+        return {
             type: GAME_RESULT,
             payload: { winner, loser }
         };
@@ -88,13 +89,13 @@ export const gameResult = (result, gameId) => (dispatch, getState) => {
         for(let i = 0; i < gamegrid[h_hash].length; i++) {
             switch(gamegrid[h_hash][i]) {
                 case win:
-                    home.wins.push(otherTeam(gamepick, home.abrv));
+                    home.wins.push(otherTeam(state.userdata.gamepicks[keyGrid[h_hash][i]], home.abrv));
                     break;
                 case loss:
-                    home.loses.push(otherTeam(gamepick, home.abrv));
+                    home.loses.push(otherTeam(state.userdata.gamepicks[keyGrid[h_hash][i]], home.abrv));
                     break;
                 case tie:
-                    home.ties.push(otherTeam(gamepick, home.abrv));
+                    home.ties.push(otherTeam(state.userdata.gamepicks[keyGrid[h_hash][i]], home.abrv));
                     break;
                 default:
                     continue;
@@ -104,13 +105,13 @@ export const gameResult = (result, gameId) => (dispatch, getState) => {
         for(let i = 0; i < gamegrid[a_hash].length; i++) {
             switch(gamegrid[a_hash][i]) {
                 case win:
-                    away.wins.push(otherTeam(gamepick, away.abrv));
+                    away.wins.push(otherTeam(state.userdata.gamepicks[keyGrid[a_hash][i]], away.abrv));
                     break;
                 case loss:
-                    away.loses.push(otherTeam(gamepick, away.abrv));
+                    away.loses.push(otherTeam(state.userdata.gamepicks[keyGrid[a_hash][i]], away.abrv));
                     break;
                 case tie:
-                    away.ties.push(otherTeam(gamepick, away.abrv));
+                    away.ties.push(otherTeam(state.userdata.gamepicks[keyGrid[a_hash][i]], away.abrv));
                     break;
                 default:
                     continue;
@@ -131,7 +132,7 @@ export const gameResult = (result, gameId) => (dispatch, getState) => {
             payload: { key: gameId, gamepick }
         });
 
-        return{
+        return {
             type: GAME_RESULT_TIE,
             payload: { home, away }
         };

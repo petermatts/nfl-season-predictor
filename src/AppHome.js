@@ -24,8 +24,7 @@ import './App.css';
 
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { faFootballBall } from '@fortawesome/free-solid-svg-icons';
-/* import { showInstructions } from './Actions/SettingsActions';
-<FontAwesomeIcon icon={faFootballBall} rotation={45} /> */
+// <FontAwesomeIcon icon={faFootballBall} rotation={45} />
 
 class Home extends Component {
     constructor(props) {
@@ -137,8 +136,8 @@ class Home extends Component {
                 {this.renderBody()}
 
                 {this.props.userdata.name!==null && <footer className="App-Footer">
-                    <LoadButton />
                     <SaveButton />
+                    <LoadButton />
                 </footer>}
             </div>
         );

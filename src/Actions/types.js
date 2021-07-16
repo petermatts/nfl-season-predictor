@@ -1,4 +1,4 @@
-//Team Actopms
+//Team Actions
 export const GAME_RESULT = 'game_result';
 export const GAME_RESULT_TIE = 'game_result_tie';
 export const UPDATE_SOV = 'update_SOV';
@@ -20,6 +20,7 @@ export const UPDATE_GAMEPICKS = 'update_gamepicks';
 export const ADD_BYE = 'add_bye';
 export const NAME = 'name';
 export const LOAD_SAVE = 'load_save';
+export const SAVE_SAVE = 'save_save';
 
 //Settings Actions
 export const UPDATE_PROGRESSBAR = 'update_progressbar';

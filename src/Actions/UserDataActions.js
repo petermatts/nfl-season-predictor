@@ -1,5 +1,9 @@
-import { UPDATE_UGAMELIST, ADD_BYE, NAME, LOAD_SAVE } from './types';
+/* eslint-disable eqeqeq */
+import { UPDATE_UGAMELIST, ADD_BYE, NAME, LOAD_SAVE, SAVE_SAVE } from './types';
 import firebase from 'firebase';
+import { getGameList, gameResult } from '../Actions';
+import { unpicked, homewin, awaywin, tiegame } from './Constants';
+import { teamHash } from '../Teams/Team';
 
 /**
  * pick = 0 => unpicked 
@@ -34,17 +38,90 @@ export const name = (name) => {
     };
 }
 
-export const loadSave = (saveName, season) => (dispatch) => {
+export const loadSave = (saveName, season) => async (dispatch, getState) => {
     const { uid } = firebase.auth().currentUser;
-    firebase.database().ref(`/users/${uid}/saves/${season}/${saveName}`).once('value')
+
+    await firebase.database().ref(`/users/${uid}/saves/${season}/${saveName}`).once('value')
         .then((snapshot) => {
+            //updates saveData and saveStatus, clears rest of userdata state
             dispatch({
                 type: LOAD_SAVE,
-                payload: { save: snapshot.val(), saveName: `/${season}/${saveName}` }
+                payload: { save: snapshot.val(), saveName: `/${season}/${saveName}`, season }
             });
-            console.log(snapshot.val());
+            // console.log(snapshot.val());
         })
         .catch(() => {
             console.log('Failed to read data');
         });
+
+    await dispatch(getGameList(season));
+    // console.log(getState().userdata);
+
+    const state = getState();
+    const { NFL } = state;
+    const { saveData } = state.userdata;
+    const { gamelist, gamegrid } = state.schedule;
+    // console.log(saveData);
+
+    //repick everything from save in database
+    for(let i = 0; i < saveData.length; i++) {
+        const pick = saveData[i];
+        const game = gamelist[i];
+        // console.log(pick, homewin, pick == homewin);
+        const home = NFL[game.home];
+        const away = NFL[game.away];
+        const { week, gridLoc } = getGridLocations(i, home, away, gamegrid);
+
+        if(pick == unpicked)
+            continue;
+        else if(pick == homewin) {
+            dispatch(updateUserGamePicks(i, homewin, gridLoc, week));
+            dispatch(gameResult({ winner: home, loser: away }, i));
+        } else if(pick == awaywin) {
+            dispatch(updateUserGamePicks(i, awaywin, gridLoc, week));
+            dispatch(gameResult({ winner: away, loser: home }, i));
+        } else if(pick == tiegame) {
+            dispatch(updateUserGamePicks(i, tiegame, gridLoc, week));
+            dispatch(gameResult({ home, away }, i));
+        }
+    }
+}
+
+function getGridLocations(gameId, home, away, grid) {
+    const h = teamHash(home.abrv);
+    const a = teamHash(away.abrv);
+    let week = null;
+
+    if(grid[h].length === grid[a].length) {
+        const len = grid[h].length;
+        for(let i = 0; i < len; i++) {
+            if(grid[h][i] === grid[a][i] && grid[h][i] === gameId) {
+                week = i+1;
+                break;
+            }
+        }
+    }
+
+    return { week, gridLoc: { home: h, away: a }};
+};
+
+export const saveSave = () => async (dispatch, getState) => {
+    const state = getState();
+    const { season } = state.settings;
+    const { gamelist, saveStatus } = state.userdata;
+    const saveName = saveStatus.substring(saveStatus.lastIndexOf('/')+1);
+    const newData = gamelist.join().replaceAll(',','');
+
+    // console.log(season);
+    // console.log(newData);
+    // console.log(saveName);
+
+    const { uid } = firebase.auth().currentUser;
+
+    await firebase.database().ref(`/users/${uid}/saves/${season}/${saveName}`).set(newData);
+
+    dispatch({ 
+        type: SAVE_SAVE,
+        payload: newData
+    });
 }

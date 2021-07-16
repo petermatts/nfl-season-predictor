@@ -1,5 +1,5 @@
 /* eslint-disable eqeqeq */
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ButtonGroup } from 'reactstrap';
 import './CSS/GameButton.css';
@@ -8,46 +8,7 @@ import { gameResult, updateUserGamePicks } from '../../Actions';
 import { homewin, awaywin, tiegame } from '../../Actions/Constants';
 import { teamHash } from '../../Teams/Team';
 
-class GameSelector extends PureComponent {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            hometeam: null,
-            awayteam: null,
-            homepress: false,
-            awaypress: false, 
-            tiepress: false
-        };
-    }
-
-    checkPressed() {
-        const { gamelist } = this.props.userdata;
-        const gameId = this.props.game.hash;
-        // console.log(gamelist[gameId]);
-        if(gamelist[gameId] === homewin) {
-            this.setState({ homepress: true });
-        } else if(gamelist[gameId] === awaywin) {
-            this.setState({ awaypress: true });
-        } else if(gamelist[gameId] === tiegame) {
-            this.setState({ tiepress: true });
-        }     
-    }
-
-    componentDidMount() {
-        const h_abrv = this.props.game.home;
-        const a_abrv = this.props.game.away;
-
-        // console.log(h_abrv, a_abrv);
-
-        this.setState({
-            hometeam: this.props.NFL[h_abrv], 
-            awayteam: this.props.NFL[a_abrv]
-        });
-
-        this.checkPressed();
-    }
-
+class GameSelector extends Component {
     getGridLocations(gameId, week, home, away) {
         const { gamegrid } = this.props.schedule;
         const result = {};
@@ -64,71 +25,66 @@ class GameSelector extends PureComponent {
     }
 
     render() {
-        if(this.state.hometeam !== null) {
-            const gameId = this.props.game.hash;
-            const home = this.state.hometeam;
-            const away = this.state.awayteam;
-            const { week } = this.props;
-            const gridLoc = this.getGridLocations(gameId, week, home, away);
-    
-            let glowHome, glowAway, glowTie;
-            if(this.state.homepress) {
-                glowHome = 'glow';
-                glowTie ='';
-                glowAway ='';
-            } else if(this.state.tiepress) {
-                glowHome = '';
-                glowTie ='glow';
-                glowAway ='';
-            } else if(this.state.awaypress) {
-                glowHome = '';
-                glowTie ='';
-                glowAway ='glow';
-            }
-    
-            return (
-                <ButtonGroup className="button-group">
-                    <button
-                        className={`AwayTeam-Button ${away.abrv} ${glowAway}`}
-                        disabled={this.state.awaypress}
-                        onClick={() => {
-                            this.props.updateUserGamePicks(gameId, awaywin, gridLoc, week);
-                            this.props.gameResult({winner: away, loser: home }, gameId);
-                            this.setState({ awaypress: true, tiepress: false, homepress: false });    
-                        }}
-                    >
-                        {away.abrv}
-                    </button>
-                    <button 
-                        className={`Tie-Button ${glowTie}`}
-                        disabled={this.state.tiepress}
-                        onClick={() => {
-                            this.props.updateUserGamePicks(gameId, tiegame, gridLoc, week);
-                            this.props.gameResult({ home, away }, gameId);
-                            this.setState({ tiepress: true, awaypress: false, homepress: false });
-                        }}
-                    >
-                        @
-                    </button>
-                    <button 
-                        className={`HomeTeam-Button ${home.abrv} ${glowHome}`}
-                        disabled={this.state.homepress}
-                        onClick={() => {
-                            this.props.updateUserGamePicks(gameId, homewin, gridLoc, week);
-                            this.props.gameResult({ winner: home, loser: away }, gameId);
-                            this.setState({ homepress: true, awaypress: false, tiepress: false });
-                        }}
-                    >
-                        {home.abrv}
-                    </button>
-                </ButtonGroup>
-            );
-        } else {
-            return null;
-            // ! spinner?
-            //from reactstrap
+        // console.log(this.props);
+        const gameId = this.props.game.hash;
+        const pick = this.props.userdata.gamelist[gameId];
+        const home = this.props.NFL[this.props.game.home];
+        const away = this.props.NFL[this.props.game.away];
+        const { week } = this.props;
+        const gridLoc = this.getGridLocations(gameId, week, home, away);
+
+        let glowHome, glowAway, glowTie;
+        if(pick === homewin) {
+            glowHome = 'glow';
+            glowTie ='';
+            glowAway ='';
+        } else if(pick === tiegame) {
+            glowHome = '';
+            glowTie ='glow';
+            glowAway ='';
+        } else if(pick === awaywin) {
+            glowHome = '';
+            glowTie ='';
+            glowAway ='glow';
         }
-       
+
+        return (
+            <ButtonGroup className="button-group">
+                <button
+                    className={`AwayTeam-Button ${away.abrv} ${glowAway}`}
+                    disabled={glowAway==='glow'}
+                    onClick={() => {
+                        this.props.updateUserGamePicks(gameId, awaywin, gridLoc, week);
+                        this.props.gameResult({winner: away, loser: home }, gameId);
+                        // this.setState({ awaypress: true, tiepress: false, homepress: false });    
+                    }}
+                >
+                    {away.abrv}
+                </button>
+                <button 
+                    className={`Tie-Button ${glowTie}`}
+                    disabled={glowTie==='glow'}
+                    onClick={() => {
+                        this.props.updateUserGamePicks(gameId, tiegame, gridLoc, week);
+                        this.props.gameResult({ home, away }, gameId);
+                        // this.setState({ tiepress: true, awaypress: false, homepress: false });
+                    }}
+                >
+                    @
+                </button>
+                <button 
+                    className={`HomeTeam-Button ${home.abrv} ${glowHome}`}
+                    disabled={glowHome==='glow'}
+                    onClick={() => {
+                        this.props.updateUserGamePicks(gameId, homewin, gridLoc, week);
+                        this.props.gameResult({ winner: home, loser: away }, gameId);
+                        // this.setState({ homepress: true, awaypress: false, tiepress: false });
+                    }}
+                >
+                    {home.abrv}
+                </button>
+            </ButtonGroup>
+        );   
     }
 }
 

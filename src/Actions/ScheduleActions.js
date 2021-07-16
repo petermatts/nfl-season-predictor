@@ -11,8 +11,8 @@ export const getGameGrid = (year) => (dispatch) => {
     });
 }
 
-export const getGameList = (year) => (dispatch) => {
-    firebase.database().ref(`/data/${year}/GameList`).once('value').then((snapshot) => {
+export const getGameList = (year) => async (dispatch) => {
+    await firebase.database().ref(`/data/${year}/GameList`).once('value').then((snapshot) => {
         // console.log(snapshot.val());
         dispatch({ type: GET_GAMELIST, payload: snapshot.val() });
     })

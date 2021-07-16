@@ -30,6 +30,7 @@
     font-weight: 400;
     padding: 5px;
     flex: 1;
+    margin: 5px;
 }.cancel-modal:hover {
     transform: translateY(-1px);
     transition: 0.5s;
@@ -48,6 +49,7 @@
     font-weight: 400;
     padding: 5px;
     flex: 1;
+    margin: 5px;
 }.submit-modal:hover {
     transform: translateY(-1px);
     transition: 0.5s;
@@ -56,4 +58,70 @@
     top: 2px;
 }.submit-modal:focus {
     outline: none;
+}
+
+.load-season-button {
+    background: transparent;
+    border: none;
+    font-weight: bold;
+    /* width: 100%; */
+}.load-season-button:hover {
+    transform: translateY(-1px);
+    transition: 0.5s;
+}.load-season-button:active {
+    position: relative;
+    top: 2px;
+}.load-season-button:focus {
+    outline: none;
+}
+
+.load-save-button {
+    border: none;
+    background-color: transparent;
+    color: black;
+    text-align: left;
+    padding-left: 25px;
+    /* width: 50%; */
+}.load-save-button:hover {
+    transform: translateY(-1px);
+    transition: 0.1s;
+    font-weight: 500;
+}.load-save-button:active {
+    position: relative;
+    top: 2px;
+}.load-save-button:focus {
+    outline: none;
+}
+
+.load-save-holder {
+    display: flex;
+    flex-direction: column;
+}
+
+.load-footer {
+    flex-direction: column;
+}
+
+.load-footer-button-holder {
+    display: flex;
+    width: 100%;
+}
+
+.save-selected {
+    background-color: #D3D3D3;
+    border: 1px solid black;
+    border-radius: 12px;
+    font-weight: 500;
+    width: 90%;
+    text-align: center;
+    padding: 3px;
+}
+
+.display-save-name {
+    /* background-color: blue; */
+    display: flex;
+    align-items: center;
+    align-content: flex-start;
+    margin-left: 10px;
+    margin-right: 10px;
 }
