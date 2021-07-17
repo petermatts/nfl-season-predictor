@@ -57,10 +57,8 @@ export default (state=INITIAL_STATE, action) => {
         case GET_GAMELIST:
             return { ...state, gamepicks: action.payload };
         case UPDATE_GAMEPICKS:
-            console.log('update gamepicks', action.payload);
             const newGamePicks = state.gamepicks;
             newGamePicks[action.payload.key] = action.payload.gamepick;
-            console.log(newGamePicks[action.payload.key]);
             return { ...state, gamepicks: newGamePicks };
         case ADD_BYE:
             const tempGrid = state.gamegrid;

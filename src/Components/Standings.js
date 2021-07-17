@@ -6,8 +6,14 @@ import { sortDivision, sortConfrence } from '../Actions/SortStandings';
 import './CSS/Standings.css';
 
 class Standing extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {};
+    }
+
+    componentDidMount() { this.setState({ num: this.props.userdata.gamespicked }); }
+
     renderRows() {
-        // ! sort teamList//
         const { division, confrence, NFL } = this.props;
         const AS = this.props.settings.advancedStandings;
         const playoffs = this.props.settings.showplayoffpic;
@@ -59,7 +65,7 @@ class Standing extends Component {
                     );
                 });
             }
-           
+            
             return stand;
         }
     }
@@ -99,8 +105,8 @@ class Standing extends Component {
 }
 
 const mapStateToProps = (state) => {
-    const { NFL, settings } = state;
-    return { NFL, settings };
+    const { NFL, settings, userdata } = state;
+    return { NFL, settings, userdata };
 };
 
 const Standings = connect(mapStateToProps)(Standing);

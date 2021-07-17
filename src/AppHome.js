@@ -126,7 +126,7 @@ class Home extends Component {
                 </header>
 
                 <h2 className="App-subheader">
-                    {/* <LoginButton /> */}
+                    <LoginButton />
                     {/* {this.scrapeButton()} */}
                     <AboutButton />
                     <InstructionsButton />
