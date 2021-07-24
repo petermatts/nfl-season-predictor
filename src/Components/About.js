@@ -10,6 +10,7 @@ class About extends Component {
                 <button
                     className="aboutButton"
                     id="about"
+                    disabled={this.props.settings.showLogin}
                     onClick={() => this.props.showAbout() }
                 >
                     About

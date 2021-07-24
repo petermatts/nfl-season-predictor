@@ -1,8 +1,25 @@
-# Instructions
+# **Instructions**
+
+---
 
 ## Picking Games
 
 To pick a game, click on the button of the team you pick to win. If you think the teams will tie click the **@** or **VS** button.
+
+---
+
+## Sign In/Sign Up
+
+Benifits:
+- You can now save all your gamepicks under your own version of the season (you can name the save like a file) and you can create multiple saves.
+- Its free!!
+
+How:
+1. Click the `Sign In` button on the menu, in the upper left corner of the screen.
+2. Sign in with an email and password specific to you or sign up/create a user account 
+3. To sign up/create a user account, all you have to do is enter your valid email address and a password with a minimum of 8 characters.
+
+---
 
 ## Your Setup (Settings)
 
@@ -29,3 +46,5 @@ To pick a game, click on the button of the team you pick to win. If you think th
 - **Week:** Allows you to pick games by week of the season.
 
 You can switch between these modes at any time.
+
+---

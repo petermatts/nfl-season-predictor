@@ -39,7 +39,7 @@ export default (state=INITIAL_STATE, action) => {
         case SHOW_INSTRUCTIONS:
             return { ...state, showInstructions: !state.showInstructions, showAbout: false };
         case SHOW_LOGIN:
-            return { ...state, showLogin: !state.showLogin };
+            return { ...state, showLogin: !state.showLogin, showAbout: false, showInstructions: false };
         default:
             return state;
     }

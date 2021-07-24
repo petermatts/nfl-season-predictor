@@ -33,6 +33,7 @@ class Home extends Component {
     }
 
     componentDidMount() {
+        //! change 2021 to this.props.settings.season
         this.props.getGameGrid(2021);
         this.props.getGameList(2021);
         this.props.getSchedule(2021);

@@ -16,6 +16,7 @@ The idea hatched when I watched a YouTube video of Adam Rank predicting all the 
 
 - Buttons for picking games, with time/date/primetime signification above
 - Live standings that update as your picks are made (can sort by divisions or confrences)
+  - All possible tie breakers have been implemented. Only those that involve points or number of touchdowns were not implemented because this picker only picks winners and not scores (yet?).
 - Settings to control:
   - The way you pick by team or week
   - The detail level of the standings
@@ -24,14 +25,13 @@ The idea hatched when I watched a YouTube video of Adam Rank predicting all the 
 ### Features On The Way
 
 - Login to save your picks in files
-  - Looking into the ability to save picks under an account (1)
   - Share picks with friends or other users (2)
   - Create community statistics for game predictions (3)
   - Pick accuracy feedback (3)
 - More settings
   - Maybe some backgrounds (2)
   - More detailed standings (2)
-- More Tie Breakers implemented (2)
+- Pick games with scores (3)
 
 (1) short term/near future goal
 
@@ -44,3 +44,5 @@ The idea hatched when I watched a YouTube video of Adam Rank predicting all the 
 This webapp was designed for desktop/laptop monitors, but I have made it atleast usable (hopefully) for mobile devices, the bigger the screen the better it will probably look... but this is something I will keep working on.
 
 I'll continue updating the README.md as I think of more details and stories about this project ;)
+
+v1.0.3

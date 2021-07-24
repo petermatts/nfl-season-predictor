@@ -10,6 +10,7 @@ class Instructions extends Component {
                 <button
                     className="instructionsButton"
                     id="instructions"
+                    disabled={this.props.settings.showLogin}
                     onClick={() => this.props.showInstructions()}
                 >
                     Instructions
