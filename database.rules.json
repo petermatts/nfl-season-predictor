@@ -1,6 +1,11 @@
 {
   "rules": {
     ".read": true,
-    ".write": true
+    "data": {
+      ".write": "auth.uid === '0ADBYmD0ppOql7OgORByaTaK3In1'"
+    },
+    "users": {
+      ".write": "auth != null"
+    }
   }
 }
