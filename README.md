@@ -30,7 +30,6 @@ The idea hatched when I watched a YouTube video of Adam Rank predicting all the 
   - Pick accuracy feedback (3)
 - More settings
   - Maybe some backgrounds (2)
-  - More detailed standings (2)
 - Pick games with scores (3)
 
 (1) short term/near future goal

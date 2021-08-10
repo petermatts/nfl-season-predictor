@@ -6,7 +6,9 @@ import {
     CHANGE_TEAM_PICK,
     SHOW_ABOUT,
     SHOW_INSTRUCTIONS,
-    SHOW_LOGIN
+    SHOW_LOGIN,
+    SET_SEASON,
+    STANDINGS_PLACE
 } from './types';
 
 export const updatePB = () => {
@@ -56,5 +58,19 @@ export const showInstructions = () => {
 export const showLogin = () => {
     return {
         type: SHOW_LOGIN
+    };
+};
+
+export const updateSeason = (season) => {
+    return {
+        type: SET_SEASON,
+        payload: season
+    };
+};
+
+export const placeStandings = (place) => {
+    return {
+        type: STANDINGS_PLACE,
+        payload: place
     };
 };

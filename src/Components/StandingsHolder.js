@@ -51,8 +51,10 @@ class StandingsHolder extends Component {
     }
 
     render() {
+        let h = '';
+        this.props.orientation===0 ? h='' : h='holder-full';
         return (
-            <div className="holder">
+            <div className={`holder ${h}`}>
                 <ButtonGroup className="options">
                     <Button
                         className={`button ${this.picked('conf')}`}

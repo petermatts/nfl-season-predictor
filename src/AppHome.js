@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Collapse, Card, CardBody } from 'reactstrap';
 import { connect } from 'react-redux';
-import { isMobile } from 'react-device-detect';
+// import { isMobile } from 'react-device-detect';
 import ReactMarkdown from 'react-markdown';
 import { getGameGrid, getGameList, getSchedule } from './Actions';
 import {
@@ -73,15 +73,15 @@ class Home extends Component {
     }
 
     renderBody() {
-        let m = '';
-        if(isMobile) {
-            m = 'mobile';
-        }
+        let b = '';
+        let h = '';
+        this.props.userdata.name != null ? b = 'Body' : b="";
+        this.props.settings.standPlacement===1 ? h='App-Body-Horizontal' : h='';
 
         if(!this.props.settings.showLogin) {
             return (
-                <div className="Body">
-                    <div className="App-Body">
+                <div className={`${b} Body-Over`}>
+                    <div className="md-Body">
                         <Collapse isOpen={this.props.settings.showAbout} className="Collapse">
                             <Card className="Card">
                                 <CardBody>
@@ -91,7 +91,7 @@ class Home extends Component {
                         </Collapse>
                     </div>
 
-                    <div className="App-Body">
+                    <div className="md-Body">
                         <Collapse isOpen={this.props.settings.showInstructions} className="Collapse">
                             <Card className="Card">
                                 <CardBody>
@@ -101,12 +101,12 @@ class Home extends Component {
                         </Collapse>
                     </div>
 
-                    <div className={`App-Body ${m}`}>
+                    <div className={`App-Body ${h}`}>
                         <div className="main-section">
                             {this.pickStyle()}
                         </div>
                         <div className="main-section">
-                            <StandingsHolder />
+                            <StandingsHolder orientation={h.length} />
                         </div>
                     </div>
                 </div>
@@ -120,10 +120,13 @@ class Home extends Component {
     }
 
     render() {
+        // console.log(window);
+        // const { innerWidth, innerHeight } = window;
+
         return(
             <div className="App">
                 <header className="App-header">
-                    <b className="title">NFL Season Predictor</b>
+                    <b className="title">{`NFL ${this.props.settings.season} Season Predictor`}</b>
                 </header>
 
                 <h2 className="App-subheader">

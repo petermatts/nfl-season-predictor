@@ -118,6 +118,8 @@ class Save extends Component {
     
             /* Load the save */
             this.props.loadSave(saveName, season);
+
+            //! change this.props.settings.season to the newly selected season using this.props.updateSeason(season)
     
             //close the modal
             this.setState({ loading: false, showModal: false });
@@ -166,7 +168,7 @@ class Save extends Component {
                     </button>
                     <button
                         className="submit-modal"
-                        disabled={this.state.saveName === ''}
+                        disabled={this.state.saveName === '' || this.state.season !== this.props.settings.season}
                         onClick={this.createFromPicks}
                     >
                         Create From Picks
@@ -376,8 +378,8 @@ class Load extends Component {
 }
 
 const mapStateToProps = (state) => {
-    const { userdata } = state;
-    return { userdata };
+    const { userdata, settings } = state;
+    return { userdata, settings };
 }
 
 const SaveButton = connect(mapStateToProps, { loadSave, saveSave })(Save);

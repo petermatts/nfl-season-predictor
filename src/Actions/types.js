@@ -31,3 +31,5 @@ export const CHANGE_TEAM_PICK = 'change_team_pick';
 export const SHOW_ABOUT = 'show_about';
 export const SHOW_INSTRUCTIONS = 'show_instructions';
 export const SHOW_LOGIN = "show_login";
+export const SET_SEASON = "set_season";
+export const STANDINGS_PLACE = "standings_place";

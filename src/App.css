@@ -33,14 +33,33 @@
 }
 
 .Body {
-  margin-bottom: 80px;
+  margin-bottom: calc(4% + 0.1em);
+}
+
+.Body-Over {
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.md-Body {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex: 1;
+  height: 100%;
+  left: 0px;
 }
 
 .App-Body {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
+  flex: 1;
   height: 100%;
+}
+
+.App-Body-Horizontal {
+    flex-direction: row;
 }
 
 .mobile {
@@ -89,6 +108,14 @@
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+@media screen and (max-width: 1200px) {
+  .App-Body{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+  }
 }
 
 @media (prefers-reduced-motion: no-preference) {

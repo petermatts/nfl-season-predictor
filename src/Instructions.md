@@ -23,6 +23,12 @@ How:
 
 ## Your Setup (Settings)
 
+### Season
+
+This setting will allow you to switch between different NFL seasons to pick games.
+
+*Note: currently only the 2021 season is supported. Seasons 2021 and beyond will be supported.
+
 ### Progress bar
 
 - **On:** Displays a progress bar that shows how many games of the season you have picked. This helps you keep track incase you miss any!
@@ -32,9 +38,12 @@ How:
 ### Standings Display
 
 - **Detail:**
-  - Simple: Shows teams by seed, name, record, and win percentage.
+  - Simple: Shows teams by seed, name, record, and win percentage. (Default)
   - Moderate: Shows teams by simple pluss confrence and divisional records.
   - High: Shows teams by moderate plus strength of schedule and strength of victory.
+- **Placement**
+  - Bottom: Display standings below the picking section (Default)
+  - Right: Display standings to the right of the picking section, option not availible on mobile devices
 - **Only Playoff Teams** (only when standings are in confrence mode!)
   - On: shows top 7 seeds in each confrence only.
   - Off: All seeds shown 1 - 16.

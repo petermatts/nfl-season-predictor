@@ -6,7 +6,9 @@ import {
     CHANGE_TEAM_PICK,
     SHOW_ABOUT,
     SHOW_INSTRUCTIONS,
-    SHOW_LOGIN
+    SHOW_LOGIN,
+    SET_SEASON,
+    STANDINGS_PLACE
 } from './../Actions/types';
 
 const INITIAL_STATE = {
@@ -14,6 +16,7 @@ const INITIAL_STATE = {
     pickByTeam: true,
     pickTeam: null,
     advancedStandings: 1,
+    standPlacement: 0,
     showplayoffpic: false,
     season: 2021,
 
@@ -40,6 +43,10 @@ export default (state=INITIAL_STATE, action) => {
             return { ...state, showInstructions: !state.showInstructions, showAbout: false };
         case SHOW_LOGIN:
             return { ...state, showLogin: !state.showLogin, showAbout: false, showInstructions: false };
+        case SET_SEASON:
+            return { ...state, season: action.payload };
+        case STANDINGS_PLACE:
+            return { ...state, standPlacement: action.payload };
         default:
             return state;
     }
