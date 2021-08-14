@@ -87,7 +87,6 @@ class Settings extends Component {
 
     renderStandingsSettings(settings) {
         const disablePosition = isMobile;
-        console.log(disablePosition);
         return (
             <div>
                 <h5>Standings</h5>
