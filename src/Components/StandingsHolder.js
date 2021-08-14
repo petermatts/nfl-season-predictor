@@ -53,7 +53,8 @@ class StandingsHolder extends Component {
 
     render() {
         let h = '';
-        (this.props.orientation===0 || isMobile) ? h='' : h='holder-full';
+        (this.props.orientation===0) ? h='' : h='holder-full';
+        if(isMobile) { h='holder-full'; }
         return (
             <div className={`holder ${h}`}>
                 <ButtonGroup className="options">
