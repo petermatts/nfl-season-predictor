@@ -1,0 +1,7 @@
+All of this information is about finding a custon domain for this project.
+Once I have one I will need to add it to the firebase hosting section.
+
+Google Domains: flat rate of $12/year
+GoDaddy: $2.99 first year, increases after that
+
+Google better for long run price wise, however Google is reportedly not invested in running a domain service.

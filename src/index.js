@@ -7,6 +7,7 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
   <React.StrictMode>
+    {/* <meta name="google-site-verification" content="IgEHgdOm5sJza-7csmUv1NmKbFr0ET6PYSdSC7IglUE" /> */}
     <App />
   </React.StrictMode>,
   document.getElementById('root')
