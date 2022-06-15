@@ -5,7 +5,8 @@ import {
     ADD_BYE,
     NAME,
     LOAD_SAVE,
-    SAVE_SAVE
+    SAVE_SAVE,
+    SEASON_CHANGE
 } from './../Actions/types';
 import { unpicked, homewin, awaywin, tiegame, win, loss, tie } from './../Actions/Constants';
 
@@ -77,6 +78,20 @@ export default (state=INITIAL_STATE, action) => {
             };
         case SAVE_SAVE:
             return { ...state, saveData: action.payload };
+        case SEASON_CHANGE:
+            const newState = {
+                ...state,
+                gamelist: list(),
+                gamegrid: grid(),
+                gamepicks: null,
+                gamespicked: 0,
+
+                name: action.payload,
+                saveStatus: null,
+                saveData: null
+            };
+            console.log(newState);
+            return newState;
         default:
             return state;
     }

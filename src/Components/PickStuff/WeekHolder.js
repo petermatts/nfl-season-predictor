@@ -9,7 +9,7 @@ import './CSS/WeekHolder.css';
 class weekholder extends PureComponent {
     constructor(props) {
         super(props);
-        this.state = { selected: 1 };
+        this.state = { selected: 1, season: props.settings.season };
     }
 
     picked(key) {
@@ -24,7 +24,7 @@ class weekholder extends PureComponent {
         const { schedule } = this.props.schedule;
         if(schedule === null) {
             return null;
-        } 
+        }
 
         const numWeeks = Object.keys(schedule).length;
         const weeks = [];
@@ -75,10 +75,10 @@ class weekholder extends PureComponent {
         return (
             <div className="weekHolder">
                 <ButtonGroup className="buttonHolder">
-                    {this.renderWeekButtons()}
                     {/* <Button outline color="primary">
                         <b>Week:</b>
                     </Button> */}
+                    {this.renderWeekButtons()}
                 </ButtonGroup>
                 {this.showWeek()}
                 <ProgressBar />

@@ -1,7 +1,8 @@
 /* eslint-disable eqeqeq */
-import { UPDATE_UGAMELIST, ADD_BYE, NAME, LOAD_SAVE, SAVE_SAVE } from './types';
+import { UPDATE_UGAMELIST, ADD_BYE, NAME, LOAD_SAVE, SAVE_SAVE, SEASON_CHANGE, RESET_LEAGUE } from './types';
 import firebase from 'firebase';
-import { getGameList, gameResult } from '../Actions';
+// import { getGameList, gameResult } from '../Actions';
+import { getGameList, getGameGrid, getSchedule, gameResult, updateSeason } from '../Actions';
 import { unpicked, homewin, awaywin, tiegame } from './Constants';
 import { teamHash } from '../Teams/Team';
 
@@ -40,6 +41,7 @@ export const name = (name) => {
 
 export const loadSave = (saveName, season) => async (dispatch, getState) => {
     const { uid } = firebase.auth().currentUser;
+    console.log(season);
 
     await firebase.database().ref(`/users/${uid}/saves/${season}/${saveName}`).once('value')
         .then((snapshot) => {
@@ -54,7 +56,10 @@ export const loadSave = (saveName, season) => async (dispatch, getState) => {
             console.log('Failed to read data');
         });
 
+    dispatch(updateSeason(season));
     await dispatch(getGameList(season));
+    await dispatch(getGameGrid(season));
+    await dispatch(getSchedule(season))
     // console.log(getState().userdata);
 
     const state = getState();
@@ -124,4 +129,17 @@ export const saveSave = () => async (dispatch, getState) => {
         type: SAVE_SAVE,
         payload: newData
     });
-}
+};
+
+export const seasonChange = () => async (dispatch, getState) => {
+    const state = getState();
+    const n = state.userdata.name;
+    const season = state.settings.season;
+
+    dispatch({ type: RESET_LEAGUE, payload: season });
+
+    dispatch({
+        type: SEASON_CHANGE,
+        payload: n
+    });
+};

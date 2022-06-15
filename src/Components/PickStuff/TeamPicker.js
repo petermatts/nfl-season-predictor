@@ -62,7 +62,10 @@ class Picker extends Component {
             } else if(date==='Invalid Date') {
                 return (
                     <div>
-                        <b>TBD</b>
+                        <b id={`tbd${id}`}>{`Week ${week}`}</b>
+                        {!isMobile && <UncontrolledTooltip target={`tbd${id}`} placement="top">
+                            TBD
+                        </UncontrolledTooltip>}
                     </div>
                 );
             } else {

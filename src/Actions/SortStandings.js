@@ -7,7 +7,7 @@
  * 0 Win-Loss-Tie percentage
  * 1 Head-to-head (best won-lost-tied percentage in games between the clubs)
  * 2 Best won-lost-tied percentage in games played within the division
- * ! 3 Best won-lost-tied percentage in common games
+ * 3 Best won-lost-tied percentage in common games
  * 4 Best won-lost-tied percentage in games played within the conference
  * 5 Strength of victory
  * 6 Strength of schedule
@@ -101,7 +101,7 @@ function compareDivision(a, b) {
  * 0 Win-Loss-Tie percentage
  * 1 Head-to-head, if applicable
  * 2 Best won-lost-tied percentage in games played within the conference
- * ! 3 Best won-lost-tied percentage in common games, minimum of four
+ * 3 Best won-lost-tied percentage in common games, minimum of four
  * 4 Strength of victory
  * 5 Strength of schedule
  * ! 6 Best combined ranking among conference teams in points scored and points allowed

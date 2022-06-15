@@ -1,6 +1,6 @@
 import axios from 'axios';
 import cheerio from 'cheerio';
-import firebase from 'firebase';
+// import firebase from 'firebase';
 import { teamHash } from '../Teams/Team';
 
 async function scrapeSchedule(year) {
@@ -24,12 +24,14 @@ async function scrapeSchedule(year) {
                 }
 
                 const teamNodes = $('abbr');
+                // console.log(teamNodes);
                 const teams = [];
                 for(let index = 0; index < teamNodes.length; index++) {
                     teams[index] = teamNodes[index].children[0].data;
                     if(teams[index] === 'WSH')
                         teams[index] = 'WAS';
                 }
+                // console.log(teams);
                 
                 //evens in teams[] are home, odds are away
                 //number of teams on bye is (32-(times.length*2)), those teams will be at the end of teams[]
@@ -56,13 +58,14 @@ async function scrapeSchedule(year) {
             console.log(error);
         });
     }
-    // console.log(gameGrid);
-    // console.log(schedule);
+    console.log(gameList);
+    console.log(gameGrid);
+    console.log(schedule);
 
     //push scraped data to firebase
-    firebase.database().ref(`/data/${year}/GameList`).set(gameList);
-    firebase.database().ref(`/data/${year}/GameGrid`).set(gameGrid);
-    firebase.database().ref(`/data/${year}/Schedule`).set(schedule);
+    // firebase.database().ref(`/data/${year}/GameList`).set(gameList);
+    // firebase.database().ref(`/data/${year}/GameGrid`).set(gameGrid);
+    // firebase.database().ref(`/data/${year}/Schedule`).set(schedule);
 }
 
 function game(away, home, d, hash) {

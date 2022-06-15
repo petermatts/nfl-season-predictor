@@ -32,12 +32,11 @@ class TeamGameSelector extends Component {
     }
 
     render() {
-        const isByeWeek = this.props.pick[this.props.week-1] === BYE;
+        const { week, gameId, team, NFL, schedule, userdata } = this.props;
 
-        if(!isByeWeek) {
-            const { week, gameId, team, NFL } = this.props;
-            const game = this.props.schedule.gamelist[gameId];
-            const pick = this.props.userdata.gamelist[gameId];
+        if(gameId !== 'BYE') {
+            const game = schedule.gamelist[gameId];
+            const pick = userdata.gamelist[gameId];
             const otherTeam = NFL[team===game.home ? game.away : game.home];
             const thisTeam = NFL[team];
             const isHome = team===game.home;

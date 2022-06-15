@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { isMobile } from 'react-device-detect';
-import { Button,
+import {
+    Button,
     ButtonGroup,
     UncontrolledPopover,
     PopoverHeader,
@@ -19,7 +20,12 @@ import {
     standingsDetail,
     updatePlayoffPic,
     updateSeason,
-    placeStandings
+    seasonChange,
+    placeStandings,
+
+    getGameGrid,
+    getGameList,
+    getSchedule
 } from '../Actions';
 import './CSS/SettingsMenu.css';
 
@@ -31,10 +37,17 @@ class Settings extends Component {
     }
 
     toggleSD() { this.setState({ seasonDropdown: !this.state.seasonDropdown }); }
+
     setSeason(season) {
         this.props.updateSeason(season);
-        //!load new season schedule
-        // console.log(season);
+
+        // load new season schedule
+        // console.log(`Season: ${season}`);
+        this.props.getGameGrid(season);
+        this.props.getGameList(season);
+        this.props.getSchedule(season);
+
+        this.props.seasonChange(); //resets userdata (except name) erasing unsaved progress (if any)
 
         //close dropdown
         this.setState({ seasonDropdown: false });
@@ -58,7 +71,8 @@ class Settings extends Component {
                         <DropdownToggle caret>{settings.season}</DropdownToggle>
                         <DropdownMenu>
                             <DropdownItem onClick={() => this.setSeason(2021)}>2021</DropdownItem>
-                            <DropdownItem disabled onClick={() => this.setSeason(2022)}>2022</DropdownItem>
+                            <DropdownItem onClick={() => this.setSeason(2022)}>2022</DropdownItem>
+                            <DropdownItem disabled onClick={() => this.setSeason(2023)}>2023</DropdownItem>
                         </DropdownMenu>
                     </Dropdown>
                 </div>
@@ -234,7 +248,12 @@ const SettingsMenu = connect(mapStateToProps, {
     standingsDetail,
     updatePlayoffPic,
     updateSeason,
-    placeStandings
+    seasonChange,
+    placeStandings,
+
+    getGameGrid,
+    getGameList,
+    getSchedule
 })(Settings);
 
 export { SettingsMenu };

@@ -18,7 +18,7 @@ const INITIAL_STATE = {
     advancedStandings: 1,
     standPlacement: 0,
     showplayoffpic: false,
-    season: 2021,
+    season: 2022,
 
     showAbout: false,
     showInstructions: false,

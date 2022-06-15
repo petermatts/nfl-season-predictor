@@ -1,7 +1,7 @@
 import { Teams } from '../Teams/NFL_Teams';
-import { GAME_RESULT, GAME_RESULT_TIE,UPDATE_SOV, LOAD_SAVE } from './../Actions/types';
+import { GAME_RESULT, GAME_RESULT_TIE,UPDATE_SOV, LOAD_SAVE, RESET_LEAGUE } from './../Actions/types';
 
-const T = Teams(2021); //season should be updated by admin to the current/upcoming season
+const T = Teams(2022); //! season should be updated by admin to the current/upcoming season
 const INITIAL_STATE = {};
 for(let i = 0; i < T.length; i++) {
     Object.assign(INITIAL_STATE, { [T[i].abrv]: T[i] });
@@ -23,13 +23,20 @@ export default (state = INITIAL_STATE, action) => {
         case UPDATE_SOV:
             return { ...state, [action.payload.abrv]: action.payload.otherTeam };
         case LOAD_SAVE:
-            const reset = Teams(2021); //action payload of season instead of hardcoded number
+            const reset = Teams(2021); //!action payload of season instead of hardcoded number
+            //const reset = Teams(action.payload.season);
             const fix = {};
             for(let i = 0; i < reset.length; i++) {
                 Object.assign(fix, { [reset[i].abrv]: reset[i] });
-            }
-            
+            }            
             return fix;
+        case RESET_LEAGUE:
+            const newT = Teams(action.payload);
+            const newState = {};
+            for(let i = 0; i < newT.length; i++) {
+                Object.assign(newState, { [newT[i].abrv]: newT[i] });
+            }
+            return newState;
         default:
             return state;
     }

@@ -29,14 +29,14 @@ import './App.css';
 class Home extends Component {
     constructor(props) {
         super(props);
-        this.state = { about: null, instr: null };
+        this.state = { about: null, instr: null, season: props.settings.season };
     }
 
     componentDidMount() {
-        //! change 2021 to this.props.settings.season
-        this.props.getGameGrid(2021);
-        this.props.getGameList(2021);
-        this.props.getSchedule(2021);
+        // console.log(`Season: ${this.props.settings.season}`);
+        this.props.getGameGrid(this.props.settings.season);
+        this.props.getGameList(this.props.settings.season);
+        this.props.getSchedule(this.props.settings.season);
 
         fetch(AboutPath).then((response) => response.text()).then((text) => {
             // console.log(text);
@@ -57,7 +57,7 @@ class Home extends Component {
     scrapeButton() {
         return (
             <button onClick={() => {
-                scrapeSchedule(2021);
+                scrapeSchedule(2022);
             }}>
                 scrape
             </button>
@@ -120,9 +120,6 @@ class Home extends Component {
     }
 
     render() {
-        // console.log(window);
-        // const { innerWidth, innerHeight } = window;
-
         return(
             <div className="App">
                 <header className="App-header">

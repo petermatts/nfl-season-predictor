@@ -27,9 +27,6 @@ class Team {
         //? this.awayRecord = '0-0';
 
         //this.hash = this.teamHash(team[0]);
-        
-        // ! this is for if individual team selection pages are made 
-        //this.makeTeamSchedule();
     }
 }
 

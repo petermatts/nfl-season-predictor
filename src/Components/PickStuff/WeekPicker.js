@@ -25,7 +25,7 @@ class WeekPicker extends Component {
             dates.push(date);
         }
 
-        // ! days and dates should be parrallel arrays!
+        // days and dates should be parrallel arrays!
         days = Array.from(new Set(days));
         dates = Array.from(new Set(dates));
 
@@ -35,8 +35,11 @@ class WeekPicker extends Component {
         this.setState({ dates: array });
     }
 
+    static getDerivedStateFromProps(props) {
+        return { games: props.games, byes: props.byes, dates: [] };
+    }
+
     timeDisplay({date, day, time}) {
-        // console.log(day, date, time);
         const dayAbrv = day==='Thursday' ? day.substring(0,4) : day.substring(0,3);
         if(day==='Sunday' && time==='8:20 PM') {
             return (
@@ -76,7 +79,7 @@ class WeekPicker extends Component {
             return (
                 <div>
                     <b id={`${id}`}>{`${dayAbrv} ${time}`}</b>
-                   {!isMobile && <UncontrolledTooltip target={`${id}`} placement="top">
+                    {!isMobile && <UncontrolledTooltip target={`${id}`} placement="top">
                         {`${date}`}
                     </UncontrolledTooltip>}
                 </div>
@@ -153,6 +156,7 @@ class WeekPicker extends Component {
     }
 
     render() {
+        // console.log(this.props);
         return (
             <div className="Component">
                 <ListGroup>
