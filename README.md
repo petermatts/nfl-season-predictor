@@ -44,4 +44,4 @@ This webapp was designed for desktop/laptop monitors, but I have made it atleast
 
 I'll continue updating the README.md as I think of more details and stories about this project ;)
 
-v1.0.5
+v1.1.0
