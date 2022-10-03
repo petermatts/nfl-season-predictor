@@ -15,7 +15,7 @@ import { connect } from 'react-redux';
 import firebase from 'firebase';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleRight, faAngleDown } from '@fortawesome/free-solid-svg-icons';
-import { loadSave, saveSave } from '../Actions';
+import { loadSave, saveSave, seasonChange, updateSeason } from '../Actions';
 import { unpicked } from '../Actions/Constants';
 import './CSS/SaveButtons.css';
 import './CSS/LoginPage.css';
@@ -35,7 +35,8 @@ class Save extends Component {
         this.state = {
             showModal: false,
             saveName: '',
-            season: 2021,
+            // season: 2021, // TODO set initially to this.props.settings.season
+            season: this.props.settings.season,
             openDropdown: false,
             loading: false,
             error: ERR.clear
@@ -51,8 +52,16 @@ class Save extends Component {
         if(!badChars.includes(v.charAt(v.length-1)))
             this.setState({ saveName: v });
     }
+
     dropdownToggle() { this.setState({ openDropdown: !this.state.openDropdown}); }
-    setDropdown(season) { this.setState({ season }); }
+
+    setDropdown(season) {
+        this.setState({ season });
+
+        // NOTE update this.props.setting.season here
+        this.props.seasonChange();
+        this.props.updateSeason(season);
+    }
 
     nameInput() {
         return(
@@ -82,17 +91,9 @@ class Save extends Component {
                 >
                     <DropdownToggle>{this.state.season}</DropdownToggle>
                     <DropdownMenu>
-                        <DropdownItem
-                            onClick={() => this.setDropdown(2021)}
-                        >
-                            2021
-                        </DropdownItem>
-                        <DropdownItem
-                            disabled
-                            onClick={() => this.setDropdown(2022)}
-                        >
-                            2022
-                        </DropdownItem>
+                        <DropdownItem onClick={() => this.setDropdown(2021)}>2021</DropdownItem>
+                        <DropdownItem onClick={() => this.setDropdown(2022)}>2022</DropdownItem>
+                        <DropdownItem disabled onClick={() => this.setDropdown(2023)}>2023</DropdownItem>
                     </DropdownMenu>
                 </Dropdown>
             </div>
@@ -107,7 +108,6 @@ class Save extends Component {
         let exists = null;
         await firebase.database().ref(`/users/${uid}/saves/${season}/${saveName}`).once('value')
             .then((snapshot) => snapshot.val()===null ? exists = false : exists = true);
-        // console.log(exists);
 
         if(!exists) {
             const defaultList = new Array(272).fill(unpicked, 0,272).join().replaceAll(',','');
@@ -115,12 +115,10 @@ class Save extends Component {
                 .set(defaultList)
                 .then(() => console.log('save successful'))
                 .catch((error) => console.log(error)); 
-    
-            /* Load the save */
-            this.props.loadSave(saveName, season);
-
-            //! change this.props.settings.season to the newly selected season using this.props.updateSeason(season)
-    
+                    
+                /* Load the save */
+                this.props.seasonChange(); // prep for season change
+                this.props.loadSave(saveName, season); // calls action updateSeason()
             //close the modal
             this.setState({ loading: false, showModal: false });
         } else {
@@ -136,7 +134,6 @@ class Save extends Component {
         let exists = null;
         await firebase.database().ref(`/users/${uid}/saves/${season}/${saveName}`).once('value')
             .then((snapshot) => snapshot.val()===null ? exists = false : exists = true);
-        // console.log(exists);
 
         if(!exists) {
             const list = this.props.userdata.gamelist.join().replaceAll(',','');
@@ -146,6 +143,7 @@ class Save extends Component {
                 .catch((error) => console.log(error));
 
             /* Load the save */
+            this.props.seasonChange();
             this.props.loadSave(saveName, season);
          
             //close the modal
@@ -382,7 +380,7 @@ const mapStateToProps = (state) => {
     return { userdata, settings };
 }
 
-const SaveButton = connect(mapStateToProps, { loadSave, saveSave })(Save);
+const SaveButton = connect(mapStateToProps, { loadSave, saveSave, seasonChange, updateSeason })(Save);
 const LoadButton = connect(mapStateToProps, { loadSave })(Load);
 
 export { SaveButton, LoadButton };
