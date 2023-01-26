@@ -45,3 +45,7 @@ This webapp was designed for desktop/laptop monitors, but I have made it atleast
 I'll continue updating the README.md as I think of more details and stories about this project ;)
 
 v1.1.0
+
+## License
+
+All code in this repository is under the [MIT License](https://github.com/petermatts/nfl-season-predictor/blob/master/LICENSE)
