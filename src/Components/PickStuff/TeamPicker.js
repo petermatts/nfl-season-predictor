@@ -32,7 +32,7 @@ class Picker extends Component {
             const id = Math.random().toString(36).replace(/[^a-z]+/g, '').substr(0, 7);
             const {day, date, time} = game;
             const dayAbrv = day==='Thursday' ? day.substring(0,4) : day.substring(0,3);
-            if(day==='Sunday' && time==='8:20 PM') {
+            if(day==='Sunday' && (time==='8:20 PM' || time==='8:15 PM')) {
                 return (
                     <div>
                         <b id={`snf${id}`}>{`Week ${week} SNF`}</b>
@@ -41,7 +41,7 @@ class Picker extends Component {
                         </UncontrolledTooltip>}
                     </div>
                 );
-            } else if(day==='Thursday' && time==='8:20 PM') {
+            } else if(day==='Thursday' && (time==='8:20 PM' || time==='8:15 PM')) {
                 return (
                     <div>
                         <b id={`tnf${id}`}>{`Week ${week} TNF`}</b>
@@ -50,7 +50,7 @@ class Picker extends Component {
                         </UncontrolledTooltip>}
                     </div>
                 );
-            } else if(day==='Monday' && time==='8:15 PM') {
+            } else if(day==='Monday' && (time==='8:20 PM' || time==='8:15 PM')) {
                 return (
                     <div>
                         <b id={`mnf${id}`}>{`Week ${week} MNF`}</b>

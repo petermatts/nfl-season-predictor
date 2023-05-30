@@ -1,6 +1,6 @@
 {
   "name": "nfl-season-predictor",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "private": true,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.35",
@@ -16,6 +16,8 @@
     "axios": "^0.21.2",
     "bootstrap": "^4.5.0",
     "cheerio": "^1.0.0-rc.9",
+    "cors": "^2.8.5",
+    "express": "^4.18.2",
     "firebase": "^8.6.3",
     "fs-json-writer": "^1.0.0-beta",
     "react": "^16.13.1",

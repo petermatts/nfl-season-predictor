@@ -1,7 +1,11 @@
 import axios from 'axios';
 import cheerio from 'cheerio';
-// import firebase from 'firebase';
+import firebase from 'firebase';
 import { teamHash } from '../Teams/Team';
+import T from '../Teams/Teams.json';
+
+// let ax = axios.create({headers: {'Access-Control-Allow-Origin':'*'}});
+// axios.defaults.headers.post['Content-Type'] ='application/x-www-form-urlencoded';
 
 async function scrapeSchedule(year) {
     const gameList = [];
@@ -9,47 +13,85 @@ async function scrapeSchedule(year) {
     const gameGrid = new Array(32);
     for(let i = 0; i < 32; i++)
         gameGrid[i] = [];
+        
+    const teams = [];
+    // console.log(Object.keys(T[0])[0]);
+    for(let i = 0; i< T.length; i++) {
+        teams.push(Object.keys(T[i])[0]);
+    }
 
+    let num = 0;
     for(let week = 1; week < 19; week++) {
         console.log("week "+ week + " " + year);
+        // NOTE turn on Allow CORS chrome extension before scraping, or you will get CORS errors
+        // eslint-disable-next-line no-loop-func
         await axios.get(`https://www.espn.com/nfl/schedule/_/week/${week}/year/${year}`).then((response) => {
+            // console.log(response.data);
+
             if(response.status === 200) {
                 const $ = cheerio.load(response.data);
 
-                const timeNodes = $('a[name=&lpos=nfl:schedule:time]');
-                const times = [];
-                for(let index = 0; index < timeNodes.length; index++) {
-                    const value = timeNodes[index].parent.attribs['data-date']
-                    times[index] = (value !== undefined) ? value : 'TBD';
+                const dateNodes = $('div[class=Table__Title]');
+                // console.log(dateNodes);
+                let rawDateStrs = [];
+                for(let i = 0; i < dateNodes.length; i++) {
+                    rawDateStrs.push(dateNodes[i].children[0].data);
                 }
+                // console.log(rawDateStrs);
 
-                const teamNodes = $('abbr');
-                // console.log(teamNodes);
-                const teams = [];
-                for(let index = 0; index < teamNodes.length; index++) {
-                    teams[index] = teamNodes[index].children[0].data;
-                    if(teams[index] === 'WSH')
-                        teams[index] = 'WAS';
-                }
-                // console.log(teams);
-                
-                //evens in teams[] are home, odds are away
-                //number of teams on bye is (32-(times.length*2)), those teams will be at the end of teams[]
+                const gameNodes = $('tr');
+                // console.log(gameNodes);
+
                 const games = [];
-                for(let i = 0; i < times.length; i++) {
-                    const homeTeam = teams[2*i];
-                    const awayTeam = teams[2*i+1];
-                    const thisGame = new game(homeTeam, awayTeam, new Date(times[i]), gameList.length);
+                const byes = Array.from(teams, x => x);
 
-                    games.push(thisGame);
-                    gameList.push(thisGame);
-                    gameGrid[teamHash(homeTeam)][week - 1] = gameList.length - 1;
-                    gameGrid[teamHash(awayTeam)][week - 1] = gameList.length - 1;
+                let dayctr = -1;
+                for (let i = 0; i < gameNodes.length; i++) {
+                    const didx = gameNodes[i].attribs['data-idx'];
+                    if(didx === undefined) {
+                        continue;
+                    } 
+                    
+                    if(didx === '0') {
+                        dayctr++;
+                    }
+                    if(dayctr >= rawDateStrs.length) {
+                        continue;
+                    }         
+
+                    let homeTeam = gameNodes[i].children[1].children[0].children[1].children[1].attribs['href'].split('/');
+                    homeTeam = homeTeam[homeTeam.length-2].toUpperCase();
+                    // console.log(homeTeam);
+
+                    let awayTeam = gameNodes[i].children[0].children[0].children[0].children[1].attribs['href'].split('/');
+                    awayTeam = awayTeam[awayTeam.length-2].toUpperCase();
+                    // console.log(awayTeam);
+                    const time = gameNodes[i].children[2].children[0].children[0].data;
+
+                    if(homeTeam === 'WSH')
+                        homeTeam = 'WAS';
+                    if(awayTeam === 'WSH')
+                        awayTeam = 'WAS';
+
+                    byes.splice(byes.indexOf(homeTeam), 1);
+                    byes.splice(byes.indexOf(awayTeam), 1);
+
+                    // console.log(awayTeam, '@',homeTeam, rawDateStrs[dayctr], time);
+                    const g = new game(homeTeam, awayTeam, new Date(rawDateStrs[dayctr]), time, num);
+                    // console.log(g);
+
+                    gameGrid[teamHash(homeTeam)][week - 1] = num;
+                    gameGrid[teamHash(awayTeam)][week - 1] = num;
+
+                    // games.push(g);
+                    gameList.push(g);
+                    games.push(g);
+                    num++;
                 }
 
-                const byes = teams.slice(2*times.length);
-                for(let index = 0; index < byes.length; index++) {
-                    gameGrid[teamHash(byes[index])][week - 1] = "BYE";
+                // console.log(byes);
+                for(let b = 0; b < byes.length; b++) {
+                    gameGrid[teamHash(byes[b])][week - 1] = 'BYE';
                 }
 
                 Object.assign(schedule, {['week'+week]: { games, byes }});
@@ -68,17 +110,17 @@ async function scrapeSchedule(year) {
     // firebase.database().ref(`/data/${year}/Schedule`).set(schedule);
 }
 
-function game(away, home, d, hash) {
+function game(away, home, d, time, hash) {
     //!handle TBD dates
     const day = d.toLocaleDateString('en-US', { weekday: 'long' });
     const date = d.toLocaleDateString('en-US');
 
-    const timeOptions = {
-        timeZone: 'America/New_York',
-        hour: '2-digit',
-        minute: '2-digit'
-    };
-    let time = d.toLocaleTimeString('en-US', timeOptions);
+    // const timeOptions = {
+    //     timeZone: 'America/New_York',
+    //     hour: '2-digit',
+    //     minute: '2-digit'
+    // };
+    // let time = d.toLocaleTimeString('en-US', timeOptions);
     if(time.startsWith('0')) {
         time = time.replace('0', '');
     }

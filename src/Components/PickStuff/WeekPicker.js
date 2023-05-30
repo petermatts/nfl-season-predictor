@@ -41,7 +41,7 @@ class WeekPicker extends Component {
 
     timeDisplay({date, day, time}) {
         const dayAbrv = day==='Thursday' ? day.substring(0,4) : day.substring(0,3);
-        if(day==='Sunday' && time==='8:20 PM') {
+        if(day==='Sunday' && (time==='8:20 PM' || time==='8:15 PM')) {
             return (
                 <div>
                     <b id="snf">SNF</b>
@@ -50,7 +50,7 @@ class WeekPicker extends Component {
                     </UncontrolledTooltip>}
                 </div>
             );
-        } else if(day==='Thursday' && time==='8:20 PM') {
+        } else if(day==='Thursday' && (time==='8:20 PM' || time==='8:15 PM')) {
             return (
                 <div>
                     <b id="tnf">TNF</b>
@@ -59,7 +59,7 @@ class WeekPicker extends Component {
                     </UncontrolledTooltip>}
                 </div>
             );
-        } else if(day==='Monday' && time==='8:15 PM') {
+        } else if(day==='Monday' && (time==='8:20 PM' || time==='8:15 PM')) {
             return (
                 <div>
                     <b id="mnf">MNF</b>
