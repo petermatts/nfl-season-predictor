@@ -7,3 +7,8 @@ After writing code to update product:
 2) git commit
 3) npm run build
 4) firebase deploy
+
+    COMMON ISSUE: Error: Failed to get details for project: nfl-season-predictor.
+
+    SOLUTION: run `firebase logout` then `firebase login`
+    
