@@ -22,6 +22,7 @@ import {
     updateSeason,
     seasonChange,
     placeStandings,
+    updateLogo,
 
     getGameGrid,
     getGameList,
@@ -197,6 +198,27 @@ class Settings extends Component {
                         </Button>
                     </ButtonGroup>
                 </div>
+                <div className="menu-item">
+                    Pick By:
+                    <ButtonGroup>
+                        <Button
+                            size='sm'
+                            className="item-button"
+                            color={settings.logo ? 'secondary':'primary'}
+                            onClick={() => this.props.updateLogo()}
+                        >
+                            Name
+                        </Button>
+                        <Button
+                            size='sm'
+                            className="item-button"
+                            color={settings.logo ? 'primary':'secondary'}
+                            onClick={() => this.props.updateLogo()}
+                        >
+                            Logo
+                        </Button>
+                    </ButtonGroup>
+                </div>
             </div>
         );
     }
@@ -251,6 +273,7 @@ const SettingsMenu = connect(mapStateToProps, {
     updateSeason,
     seasonChange,
     placeStandings,
+    updateLogo,
 
     getGameGrid,
     getGameList,

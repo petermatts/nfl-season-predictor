@@ -35,3 +35,4 @@ export const SHOW_INSTRUCTIONS = 'show_instructions';
 export const SHOW_LOGIN = "show_login";
 export const SET_SEASON = "set_season";
 export const STANDINGS_PLACE = "standings_place";
+export const LOGOS = "logo_display";

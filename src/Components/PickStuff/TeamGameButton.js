@@ -4,6 +4,7 @@ import { ButtonGroup } from 'reactstrap';
 import { gameResult, updateUserGamePicks } from '../../Actions';
 import { BYE, homewin, awaywin, tiegame } from '../../Actions/Constants';
 import { teamHash } from '../../Teams/Team';
+import * as logos from '../../Teams/Logos';
 import '../../Teams/TeamColors.css';
 import './CSS/TeamGameButton.css';
 
@@ -32,6 +33,7 @@ class TeamGameSelector extends Component {
     }
 
     render() {
+        const LOGO = this.props.settings.logo;
         const { week, gameId, team, NFL, schedule, userdata } = this.props;
 
         if(gameId !== 'BYE') {
@@ -89,7 +91,7 @@ class TeamGameSelector extends Component {
                             }
                         }}
                     >
-                        {team}
+                        {LOGO ? <img src={logos[team]} alt={team} /> : team}
                     </button>
                     <button 
                         className={`Tie-Button ${glowTie}`}
@@ -118,7 +120,7 @@ class TeamGameSelector extends Component {
                             } 
                         }}
                     >
-                        {otherTeam.abrv}
+                        {LOGO ? <img src={logos[otherTeam.abrv]} alt={otherTeam.abrv} /> : otherTeam.abrv}
                     </button>
                 </ButtonGroup>
             );
@@ -135,8 +137,8 @@ class TeamGameSelector extends Component {
 }
 
 const mapStateToProps = (state) => {
-    const { userdata, schedule, NFL } = state;
-    return { userdata, schedule, NFL };
+    const { userdata, schedule, NFL, settings } = state;
+    return { userdata, schedule, NFL, settings };
 }
 
 const TeamGameButton = connect(mapStateToProps, { gameResult, updateUserGamePicks })(TeamGameSelector);

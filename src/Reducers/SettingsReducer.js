@@ -8,7 +8,8 @@ import {
     SHOW_INSTRUCTIONS,
     SHOW_LOGIN,
     SET_SEASON,
-    STANDINGS_PLACE
+    STANDINGS_PLACE,
+    LOGOS
 } from './../Actions/types';
 
 const INITIAL_STATE = {
@@ -19,6 +20,7 @@ const INITIAL_STATE = {
     standPlacement: 0,
     showplayoffpic: false,
     season: 2023,
+    logo: false,
 
     showAbout: false,
     showInstructions: false,
@@ -47,6 +49,8 @@ export default (state=INITIAL_STATE, action) => {
             return { ...state, season: action.payload };
         case STANDINGS_PLACE:
             return { ...state, standPlacement: action.payload };
+        case LOGOS:
+            return { ...state, logo: !state.logo };
         default:
             return state;
     }

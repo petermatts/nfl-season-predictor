@@ -8,7 +8,8 @@ import {
     SHOW_INSTRUCTIONS,
     SHOW_LOGIN,
     SET_SEASON,
-    STANDINGS_PLACE
+    STANDINGS_PLACE,
+    LOGOS
 } from './types';
 
 export const updatePB = () => {
@@ -73,4 +74,10 @@ export const placeStandings = (place) => {
         type: STANDINGS_PLACE,
         payload: place
     };
+};
+
+export const updateLogo = () => {
+    return {
+        type: LOGOS
+    }
 };

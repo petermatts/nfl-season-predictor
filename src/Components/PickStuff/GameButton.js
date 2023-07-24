@@ -7,6 +7,7 @@ import '../../Teams/TeamColors.css';
 import { gameResult, updateUserGamePicks } from '../../Actions';
 import { homewin, awaywin, tiegame } from '../../Actions/Constants';
 import { teamHash } from '../../Teams/Team';
+import * as logos from '../../Teams/Logos';
 
 class GameSelector extends Component {
     getGridLocations(gameId, week, home, away) {
@@ -26,6 +27,7 @@ class GameSelector extends Component {
 
     render() {
         // console.log(this.props);
+        const LOGO = this.props.settings.logo;
         const gameId = this.props.game.hash;
         const pick = this.props.userdata.gamelist[gameId];
         const home = this.props.NFL[this.props.game.home];
@@ -55,11 +57,10 @@ class GameSelector extends Component {
                     disabled={glowAway==='glow'}
                     onClick={() => {
                         this.props.updateUserGamePicks(gameId, awaywin, gridLoc, week);
-                        this.props.gameResult({winner: away, loser: home }, gameId);
-                        // this.setState({ awaypress: true, tiepress: false, homepress: false });    
+                        this.props.gameResult({winner: away, loser: home }, gameId);  
                     }}
                 >
-                    {away.abrv}
+                    {LOGO ? <img src={logos[away.abrv]} alt={away.abrv} /> : away.abrv}
                 </button>
                 <button 
                     className={`Tie-Button ${glowTie}`}
@@ -67,7 +68,6 @@ class GameSelector extends Component {
                     onClick={() => {
                         this.props.updateUserGamePicks(gameId, tiegame, gridLoc, week);
                         this.props.gameResult({ home, away }, gameId);
-                        // this.setState({ tiepress: true, awaypress: false, homepress: false });
                     }}
                 >
                     @
@@ -78,10 +78,9 @@ class GameSelector extends Component {
                     onClick={() => {
                         this.props.updateUserGamePicks(gameId, homewin, gridLoc, week);
                         this.props.gameResult({ winner: home, loser: away }, gameId);
-                        // this.setState({ homepress: true, awaypress: false, tiepress: false });
                     }}
                 >
-                    {home.abrv}
+                    {LOGO ? <img src={logos[home.abrv]} alt={home.abrv} /> : home.abrv}
                 </button>
             </ButtonGroup>
         );   
@@ -89,8 +88,8 @@ class GameSelector extends Component {
 }
 
 const mapStateToProps = (state) => {
-    const { NFL, userdata, schedule } = state;
-    return { NFL, userdata, schedule };
+    const { NFL, userdata, schedule, settings } = state;
+    return { NFL, userdata, schedule, settings };
 };
 
 const GameButton = connect(mapStateToProps, { gameResult, updateUserGamePicks })(GameSelector);

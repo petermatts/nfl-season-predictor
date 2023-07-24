@@ -4,6 +4,7 @@ import { ListGroup, ListGroupItem } from 'reactstrap';
 import { changeTeamPick } from '../../Actions';
 import { teamHash } from '../../Teams/Team';
 import { CreateNFL } from '../../Teams/NFL_Teams';
+import * as logos from '../../Teams/Logos';
 import './CSS/TeamSelector.css';
 import '../../Teams/TeamColors.css';
 
@@ -30,7 +31,7 @@ class PickTeamButtons extends Component {
                         this.setState({ picked: hash });
                     }}
                 >
-                    {team.abrv}
+                    {this.props.settings.logo ? <img src={logos[team.abrv]} alt={team.abrv} /> : team.abrv}
                 </button>
             );
         });

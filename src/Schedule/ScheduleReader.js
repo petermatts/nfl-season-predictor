@@ -1,6 +1,6 @@
 import axios from 'axios';
 import cheerio from 'cheerio';
-import firebase from 'firebase';
+// import firebase from 'firebase';
 import { teamHash } from '../Teams/Team';
 import T from '../Teams/Teams.json';
 

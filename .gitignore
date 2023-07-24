@@ -30,3 +30,6 @@ yarn-error.log*
 database.rules.json
 .bitmap
 .firebaserc
+
+# might not stay ignored
+src/Teams/Logos/*.png

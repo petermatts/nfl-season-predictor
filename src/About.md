@@ -54,4 +54,4 @@ I'll continue updating the README.md as I think of more details and stories abou
 
 ---
 
-v1.1.1
+v1.2.0

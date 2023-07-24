@@ -3,8 +3,8 @@ Matt Peters 8/10/2021
 After writing code to update product:
 
 1) update version numbers in about.md, package.json, and README.md
-2) Delete .cache file in .firebase folder
-2) git commit
+2a) git commit
+2b) Delete .cache file in .firebase folder
 3) npm run build
 4) firebase deploy
 

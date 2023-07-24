@@ -3,6 +3,7 @@ import { Table } from 'reactstrap';
 import { connect } from 'react-redux';
 import { CreateNFL } from '../Teams/NFL_Teams';
 import { sortDivision, sortConfrence } from '../Actions/SortStandings';
+import * as logos from '../Teams/Logos';
 import './CSS/Standings.css';
 
 class Standing extends Component {
@@ -16,6 +17,7 @@ class Standing extends Component {
     renderRows() {
         const { division, confrence, NFL } = this.props;
         const AS = this.props.settings.advancedStandings;
+        const LOGO = this.props.settings.logo;
         const playoffs = this.props.settings.showplayoffpic;
         const league = CreateNFL(NFL);
 
@@ -37,7 +39,7 @@ class Standing extends Component {
                     return (
                         <tr key={++rank}>
                             {rank < 8 ? <th scope="row"><small><b>{rank}</b></small></th> : <th scope="row"><small>{rank}</small></th>}
-                            <td><small>{team.abrv}</small></td>
+                            {LOGO ? <td><img src={logos[team.abrv]} alt={team.abrv} /></td> : <td><small>{team.abrv}</small></td>}
                             <td><small>{team.record}</small></td>
                             <td><small>{team.pct}</small></td>
                             {/* <td><small>{team.streak}</small></td> */}
@@ -53,7 +55,7 @@ class Standing extends Component {
                     return (
                         <tr key={++rank}>
                             <th scope="row"><small><b>{rank}</b></small></th>
-                            <td><small>{team.abrv}</small></td>
+                            {LOGO ? <td><img src={logos[team.abrv]} alt={team.abrv} /></td> : <td><small>{team.abrv}</small></td>}
                             <td><small>{team.record}</small></td>
                             <td><small>{team.pct}</small></td>
                             {/* <td><small>{team.streak}</small></td> */}
