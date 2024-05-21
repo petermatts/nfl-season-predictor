@@ -1,6 +1,6 @@
 import axios from 'axios';
 import cheerio from 'cheerio';
-// import firebase from 'firebase';
+import firebase from 'firebase';
 import { teamHash } from '../Teams/Team';
 import T from '../Teams/Teams.json';
 
@@ -59,11 +59,11 @@ async function scrapeSchedule(year) {
                         continue;
                     }         
 
-                    let homeTeam = gameNodes[i].children[1].children[0].children[1].children[1].attribs['href'].split('/');
+                    let homeTeam = gameNodes[i].children[0].children[0].children[0].children[1].attribs['href'].split('/');
                     homeTeam = homeTeam[homeTeam.length-2].toUpperCase();
                     // console.log(homeTeam);
 
-                    let awayTeam = gameNodes[i].children[0].children[0].children[0].children[1].attribs['href'].split('/');
+                    let awayTeam = gameNodes[i].children[1].children[0].children[1].children[1].attribs['href'].split('/');
                     awayTeam = awayTeam[awayTeam.length-2].toUpperCase();
                     // console.log(awayTeam);
                     const time = gameNodes[i].children[2].children[0].children[0].data;
@@ -105,9 +105,9 @@ async function scrapeSchedule(year) {
     console.log(schedule);
 
     //push scraped data to firebase
-    // firebase.database().ref(`/data/${year}/GameList`).set(gameList);
-    // firebase.database().ref(`/data/${year}/GameGrid`).set(gameGrid);
-    // firebase.database().ref(`/data/${year}/Schedule`).set(schedule);
+    firebase.database().ref(`/data/${year}/GameList`).set(gameList);
+    firebase.database().ref(`/data/${year}/GameGrid`).set(gameGrid);
+    firebase.database().ref(`/data/${year}/Schedule`).set(schedule);
 }
 
 function game(away, home, d, time, hash) {

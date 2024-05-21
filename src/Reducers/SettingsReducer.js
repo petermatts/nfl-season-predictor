@@ -19,7 +19,7 @@ const INITIAL_STATE = {
     advancedStandings: 1,
     standPlacement: 0,
     showplayoffpic: false,
-    season: 2023,
+    season: 2024,
     logo: false,
 
     showAbout: false,
