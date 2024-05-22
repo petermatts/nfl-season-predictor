@@ -44,7 +44,7 @@ This webapp was designed for desktop/laptop monitors, but I have made it atleast
 
 I'll continue updating the README.md as I think of more details and stories about this project ;)
 
-v1.2.1
+v1.2.2
 
 ## License
 

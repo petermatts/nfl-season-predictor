@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { ListGroup, ListGroupItem, UncontrolledTooltip } from 'reactstrap';
 import { isMobile, isMobileOnly } from 'react-device-detect';
 import { GameButton } from './GameButton';
+import * as logos from '../../Teams/Logos';
 import '../../Teams/TeamColors.css';
 import './CSS/WeekPicker.css';
 
 
-class WeekPicker extends Component {
+class WeekPickerClass extends Component {
     constructor(props) {
         super(props);
         this.state = { games: props.games, byes: props.byes, dates: [] };
@@ -133,11 +135,12 @@ class WeekPicker extends Component {
     }
 
     byeDisplay() {
+        const LOGO = this.props.settings.logo;
         const byes = this.state.byes.map((team) => {
             const cn = `Bye ${team}`;
             return (
                 <button key={team} className={cn} disabled>
-                    {team}
+                    {LOGO ? <img src={logos[team]} alt={team} /> : team}
                 </button>
             );
         });
@@ -167,5 +170,12 @@ class WeekPicker extends Component {
         );
     }
 }
+
+const mapStateToProps = (state) => {
+    const { settings } = state;
+    return { settings };
+}
+
+const WeekPicker = connect(mapStateToProps, {})(WeekPickerClass);
 
 export { WeekPicker };
