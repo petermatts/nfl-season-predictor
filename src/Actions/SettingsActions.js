@@ -9,7 +9,8 @@ import {
     SHOW_LOGIN,
     SET_SEASON,
     STANDINGS_PLACE,
-    LOGOS
+    LOGOS,
+    PLAYOFFS
 } from './types';
 
 export const updatePB = () => {
@@ -28,7 +29,7 @@ export const standingsDetail = (detailLevel) => {
     return {
         type: UPDATE_STANDINGS_DETAILS,
         payload: detailLevel
-    }
+    };
 };
 
 export const updatePlayoffPic = () => {
@@ -79,5 +80,11 @@ export const placeStandings = (place) => {
 export const updateLogo = () => {
     return {
         type: LOGOS
-    }
+    };
+};
+
+export const showPlayoffs = () => {
+    return {
+        type: PLAYOFFS
+    };
 };

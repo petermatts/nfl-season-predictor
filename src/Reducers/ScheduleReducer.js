@@ -6,7 +6,7 @@ const INITIAL_STATE = {
     schedule: null
 };
 
-export default (state = INITIAL_STATE, action) => {
+const ScheduleReducer = (state = INITIAL_STATE, action) => {
     switch(action.type) {
         case GET_GAMEGRID:
             return { ...state, gamegrid: action.payload };
@@ -18,3 +18,5 @@ export default (state = INITIAL_STATE, action) => {
             return state;
     }
 };
+
+export default ScheduleReducer;

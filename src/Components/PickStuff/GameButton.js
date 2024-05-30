@@ -1,4 +1,3 @@
-/* eslint-disable eqeqeq */
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { ButtonGroup } from 'reactstrap';
@@ -26,7 +25,6 @@ class GameSelector extends Component {
     }
 
     render() {
-        // console.log(this.props);
         const LOGO = this.props.settings.logo;
         const gameId = this.props.game.hash;
         const pick = this.props.userdata.gamelist[gameId];

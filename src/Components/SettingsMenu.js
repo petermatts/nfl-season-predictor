@@ -23,6 +23,7 @@ import {
     seasonChange,
     placeStandings,
     updateLogo,
+    showPlayoffs,
 
     getGameGrid,
     getGameList,
@@ -220,6 +221,17 @@ class Settings extends Component {
                         </Button>
                     </ButtonGroup>
                 </div>
+                <div className="menu-item">
+                    Playoffs:
+                    <Button
+                        size='sm'
+                        className='item-button'
+                        color={settings.pickPlayoffs ? 'success':'danger'}
+                        onClick={() => {this.props.showPlayoffs()}}
+                    >
+                        {settings.pickPlayoffs ? 'On':'Off'}
+                    </Button>
+                </div>
             </div>
         );
     }
@@ -263,7 +275,7 @@ class Settings extends Component {
 
 const mapStateToProps = (state) => {
     const { settings } = state;
-    return { settings }
+    return { settings };
 }
 
 const SettingsMenu = connect(mapStateToProps, {
@@ -275,6 +287,7 @@ const SettingsMenu = connect(mapStateToProps, {
     seasonChange,
     placeStandings,
     updateLogo,
+    showPlayoffs,
 
     getGameGrid,
     getGameList,

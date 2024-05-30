@@ -15,7 +15,8 @@ import {
     LoginPage,
     ProfilePage,
     SaveButton,
-    LoadButton
+    LoadButton,
+    PostSeasonPicker
 } from './Components';
 import { scrapeSchedule } from './Schedule/ScheduleReader';
 import AboutPath from './About.md';
@@ -57,7 +58,7 @@ class Home extends Component {
     scrapeButton() {
         return (
             <button onClick={() => {
-                scrapeSchedule(2023);
+                scrapeSchedule(2025);
             }}>
                 scrape
             </button>
@@ -107,6 +108,12 @@ class Home extends Component {
                         </div>
                         <div className="main-section">
                             <StandingsHolder orientation={h.length} />
+                        </div>
+                        {/* {this.props.settings.pickPlayoffs ? <div className="main-section">
+                            <PostSeasonPicker />
+                        </div> : null} */}
+                        <div className="main-section">
+                            <PostSeasonPicker />
                         </div>
                     </div>
                 </div>

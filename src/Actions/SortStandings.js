@@ -71,12 +71,14 @@ function compareDivision(a, b) {
                             if(a.SOS !== b.SOS) {
                                 return b.SOS - a.SOS;
                             } else {
+                                //! problematic because it is nondeterministic and tie-breaks 7-11 are not implemented
                                 // 12 Coin toss
-                                if(Math.random() < 0.50) {
-                                    return -1;
-                                } else {
-                                    return 1;
-                                }
+                                // if(Math.random() < 0.50) {
+                                //     return -1;
+                                // } else {
+                                //     return 1;
+                                // }
+                                return a.abrv.localeCompare(b.abrv);
                             }
                         }
                     }
@@ -164,12 +166,15 @@ function compareConfrence(a, b, wc) {
                         if(a.SOS !== b.SOS) {
                             return b.SOS - a.SOS;
                         } else {
+                            //! problematic because it is nondeterministic and tie-breaks 6-10 are not implemented
                             // 11 Coin toss
-                            if(Math.random() < 0.50) {
-                                return -1;
-                            } else {
-                                return 1;
-                            }
+                            // console.log("RANDOM TIE BREAKER");
+                            // if(Math.random() < 0.50) {
+                            //     return -1;
+                            // } else {
+                            //     return 1;
+                            // }
+                            return a.abrv.localeCompare(b.abrv);
                         }
                     }
                 }

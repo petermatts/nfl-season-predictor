@@ -5,3 +5,4 @@ export * from './TeamPicker';
 export * from './TeamGameButton';
 export * from './WeekPicker';
 export * from './WeekHolder';
+export * from './PlayoffPicker';

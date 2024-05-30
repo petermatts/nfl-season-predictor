@@ -9,8 +9,10 @@ import {
     SHOW_LOGIN,
     SET_SEASON,
     STANDINGS_PLACE,
-    LOGOS
-} from './../Actions/types';
+    LOGOS,
+    PLAYOFFS
+} from '../Actions/types';
+import { SEASON } from '../Actions/Constants';
 
 const INITIAL_STATE = {
     showProgress: false,
@@ -19,15 +21,16 @@ const INITIAL_STATE = {
     advancedStandings: 1,
     standPlacement: 0,
     showplayoffpic: false,
-    season: 2024,
+    season: SEASON,
     logo: false,
+    pickPlayoffs: false,
 
     showAbout: false,
     showInstructions: false,
     showLogin: false
 }
 
-export default (state=INITIAL_STATE, action) => {
+const SettingsReducer = (state=INITIAL_STATE, action) => {
     switch (action.type) {
         case UPDATE_PROGRESSBAR:
             return { ...state, showProgress: !state.showProgress };
@@ -51,7 +54,11 @@ export default (state=INITIAL_STATE, action) => {
             return { ...state, standPlacement: action.payload };
         case LOGOS:
             return { ...state, logo: !state.logo };
+        case PLAYOFFS:
+            return { ...state, pickPlayoffs: !state.pickPlayoffs };
         default:
             return state;
     }
-}
+};
+
+export default SettingsReducer;

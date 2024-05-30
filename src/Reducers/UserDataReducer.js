@@ -32,7 +32,7 @@ const INITIAL_STATE = {
     saveData: null
 };
 
-export default (state=INITIAL_STATE, action) => {
+const UserDataReducer = (state=INITIAL_STATE, action) => {
     switch(action.type) {
         case UPDATE_UGAMELIST:
             const { home, away } = action.payload.gridLocs;
@@ -95,4 +95,6 @@ export default (state=INITIAL_STATE, action) => {
         default:
             return state;
     }
-}
+};
+
+export default UserDataReducer;
