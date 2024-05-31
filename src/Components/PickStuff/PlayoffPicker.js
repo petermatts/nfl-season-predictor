@@ -91,7 +91,7 @@ class PostSeasonPickerClass extends Component {
                  });
             }
         } else if(next_round === 3) {
-            if(confrence == AFC) {
+            if(confrence === AFC) {
                 this.setState({
                     3: next_round_state,
                     4: { "AFC": [], "NFC": NFC4 },
