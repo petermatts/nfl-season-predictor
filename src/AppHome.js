@@ -109,12 +109,9 @@ class Home extends Component {
                         <div className="main-section">
                             <StandingsHolder orientation={h.length} />
                         </div>
-                        {/* {this.props.settings.pickPlayoffs ? <div className="main-section">
+                        {this.props.settings.pickPlayoffs ? <div className="main-section">
                             <PostSeasonPicker />
-                        </div> : null} */}
-                        <div className="main-section">
-                            <PostSeasonPicker />
-                        </div>
+                        </div> : null}
                     </div>
                 </div>
             );

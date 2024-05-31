@@ -10,7 +10,8 @@ import {
     SET_SEASON,
     STANDINGS_PLACE,
     LOGOS,
-    PLAYOFFS
+    PLAYOFFS,
+    PLAYOFFS_NOW
 } from './types';
 
 export const updatePB = () => {
@@ -86,5 +87,11 @@ export const updateLogo = () => {
 export const showPlayoffs = () => {
     return {
         type: PLAYOFFS
+    };
+};
+
+export const playoffsNow = () => {
+    return {
+        type: PLAYOFFS_NOW
     };
 };

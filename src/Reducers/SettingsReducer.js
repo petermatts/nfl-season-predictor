@@ -10,7 +10,8 @@ import {
     SET_SEASON,
     STANDINGS_PLACE,
     LOGOS,
-    PLAYOFFS
+    PLAYOFFS,
+    PLAYOFFS_NOW
 } from '../Actions/types';
 import { SEASON } from '../Actions/Constants';
 
@@ -24,6 +25,7 @@ const INITIAL_STATE = {
     season: SEASON,
     logo: false,
     pickPlayoffs: false,
+    playoffsNow: false,
 
     showAbout: false,
     showInstructions: false,
@@ -56,6 +58,8 @@ const SettingsReducer = (state=INITIAL_STATE, action) => {
             return { ...state, logo: !state.logo };
         case PLAYOFFS:
             return { ...state, pickPlayoffs: !state.pickPlayoffs };
+        case PLAYOFFS_NOW:
+            return { ...state, playoffsNow: !state.playoffsNow };
         default:
             return state;
     }

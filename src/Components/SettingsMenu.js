@@ -24,6 +24,7 @@ import {
     placeStandings,
     updateLogo,
     showPlayoffs,
+    playoffsNow,
 
     getGameGrid,
     getGameList,
@@ -221,8 +222,16 @@ class Settings extends Component {
                         </Button>
                     </ButtonGroup>
                 </div>
+            </div>
+        );
+    }
+
+    renderPlayoffSettings(settings) {
+        return (
+            <div>
+                <h5>Playoffs</h5>
                 <div className="menu-item">
-                    Playoffs:
+                    Show Brackets:
                     <Button
                         size='sm'
                         className='item-button'
@@ -230,6 +239,17 @@ class Settings extends Component {
                         onClick={() => {this.props.showPlayoffs()}}
                     >
                         {settings.pickPlayoffs ? 'On':'Off'}
+                    </Button>
+                </div>
+                <div className="menu-item">
+                    Enable:
+                    <Button
+                        size='sm'
+                        className='item-button'
+                        color={settings.playoffsNow ? 'success':'danger'}
+                        onClick={() => {this.props.playoffsNow()}}
+                    >
+                        {settings.playoffsNow ? 'Any Time':'After Season'}
                     </Button>
                 </div>
             </div>
@@ -266,6 +286,8 @@ class Settings extends Component {
                         <hr />
                         {/* {this.comingSoon()} */}
                         {this.renderPickTypeSwitch(settings)}
+                        <hr />
+                        {this.renderPlayoffSettings(settings)}
                     </PopoverBody>
                 </UncontrolledPopover>
             </div>
@@ -288,6 +310,7 @@ const SettingsMenu = connect(mapStateToProps, {
     placeStandings,
     updateLogo,
     showPlayoffs,
+    playoffsNow,
 
     getGameGrid,
     getGameList,

@@ -70,10 +70,40 @@ class PostSeasonPickerClass extends Component {
         next_round_state[confrence].sort((a,b) => a-b);
 
         // update state
+        const AFC3 = this.state[3][AFC];
+        const AFC4 = this.state[4][AFC];
+        const NFC3 = this.state[3][NFC];
+        const NFC4 = this.state[4][NFC];
         if(next_round === 2) {
-            this.setState({ 2: next_round_state });
+            if(confrence === AFC) {
+                this.setState({
+                    2: next_round_state,
+                    3: { "AFC": [], "NFC": NFC3 },
+                    4: { "AFC": [], "NFC": NFC4 },
+                    champion: null
+                 });
+            } else {
+                this.setState({
+                    2: next_round_state,
+                    3: { "AFC": AFC3, "NFC": [] },
+                    4: { "AFC": AFC4, "NFC": [] },
+                    champion: null
+                 });
+            }
         } else if(next_round === 3) {
-            this.setState({ 3: next_round_state });
+            if(confrence == AFC) {
+                this.setState({
+                    3: next_round_state,
+                    4: { "AFC": [], "NFC": NFC4 },
+                    champion: null
+                });
+            } else {
+                this.setState({
+                    3: next_round_state,
+                    4: { "AFC": AFC4, "NFC": [] },
+                    champion: null
+                });
+            }
         } else if(next_round === 4) {
             this.setState({ 4: next_round_state });
         } else {
@@ -103,10 +133,8 @@ class PostSeasonPickerClass extends Component {
     renderPlayoffGameButton(round, higherSeed, lowerSeed, confrence_data, confrence) {
         const LOGO = this.props.settings.logo;
         let allowPick = true;
-        // todo set allowPick to false if not all season games are picked
-        // todo add text notifying user of this restriction
-        // todo update about and instructions to reflect this
-        //? add setting to disable needing to pick all season games to pick playoffs - if season ended now
+        if(!this.props.settings.playoffsNow)
+            allowPick = false;
         
         if(round === 4) {
             const AFC_Champ = this.state[round][AFC];
@@ -257,35 +285,40 @@ class PostSeasonPickerClass extends Component {
         const FACTOR = 1965;
         const SB_ROMAN = numToRoman(this.props.settings.season - FACTOR);
         return (
-            <div className="Post-Season-Main">
-                <div className="Post-Season-Brackets">
-                    <h3>AFC Wildcard</h3>
-                    {this.renderButtons(1, AFC, this.state.DATA)}
+            <div className='outer'>
+                <div className="msg-text">
+                    {!this.props.settings.playoffsNow ? 'You must pick all season games before the playoffs or enable playoffs now': null}
                 </div>
-                <div className="Post-Season-Brackets">
-                    <h3>AFC Divisional</h3>
-                    {this.renderButtons(2, AFC, this.state.DATA)}
-                </div>
-                <div className="Post-Season-Brackets">
-                    <h3>AFC Championship</h3>
-                    {this.renderButtons(3, AFC, this.state.DATA)}
-                </div>
-                <div className="Post-Season-Brackets">
-                    <h3>{`Super Bowl ${SB_ROMAN}`}</h3>
-                    {this.renderButtons(4, null, this.state.DATA)}
-                    <img src={Lombardi} alt="Lombardi Trophy" className="trophy" />
-                </div>
-                <div className="Post-Season-Brackets">
-                    <h3>NFC Championship</h3>
-                    {this.renderButtons(3, NFC, this.state.DATA)}
-                </div>
-                <div className="Post-Season-Brackets">
-                    <h3>NFC Divisional</h3>
-                    {this.renderButtons(2, NFC, this.state.DATA)}
-                </div>
-                <div className="Post-Season-Brackets">
-                    <h3>NFC Wildcard</h3>
-                    {this.renderButtons(1, NFC, this.state.DATA)}
+                <div className="Post-Season-Main">
+                    <div className="Post-Season-Brackets">
+                        <h3>AFC Wildcard</h3>
+                        {this.renderButtons(1, AFC, this.state.DATA)}
+                    </div>
+                    <div className="Post-Season-Brackets">
+                        <h3>AFC Divisional</h3>
+                        {this.renderButtons(2, AFC, this.state.DATA)}
+                    </div>
+                    <div className="Post-Season-Brackets">
+                        <h3>AFC Championship</h3>
+                        {this.renderButtons(3, AFC, this.state.DATA)}
+                    </div>
+                    <div className="Post-Season-Brackets">
+                        <h3>{`Super Bowl ${SB_ROMAN}`}</h3>
+                        {this.renderButtons(4, null, this.state.DATA)}
+                        <img src={Lombardi} alt="Lombardi Trophy" className="trophy" />
+                    </div>
+                    <div className="Post-Season-Brackets">
+                        <h3>NFC Championship</h3>
+                        {this.renderButtons(3, NFC, this.state.DATA)}
+                    </div>
+                    <div className="Post-Season-Brackets">
+                        <h3>NFC Divisional</h3>
+                        {this.renderButtons(2, NFC, this.state.DATA)}
+                    </div>
+                    <div className="Post-Season-Brackets">
+                        <h3>NFC Wildcard</h3>
+                        {this.renderButtons(1, NFC, this.state.DATA)}
+                    </div>
                 </div>
             </div>
         );

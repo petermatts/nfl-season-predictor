@@ -6,6 +6,10 @@
 
 To pick a game, click on the button of the team you pick to win. If you think the teams will tie click the **@** or **VS** button.
 
+When picking playoff games there is no option to pick a tie. Again, picking a team to win is as simple as clicking on it. Teams advance to the next round once all games in the current round have been picked. Note that changing season picks may result in a hard reset of your play off bracket if the playoff picture changes. Also note that future playoff rounds for a confrence (and Super Bowl) are cleared if an earlier round pick has been changed.
+
+For more about showing playoff brackets see the settings descriptions below.
+
 ---
 
 ## Sign In/Sign Up
@@ -56,4 +60,8 @@ This setting will allow you to switch between different NFL seasons to pick game
 
 You can switch between these modes at any time.
 
----
+### PLayoffs
+
+- **Show Brackets** Shows the playoff brackets when on.
+
+- **Enable** Toggle between only being able to make play off predictions after all season games are picker (After Season) or at any point during the season (Any Time), like an "if the season ended today scenario".
