@@ -10,7 +10,7 @@ Array index for each team found in ../Teams/TeamOrder.txt
 */
 import { game } from './ScheduleReader';
 
-//! DEPRECIATE 2020
+//! DEPRECIATED 2020
 //? Make LEGACY API
 const schedule = {
     week1: {

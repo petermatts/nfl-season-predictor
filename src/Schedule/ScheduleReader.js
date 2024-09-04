@@ -66,7 +66,12 @@ async function scrapeSchedule(year) {
                     let awayTeam = gameNodes[i].children[1].children[0].children[1].children[1].attribs['href'].split('/');
                     awayTeam = awayTeam[awayTeam.length-2].toUpperCase();
                     // console.log(awayTeam);
+
+                    //TODO this also fetchs the result if the game has already been played
+                    // conditionally switch on if time or result is in the table header (class=Table__THEAD)
+                    // warning: updating data with score may erase the time stored. Be sure to address this when implementing
                     const time = gameNodes[i].children[2].children[0].children[0].data;
+                    const result = null;
 
                     if(homeTeam === 'WSH')
                         homeTeam = 'WAS';
@@ -77,7 +82,7 @@ async function scrapeSchedule(year) {
                     byes.splice(byes.indexOf(awayTeam), 1);
 
                     // console.log(awayTeam, '@',homeTeam, rawDateStrs[dayctr], time);
-                    const g = new game(homeTeam, awayTeam, new Date(rawDateStrs[dayctr]), time, num);
+                    const g = new game(homeTeam, awayTeam, new Date(rawDateStrs[dayctr]), time, num, result);
                     // console.log(g);
 
                     gameGrid[teamHash(homeTeam)][week - 1] = num;
@@ -110,8 +115,8 @@ async function scrapeSchedule(year) {
     firebase.database().ref(`/data/${year}/Schedule`).set(schedule);
 }
 
-function game(away, home, d, time, hash) {
-    //!handle TBD dates
+function game(away, home, d, time, hash, result) {
+    // TODO handle TBD dates
     const day = d.toLocaleDateString('en-US', { weekday: 'long' });
     const date = d.toLocaleDateString('en-US');
 
@@ -132,7 +137,7 @@ function game(away, home, d, time, hash) {
        primetime = true;
     }
 
-    return { home, away, day, date, time, primetime, picked: false, winner: null, hash };
+    return { home, away, day, date, time, primetime, picked: false, winner: null, hash, result };
 };
 
 export { game, scrapeSchedule };
