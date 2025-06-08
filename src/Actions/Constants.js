@@ -13,4 +13,4 @@ export const NFC = 'NFC';
 
 //!global variable for current season
 //Note you must update SOS in Teams/NFL_Teams.js too when updating to new season
-export const SEASON = 2024;
+export const SEASON = 2025;

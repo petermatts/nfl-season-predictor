@@ -69,6 +69,9 @@ async function scrapeSchedule(year) {
 
                     //TODO this also fetchs the result if the game has already been played
                     // conditionally switch on if time or result is in the table header (class=Table__THEAD)
+                    // const switch_ = $('div[class=Table__TH]');
+                    // console.log(switch_);
+
                     // warning: updating data with score may erase the time stored. Be sure to address this when implementing
                     const time = gameNodes[i].children[2].children[0].children[0].data;
                     const result = null;
@@ -110,9 +113,9 @@ async function scrapeSchedule(year) {
     console.log(schedule);
 
     //push scraped data to firebase
-    firebase.database().ref(`/data/${year}/GameList`).set(gameList);
-    firebase.database().ref(`/data/${year}/GameGrid`).set(gameGrid);
-    firebase.database().ref(`/data/${year}/Schedule`).set(schedule);
+    // firebase.database().ref(`/data/${year}/GameList`).set(gameList);
+    // firebase.database().ref(`/data/${year}/GameGrid`).set(gameGrid);
+    // firebase.database().ref(`/data/${year}/Schedule`).set(schedule);
 }
 
 function game(away, home, d, time, hash, result) {

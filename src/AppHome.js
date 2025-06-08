@@ -58,9 +58,9 @@ class Home extends Component {
     scrapeButton() {
         return (
             <button onClick={() => {
-                scrapeSchedule(2025);
+                scrapeSchedule(2026);
             }}>
-                scrape
+                Scrape
             </button>
         );
     }

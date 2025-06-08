@@ -77,7 +77,8 @@ class Settings extends Component {
                             <DropdownItem onClick={() => this.setSeason(2022)}>2022</DropdownItem>
                             <DropdownItem onClick={() => this.setSeason(2023)}>2023</DropdownItem>
                             <DropdownItem onClick={() => this.setSeason(2024)}>2024</DropdownItem>
-                            <DropdownItem disabled onClick={() => this.setSeason(2025)}>2025</DropdownItem>
+                            <DropdownItem onClick={() => this.setSeason(2025)}>2025</DropdownItem>
+                            <DropdownItem disabled onClick={() => this.setSeason(2026)}>2026</DropdownItem>
                         </DropdownMenu>
                     </Dropdown>
                 </div>
