@@ -55,4 +55,4 @@ I'll continue updating the README.md as I think of more details and stories abou
 
 All code in this repository is under the [MIT License](https://github.com/petermatts/nfl-season-predictor/blob/master/LICENSE)
 
-v1.3.0
+v1.3.1
