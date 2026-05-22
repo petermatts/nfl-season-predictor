@@ -7,7 +7,6 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 import reducers from './Reducers';
 import { AppHome } from './AppHome';
 
-//! its probably already too late but move these to a .env or some gitignored file
 var firebaseConfig = {
   apiKey: "AIzaSyCzTqMNe7U5CrBWVI2YE3rnAxKuABqxHf8",
   authDomain: "nfl-season-predictor.firebaseapp.com",
@@ -18,6 +17,7 @@ var firebaseConfig = {
   appId: "1:5313500236:web:b75bbe1f4442efdc5790e9",
   measurementId: "G-0E1Z17XKGW"
 };
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
